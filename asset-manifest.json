@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/StEM/static/css/main.7acaea2f.css",
+    "main.js": "/StEM/static/js/main.91067aeb.js",
+    "index.html": "/StEM/index.html",
+    "main.7acaea2f.css.map": "/StEM/static/css/main.7acaea2f.css.map",
+    "main.91067aeb.js.map": "/StEM/static/js/main.91067aeb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.91067aeb.js"
+  ]
+}
