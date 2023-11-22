@@ -5,6 +5,7 @@
 .idea/
 
 # dependencies
+/tmp
 /node_modules
 /.pnp
 .pnp.js
