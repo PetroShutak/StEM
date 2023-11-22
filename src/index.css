@@ -1,15 +1,140 @@
 @import-normalize; /* bring in normalize.css styles */
 
+/* Variables */
+:root {
+  --bg-primary: rgba(5, 5, 5, 1);
+  --bg-secondary: rgba(15, 15, 15, 1);
+  --text-color-primary-white: rgba(255, 255, 255, 1);
+  --text-color-secondary-grey: rgba(182, 182, 182, 1);
+  --text-color-button-black: rgba(15, 15, 15, 1);
+  
+}
+/* Global styles */
+@font-face {
+  font-family: 'Barlow Black';
+  src: url(/assets/fonts/Barlow-Black.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow Light';
+  src: url(/assets/fonts/Barlow-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Regular';
+  src: url(/assets/fonts/Barlow-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Medium';
+  src: url(/assets/fonts/Barlow-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow SemiBold';
+  src: url(/assets/fonts/Barlow-SemiBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Bold';
+  src: url(/assets/fonts/Barlow-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow Light Italic';
+  src: url(/assets/fonts/Barlow-LightItalic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow ExtraLight';
+  src: url(/assets/fonts/Barlow-ExtraLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Play Regular';
+  src: url(/assets/fonts/Play-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Play Bold';
+  src: url(/assets/fonts/Play-Bold.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Barlow Regular', 'Play',
+    'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.modalIsOpen {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width: 834px) {
+  .container {
+    width: 834px;
+    padding-left: 27px;
+    padding-right: 27px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    padding-left: 34px;
+    padding-right: 34px;
+  }
 }

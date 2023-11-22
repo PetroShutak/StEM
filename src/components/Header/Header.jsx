@@ -1,0 +1,14 @@
+import React from 'react';
+import TopHeader from './TopHeader/TopHeader';
+import NavHeader from './NavHeader/NavHeader';
+
+const Header = () => {
+  return (
+    <div>
+      <TopHeader />
+      <NavHeader />
+    </div>
+  );
+};
+
+export default Header;
