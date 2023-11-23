@@ -8,6 +8,10 @@ export const BasketWrapper = styled.div`
   a:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const BasketContainer = styled.div`

@@ -18,4 +18,7 @@ export const ContactsWrappper = styled.div`
       text-decoration: underline;
     }
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

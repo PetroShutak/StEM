@@ -14,3 +14,12 @@ export const TopHeaderContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 `;
+
+
+export const BurgerButton = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+

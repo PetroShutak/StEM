@@ -5,10 +5,14 @@ export const SearchHeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   border: 1px solid #e0e0e0;
+  width: 600px;
   border-radius: 10px;
-  width: 400px;
   height: 40px;
   position: relative;
+  flex: 1;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SearchHeaderInput = styled.input`
