@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BsJustifyRight } from 'react-icons/bs';
 
 export const TopHeaderWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.05);
@@ -15,11 +16,12 @@ export const TopHeaderContent = styled.div`
   margin: 0 auto;
 `;
 
-
-export const BurgerButton = styled.div`
+export const StyledBurgerButton = styled(BsJustifyRight)`
+  cursor: pointer;
+  font-size: 40px;
+  color: #aaa;
   display: none;
-  @media (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     display: block;
   }
 `;
-

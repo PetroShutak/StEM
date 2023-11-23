@@ -23,10 +23,7 @@ Contributions are welcome. Please open up an issue or create PR if you would lik
 MIT
 
 ## Questions
-If you have any questions, please contact me at: [petro.shutak.ua@gmail.com] (mailto:"petro.shutak.ua@gmail.com")
-
-
-
+If you have any questions, please contact me at: [petro.shutak.ua@gmail.com] 
 
 
 
