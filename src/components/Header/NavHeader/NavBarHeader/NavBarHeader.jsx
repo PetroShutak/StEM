@@ -5,9 +5,9 @@ import { NavBarHeaderWrapper } from './NavBarHeader.styled'
 const NavBarHeader = () => {
   return (
     <NavBarHeaderWrapper>
-        <NavLink to='/about'>Про нас</NavLink>
-        <NavLink to='/catalog'>Каталог</NavLink>
+        <NavLink to='/servis'>Сервісний центр</NavLink>
         <NavLink to='/delivery'>Доставка і оплата</NavLink>
+        <NavLink to='/about'>Про нас</NavLink>
         <NavLink to='/contacts'>Контактна інформація</NavLink>
     </NavBarHeaderWrapper>
   )

@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LogoTitle } from './Logo.styled'
+import { LogoTitle, LogoWrapper } from './Logo.styled'
 
 const Logo = () => {
   return (
-    <>
+    <LogoWrapper>
     <Link to='/'>
       <LogoTitle>СтЕМ</LogoTitle>
+      <span>сантехніка твого міста</span>
     </Link>
-    </>
+    </LogoWrapper>
   )
 }
 

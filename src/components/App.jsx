@@ -15,6 +15,8 @@ export const App = () => {
           <Route path="/shoppinglist" element={<p>Корзина</p>} />
           <Route path="/favorite" element={<p>FavoriteProducts</p>} />
           <Route path="/catalog" element={<p>Каталог</p>} />
+          {/* servis */}
+          <Route path="/servis" element={<p>Сервісний центр</p>} />
           <Route path="/catalog/:category" element={<p>Category</p>} />
           <Route path="/catalog/:productId" element={<p>ProductItem</p>}>
             <Route path="desc" element={<p>description</p>} />

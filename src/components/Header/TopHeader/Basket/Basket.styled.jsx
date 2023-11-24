@@ -20,19 +20,15 @@ export const BasketContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-    svg {
-    color: #aaa;
-    transition: all 0.3s ease-in-out;
-  }
 
-  a {
-    transition: all 0.3s ease-in-out;
+  svg {
+    color: #000;
+    transition: 0.3s;
     &:hover {
-      svg {
-        color: #ff6b09;
-      }
+      color: #ff6b09;
     }
   }
+  
 `;
 
 export const Counter = styled.p`
@@ -49,6 +45,10 @@ export const Counter = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  // transition: 0.3s;
+  // &:hover {
+  //   background-color: #ff6b09;
+  // }
 `;
 
 export const BasketTitle = styled.p`

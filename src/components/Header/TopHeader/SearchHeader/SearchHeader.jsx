@@ -11,7 +11,7 @@ const SearchHeader = () => {
     <SearchHeaderWrapper>
       <SearchHeaderInput type="text" placeholder="Пошук" />
         <SearchHeaderButton>
-        <BiSearchAlt2 size={28} color="black" />
+        <BiSearchAlt2 size={28}  />
         </SearchHeaderButton>
       
     </SearchHeaderWrapper>

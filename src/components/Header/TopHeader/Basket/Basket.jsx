@@ -18,7 +18,7 @@ const Basket = () => {
               position: 'relative',
             }}
           >
-            <IoCartOutline size={40} color="black" />
+            <IoCartOutline size={40} />
             <Counter>0</Counter>
           </div>
           <BasketTitle>Мій кошик</BasketTitle>

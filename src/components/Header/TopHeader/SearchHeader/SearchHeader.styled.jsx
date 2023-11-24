@@ -39,4 +39,10 @@ export const SearchHeaderButton = styled.button`
   background-color: white;
   cursor: pointer;
   padding: 0px 5px;
+  transition: 0.5s;
+  &:hover {
+    svg {
+      color: #ff6b09;
+    }
+  }
 `;
