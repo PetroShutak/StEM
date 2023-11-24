@@ -8,7 +8,19 @@ export const BasketWrapper = styled.div`
   a:hover {
     text-decoration: underline;
   }
-   svg {
+ 
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const BasketContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+    svg {
     color: #aaa;
     transition: all 0.3s ease-in-out;
   }
@@ -21,18 +33,6 @@ export const BasketWrapper = styled.div`
       }
     }
   }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const BasketContainer = styled.div`
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 `;
 
 export const Counter = styled.p`
