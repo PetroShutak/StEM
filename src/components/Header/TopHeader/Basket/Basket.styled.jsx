@@ -8,6 +8,19 @@ export const BasketWrapper = styled.div`
   a:hover {
     text-decoration: underline;
   }
+   svg {
+    color: #aaa;
+    transition: all 0.3s ease-in-out;
+  }
+
+  a {
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      svg {
+        color: #ff6b09;
+      }
+    }
+  }
 
   @media (max-width: 768px) {
     display: none;
