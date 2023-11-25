@@ -25,5 +25,9 @@ MIT
 ## Questions
 If you have any questions, please contact me at: [petro.shutak.ua@gmail.com] 
 
+## Screenshots from developed application
+
+![image](https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Banner 16:9/v1700954352/photo_2023-11-26_01-16-42_nzzlxe.jpg)
+
 
 
