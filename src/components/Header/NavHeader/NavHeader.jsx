@@ -6,6 +6,7 @@ import SocialBlock from './SocialBlock/SocialBlock'
 import ButtonToFavorite from './ButtonToFavorite/ButtonToFavorite'
 import NavBarHeader from './NavBarHeader/NavBarHeader'
 import CatalogDropDown from './CatalogDropDown/CatalogDropDown'
+// import ThemeToggle from 'components/ThemeToggle/ThemeToggle'
 
 
 const NavHeader = () => {
@@ -17,7 +18,7 @@ const NavHeader = () => {
       <SocialBlock />
       <ButtonToFavorite />
       <UserBar />
-      
+      {/* <ThemeToggle /> */}
     </NavHeaderContent>
     {/* for example */}
     {/* <NavLink to='/catalog'>Catalog</NavLink> */}

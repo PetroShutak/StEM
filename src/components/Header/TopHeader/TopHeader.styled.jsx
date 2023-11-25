@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BsJustifyRight } from 'react-icons/bs';
 
 export const TopHeaderWrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-primary);
   border-bottom: 1px solid #e0e0e0;
 `;
 

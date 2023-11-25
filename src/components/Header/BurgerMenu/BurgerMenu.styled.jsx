@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import valves from '../../../images/valves.jpg';
 
 export const BurgerMenuContainer = styled.div`
   position: absolute;
@@ -7,17 +8,23 @@ export const BurgerMenuContainer = styled.div`
   right: 0px;
   width: 400px;
   height: 100vh;
-  background-color: #aaa;
+  background-color: var(--text-color-secondary-grey);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('${valves}');
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
   z-index: 1000;
   padding: 20px;
   .close {
-    color: white;
+    color: var(--text-color-primary-white);
     float: right;
     font-size: 28px;
     font-weight: bold;
     &:hover,
     &:focus {
-      color: black;
+      color: var(--text-color-primary-black);
       text-decoration: none;
       cursor: pointer;
     }
@@ -34,7 +41,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(bg-backdrop);
   z-index: 999;
 `;
 
@@ -48,22 +55,23 @@ export const BurgerNav = styled.div`
   margin-bottom: 50px;
   a {
     text-decoration: none;
-    color: #000;
+    color: var(--text-color-primary-white);
     font-size: 20px;
     margin: 20px;
     &:hover,
     &:focus {
-      color: white;
+      color: var(--text-color-primary-orange);
     }
   }
 `;
 
 export const StyledLink = styled(NavLink)`
+  font-family: var(--font-family-secondary);
   font-size: 18px;
   font-weight: 700;
   line-height: 1.43;
-  color: black;
+  color: var(--text-color-primary-black);
   &.active {
-    color: #ff6b09;
+    color: var(--text-color-primary-orange);
   }
 `;
