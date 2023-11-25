@@ -2,7 +2,6 @@ import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import NotFound from './NotFound/NotFound';
-import './App.css';
 
 export const App = () => {
   return (
