@@ -1,5 +1,6 @@
 import React from 'react';
-import { BurgerMenuContainer, BurgerNav, Backdrop } from './BurgerMenu.styled';
+import { Link } from 'react-router-dom';
+import { BurgerMenuContainer, BurgerNav, Backdrop, LogoWrapperBurger, LogoTitleBurger } from './BurgerMenu.styled';
 import { StyledLink } from './BurgerMenu.styled';
 import { HiHome } from 'react-icons/hi';
 import { GrCatalog } from 'react-icons/gr';
@@ -29,6 +30,12 @@ const BurgerMenu = ({ setOpen }) => {
         <span className="close" onClick={closeBurger}>
           &times;
         </span>
+        <LogoWrapperBurger>
+    <Link to='/'>
+      <LogoTitleBurger>СтЕМ</LogoTitleBurger>
+      <span>сантехніка твого міста</span>
+    </Link>
+    </LogoWrapperBurger>
         <BurgerNav>
           <StyledLink onClick={handleLinkClick} to="/">
             <HiHome size={26} />

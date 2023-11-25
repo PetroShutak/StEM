@@ -78,3 +78,36 @@ export const StyledLink = styled(NavLink)`
     color: var(--text-color-primary-orange);
   }
 `;
+
+
+
+
+export const LogoWrapperBurger = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgba(255, 255, 255, 0.3);
+  span {
+    font-family: var(--font-family-secondary);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-color-secondary-grey);
+  }
+`;
+
+export const LogoTitleBurger = styled.h1`
+  font-family: var(--font-bold);
+  color: var(--bg-secondary);
+  font-size: 52px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-default);
+  a {
+    text-decoration: none;
+  }
+`;

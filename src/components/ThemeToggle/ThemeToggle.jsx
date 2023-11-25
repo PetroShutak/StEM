@@ -1,6 +1,6 @@
 import { useTheme } from 'hooks/useTheme';
 import { ThemeToggleContainer, ThemeToggleIcon } from './ThemeToggle.styled';
-import { FaToggleOff, FaToggleOn } from "react-icons/fa";
+import { PiToggleLeftFill, PiToggleRightFill } from "react-icons/pi";
 
 const ThemeToggle = () => {
   const [ theme, setTheme ] = useTheme();
@@ -8,7 +8,7 @@ const ThemeToggle = () => {
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-    console.log(theme);
+    // console.log(theme);
   };
 
 
@@ -18,7 +18,7 @@ const ThemeToggle = () => {
       <ThemeToggleContainer onClick={toggleTheme}>
         
         <ThemeToggleIcon>
-          {theme === 'light' ? <FaToggleOff size={32} color='black' /> : <FaToggleOn size={32} color='white'/>}
+          {theme === 'light' ? <PiToggleLeftFill size={36} color='#000' /> : <PiToggleRightFill size={36} color='white'/>}
         </ThemeToggleIcon>
         
       </ThemeToggleContainer>
