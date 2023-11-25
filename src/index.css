@@ -10,6 +10,7 @@
   --bg-secondary: #ff6b09;
   --bg-secondary-grey: #ddd;
   --border-color-primary-grey: #aaa;
+  --border-color-secondary: #e0e0e0;
   --text-color-primary-black: #000;
   --text-color-secondary-grey: #aaa;
   --text-color-primary-white: rgba(255, 255, 255, 1);
@@ -19,11 +20,37 @@
 }
 
 /* light theme */
-/* html[data-theme='light'] {
-
-} */
+html[data-theme='light'] {
+  --bg-primary: rgba(0, 0, 0, 0.05);
+  --bg-primary-white: rgba(255, 255, 255, 1);
+  --bg-secondary: #ff6b09;
+  --bg-secondary-grey: #ddd;
+  --border-color-primary-grey: #aaa;
+  --border-color-secondary: #e0e0e0;
+  --text-color-primary-black: #000;
+  --text-color-secondary-grey: #aaa;
+  --text-color-primary-white: rgba(255, 255, 255, 1);
+  --text-color-primary-orange: #ff6b09;
+  --transition-default: all 0.3s ease-in-out;
+  --bg-backdrop: rgba(0, 0, 0, 0.5);
+}
 
 /* dark theme */
+
+html[data-theme='dark'] {
+  --bg-primary: black;
+  --bg-primary-white: rgba(0, 0, 0, 0.05);
+  --bg-secondary: #ff6b09;
+  --bg-secondary-grey: #ddd;
+  --border-color-primary-grey: darkgrey;
+  --border-color-secondary: white;
+  --text-color-primary-black: white;
+  --text-color-secondary-grey: white;
+  --text-color-primary-white: black;
+  --text-color-primary-orange: #ff6b09;
+  --transition-default: all 0.3s ease-in-out;
+  --bg-backdrop: rgba(0, 0, 0, 0.5);
+}
 
 /* Global styles */
 @font-face {
@@ -78,6 +105,7 @@ html {
 body {
   margin: 0;
   font-family: 'Barlow Regular', sans-serif;
+  background-color: var(--bg-primary);
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

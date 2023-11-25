@@ -18,13 +18,13 @@ export const BurgerMenuContainer = styled.div`
   z-index: 1000;
   padding: 20px;
   .close {
-    color: var(--text-color-primary-white);
+    color: rgba(255, 255, 255, 1);;
     float: right;
-    font-size: 28px;
+    font-size: 36px;
     font-weight: bold;
     &:hover,
     &:focus {
-      color: var(--text-color-primary-black);
+      color: #000;
       text-decoration: none;
       cursor: pointer;
     }
@@ -55,7 +55,7 @@ export const BurgerNav = styled.div`
   margin-bottom: 50px;
   a {
     text-decoration: none;
-    color: var(--text-color-primary-white);
+    color: rgba(255, 255, 255, 1);;
     font-size: 20px;
     margin: 20px;
     &:hover,
@@ -66,6 +66,9 @@ export const BurgerNav = styled.div`
 `;
 
 export const StyledLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-family-secondary);
   font-size: 18px;
   font-weight: 700;

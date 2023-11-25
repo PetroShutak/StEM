@@ -3,7 +3,7 @@ import { BsJustifyRight } from 'react-icons/bs';
 
 export const TopHeaderWrapper = styled.div`
   background-color: var(--bg-primary);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color-secondary);
 `;
 
 export const TopHeaderContent = styled.div`
@@ -19,7 +19,7 @@ export const TopHeaderContent = styled.div`
 export const StyledBurgerButton = styled(BsJustifyRight)`
   cursor: pointer;
   font-size: 40px;
-  color: #aaa;
+  color: var(--text-color-secondary-grey);
   display: none;
   @media screen and (max-width: 768px) {
     display: block;

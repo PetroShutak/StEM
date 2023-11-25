@@ -1,6 +1,12 @@
 import React from 'react';
 import { BurgerMenuContainer, BurgerNav, Backdrop } from './BurgerMenu.styled';
 import { StyledLink } from './BurgerMenu.styled';
+import { HiHome } from 'react-icons/hi';
+import { GrCatalog } from 'react-icons/gr';
+import { GrFavorite } from 'react-icons/gr';
+import { IoCartOutline } from 'react-icons/io5';
+import { MdOutlineBuild } from 'react-icons/md';
+import { TiContacts } from 'react-icons/ti';
 
 const BurgerMenu = ({ setOpen }) => {
   const closeBurger = () => {
@@ -25,21 +31,27 @@ const BurgerMenu = ({ setOpen }) => {
         </span>
         <BurgerNav>
           <StyledLink onClick={handleLinkClick} to="/">
+            <HiHome size={26} />
             Головна
           </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/catalog">
+            <GrCatalog size={26} />
             Каталог
           </StyledLink>
-          <StyledLink onClick={handleLinkClick} to="/favorite">
-            Обрані товари
-          </StyledLink>
-          <StyledLink onClick={handleLinkClick} to="/shoppinglist">
-            Кошик
-          </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/servis">
+            <MdOutlineBuild size={26} />
             Сервіс
           </StyledLink>
-            <StyledLink onClick={handleLinkClick} to="/contacts">
+          <StyledLink onClick={handleLinkClick} to="/favorite">
+            <GrFavorite size={26} />
+            Список бажань
+          </StyledLink>
+          <StyledLink onClick={handleLinkClick} to="/shoppinglist">
+            <IoCartOutline size={26} />
+            Кошик
+          </StyledLink>
+          <StyledLink onClick={handleLinkClick} to="/contacts">
+            <TiContacts size={26} />
             Контакти
           </StyledLink>
         </BurgerNav>

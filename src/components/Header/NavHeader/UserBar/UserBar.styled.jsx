@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const UserBarWrapper = styled.div`
+  font-family: var(--font-family-secondary);
+  p {
+    color: var(--text-color-primary-black);
+  }
+  font-size: 16px;
   position: relative;
   display: flex;
   align-items: center;
@@ -8,24 +13,24 @@ export const UserBarWrapper = styled.div`
   max-width: 160px;
   cursor: pointer;
   svg {
-    color: #aaa;
-    transition: all 0.3s ease-in-out;
+    color: var(--text-color-secondary-grey);
+    transition: var(--transition-default);
     &:hover {
-      color: #ff6b09;
+      color: var(--text-color-primary-orange);
     }
   }
 `;
 
 export const SelectWrapper = styled.div`
   position: absolute;
-  font-family: 'Play Regular', sans-serif;
+  font-family: var(--font-family-secondary);
   font-size: 16px;
   top: 30px;
   right: 0;
   width: 100%;
   text-align: end;
-  background-color: white;
-  border: 1px solid #aaa;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid var(--border-color-primary-grey);
   border-radius: 5px;
   z-index: 1;
   option {
@@ -33,7 +38,7 @@ export const SelectWrapper = styled.div`
     cursor: pointer;
     text-align: center;
     &:hover {
-      background-color: #ddd;
+      background-color: var(--bg-secondary-grey);
     }
   }
 `;

@@ -37,6 +37,8 @@ const UserBar = () => {
           <option>Вийти</option>
         </SelectWrapper>
       )}
+
+      
     </UserBarWrapper>
   );
 };

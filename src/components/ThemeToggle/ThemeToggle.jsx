@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import { useTheme } from 'hooks/useTheme';
+import { ThemeToggleContainer, ThemeToggleIcon } from './ThemeToggle.styled';
+import { FaToggleOff, FaToggleOn } from "react-icons/fa";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState('light');
+  const [ theme, setTheme ] = useTheme();
+
+
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
+    setTheme(theme === 'light' ? 'dark' : 'light');
+    console.log(theme);
   };
 
+
+
   return (
-    <div>
-      <button onClick={toggleTheme}>Toggle Theme</button>
-    </div>
+    <>
+      <ThemeToggleContainer onClick={toggleTheme}>
+        
+        <ThemeToggleIcon>
+          {theme === 'light' ? <FaToggleOff size={32} color='black' /> : <FaToggleOn size={32} color='white'/>}
+        </ThemeToggleIcon>
+        
+      </ThemeToggleContainer>
+    </>
   );
 };
 

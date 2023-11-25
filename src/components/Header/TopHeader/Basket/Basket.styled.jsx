@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BasketWrapper = styled.div`
   a {
-    color: black;
+    color: var(--text-color-primary-black);
     text-decoration: none;
   }
   a:hover {
@@ -22,10 +22,10 @@ export const BasketContainer = styled.div`
   text-align: center;
 
   svg {
-    color: #000;
+    color: var(--text-color-secondary-grey);
     transition: 0.3s;
     &:hover {
-      color: #ff6b09;
+      color: var(--text-color-primary-orange);
     }
   }
   
@@ -38,21 +38,16 @@ export const Counter = styled.p`
   font-size: 10px;
   color: white;
   font-weight: bold;
-  background-color: gray;
+  background-color: var(--text-color-primary-orange);
   border-radius: 50%;
   width: 15px;
   height: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // transition: 0.3s;
-  // &:hover {
-  //   background-color: #ff6b09;
-  // }
 `;
 
 export const BasketTitle = styled.p`
-  font-family: 'Barlow Bold', sans-serif;
+  font-family: var(--font-bold);
   font-size: 18px;
-  font-weight: bold;
 `;
