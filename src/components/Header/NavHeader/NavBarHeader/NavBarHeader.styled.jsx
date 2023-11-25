@@ -6,18 +6,19 @@ export const NavBarHeaderWrapper = styled.div`
   align-items: center;
 
   a {
-    font-family: 'Play Regular', sans-serif;
-    color: #000;
+    font-family: var(--font-family-secondary);
+    color: var(--text-color-primary-black);
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
-    transition: 0.3s;
+    transition: var(--transition-default);
 
     &:hover {
-      color: #ff6b09;
+      color: var(--text-color-primary-orange);
     }
   }
   @media (max-width: 768px) {
     display: none;
   }
 `;
+

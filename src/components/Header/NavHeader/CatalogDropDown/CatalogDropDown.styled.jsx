@@ -6,12 +6,12 @@ export const CatalogDropDownWrapper = styled.div`
   position: relative;
   cursor: pointer;
   p {
-    font-family: 'Play Regular', sans-serif;
-    color: #000;
+    font-family: var(--font-family-secondary);
+    color: var(--text-color-primary-black);
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
-    transition: 0.3s;
+    transition: var(--transition-default);
   }
 `;
 
@@ -21,15 +21,15 @@ export const SelectCatalogWrapper = styled.div`
   left: 0;
   width:300px;
   text-align: center;
-  background-color: white;
-  border: 1px solid #aaa;
+  background-color: var(--bg-primary-white);
+  border: 1px solid var(--border-color-primary-grey);
   border-radius: 5px;
   z-index: 1;
   option {
     padding: 5px 10px;
     cursor: pointer;
     &:hover {
-      background-color: #ddd;
+      background-color: var(--bg-secondary-grey);
     }
   }
 `;

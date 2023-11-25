@@ -6,12 +6,15 @@
   --font-family-secondary: 'Play Regular', sans-serif;
   --font-bold: 'Play Bold', sans-serif;
   --bg-primary: rgba(0, 0, 0, 0.05);
+  --bg-primary-white: rgba(255, 255, 255, 1);
   --bg-secondary: #ff6b09;
+  --bg-secondary-grey: #ddd;
+  --border-color-primary-grey: #aaa;
   --text-color-primary-black: #000;
   --text-color-secondary-grey: #aaa;
   --text-color-primary-white: rgba(255, 255, 255, 1);
   --text-color-primary-orange: #ff6b09;
-  --transition-all: all 0.3s ease-in-out;
+  --transition-default: all 0.3s ease-in-out;
   --bg-backdrop: rgba(0, 0, 0, 0.5);
 }
 

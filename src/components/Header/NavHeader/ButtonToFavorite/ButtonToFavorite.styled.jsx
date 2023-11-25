@@ -7,15 +7,15 @@ export const ButtonToFavoriteWrapper = styled.div`
   justify-content: space-between;
   cursor: pointer;
   svg {
-    color: #aaa;
-    transition: all 0.3s ease-in-out;
+    color: var(--text-color-secondary-grey);
+    transition: var(--transition-default);
   }
 
   a {
-    transition: all 0.3s ease-in-out;
+    transition: var(--transition-default);
     &:hover {
       svg {
-        color: #ff6b09;
+        color: var(--text-color-primary-orange);
       }
     }
   }

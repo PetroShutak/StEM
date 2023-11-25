@@ -11,8 +11,7 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div className={`App ${theme}`}>
-      <h1>ThemeToggle</h1>
+    <div>
       <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );
