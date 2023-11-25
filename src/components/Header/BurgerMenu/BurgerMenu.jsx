@@ -25,16 +25,22 @@ const BurgerMenu = ({ setOpen }) => {
         </span>
         <BurgerNav>
           <StyledLink onClick={handleLinkClick} to="/">
-            Home
+            Головна
           </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/catalog">
-            Catalog
+            Каталог
           </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/favorite">
-            Favorite
+            Обрані товари
           </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/shoppinglist">
-            Shopping list
+            Кошик
+          </StyledLink>
+          <StyledLink onClick={handleLinkClick} to="/servis">
+            Сервіс
+          </StyledLink>
+            <StyledLink onClick={handleLinkClick} to="/contacts">
+            Контакти
           </StyledLink>
         </BurgerNav>
       </BurgerMenuContainer>
