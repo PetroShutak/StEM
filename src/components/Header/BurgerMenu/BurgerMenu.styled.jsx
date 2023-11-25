@@ -50,7 +50,7 @@ export const BurgerNav = styled.div`
   flex-direction: column;
   gap: 20px;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding-top: 40px;
   margin-bottom: 50px;
   a {
