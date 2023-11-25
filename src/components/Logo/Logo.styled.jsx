@@ -16,7 +16,7 @@ export const LogoWrapper = styled.div`
 export const LogoTitle = styled.h1`
   font-family: var(--font-bold);
   color: var(--text-color-primary-black);
-  font-size: 36px;
+  font-size: 44px;
   font-weight: 700;
   text-decoration: none;
   transition: var(--transition-default);

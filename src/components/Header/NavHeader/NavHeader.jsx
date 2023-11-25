@@ -20,8 +20,6 @@ const NavHeader = () => {
       <UserBar />
       <ThemeToggle />
     </NavHeaderContent>
-    {/* for example */}
-    {/* <NavLink to='/catalog'>Catalog</NavLink> */}
     </NavHeaderWrapper>
   )
 }

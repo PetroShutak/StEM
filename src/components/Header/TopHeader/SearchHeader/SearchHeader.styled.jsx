@@ -32,9 +32,10 @@ export const SearchHeaderInput = styled.input`
   }
 
   &::placeholder {
-    color: #aaa;
+    color: black;
     font-family: var(--font-family-primary);
     font-size: 14px;
+    font-weight: 400;
   }
 `;
 

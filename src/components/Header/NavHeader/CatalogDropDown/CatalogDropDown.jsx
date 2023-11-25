@@ -34,7 +34,7 @@ const CatalogDropDown = () => {
         <SelectCatalogWrapper ref={selectRef}>
           <option value="">Насоси</option>
           <option value="">Котли</option>
-          <option value="">Бойлера</option>
+          <option value="">Бойлери</option>
           <option value="">Душові кабіни</option>
           <option value="">Ванни</option>
           <option value="">Кухонні мийки</option>
