@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/StEM/static/css/main.56cf493e.css",
+    "main.css": "/StEM/static/css/main.6dd7d336.css",
     "main.js": "/StEM/static/js/main.8896e601.js",
     "static/js/819.eb271cca.chunk.js": "/StEM/static/js/819.eb271cca.chunk.js",
     "static/js/194.abeca9e6.chunk.js": "/StEM/static/js/194.abeca9e6.chunk.js",
@@ -16,13 +16,13 @@
     "static/media/Barlow-Light.ttf": "/StEM/static/media/Barlow-Light.19f244ecb11218b9a7de.ttf",
     "static/media/Barlow-ExtraLight.ttf": "/StEM/static/media/Barlow-ExtraLight.0920cad6f358df4532ff.ttf",
     "index.html": "/StEM/index.html",
-    "main.56cf493e.css.map": "/StEM/static/css/main.56cf493e.css.map",
+    "main.6dd7d336.css.map": "/StEM/static/css/main.6dd7d336.css.map",
     "main.8896e601.js.map": "/StEM/static/js/main.8896e601.js.map",
     "819.eb271cca.chunk.js.map": "/StEM/static/js/819.eb271cca.chunk.js.map",
     "194.abeca9e6.chunk.js.map": "/StEM/static/js/194.abeca9e6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.56cf493e.css",
+    "static/css/main.6dd7d336.css",
     "static/js/main.8896e601.js"
   ]
 }
