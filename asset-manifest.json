@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/StEM/static/css/main.6dd7d336.css",
-    "main.js": "/StEM/static/js/main.8896e601.js",
-    "static/js/819.eb271cca.chunk.js": "/StEM/static/js/819.eb271cca.chunk.js",
+    "main.js": "/StEM/static/js/main.c3cc6112.js",
+    "static/js/819.676a7009.chunk.js": "/StEM/static/js/819.676a7009.chunk.js",
     "static/js/194.abeca9e6.chunk.js": "/StEM/static/js/194.abeca9e6.chunk.js",
     "static/media/Play-Bold.ttf": "/StEM/static/media/Play-Bold.b78f3be6adabf73cde7f.ttf",
     "static/media/Play-Regular.ttf": "/StEM/static/media/Play-Regular.e0424c5771f87080b05e.ttf",
@@ -17,12 +17,12 @@
     "static/media/Barlow-ExtraLight.ttf": "/StEM/static/media/Barlow-ExtraLight.0920cad6f358df4532ff.ttf",
     "index.html": "/StEM/index.html",
     "main.6dd7d336.css.map": "/StEM/static/css/main.6dd7d336.css.map",
-    "main.8896e601.js.map": "/StEM/static/js/main.8896e601.js.map",
-    "819.eb271cca.chunk.js.map": "/StEM/static/js/819.eb271cca.chunk.js.map",
+    "main.c3cc6112.js.map": "/StEM/static/js/main.c3cc6112.js.map",
+    "819.676a7009.chunk.js.map": "/StEM/static/js/819.676a7009.chunk.js.map",
     "194.abeca9e6.chunk.js.map": "/StEM/static/js/194.abeca9e6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6dd7d336.css",
-    "static/js/main.8896e601.js"
+    "static/js/main.c3cc6112.js"
   ]
 }
