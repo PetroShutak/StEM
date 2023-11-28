@@ -20,7 +20,7 @@ const SearchInputMobile = ({ setOpen }) => {
   return (
     <Backdrop className="backdrop" onClick={handleCloseSearch}>
       <SearchMobileInputWrapper>
-        <SearchMobileInput type="text" autofocus placeholder="Пошук..." />
+        <SearchMobileInput type="text" placeholder="Пошук..." />
         <SearchMobileInputButton type="submit">
           <BiSearchAlt2 size={28} onClick={submitSearch} />
         </SearchMobileInputButton>
