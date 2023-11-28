@@ -14,7 +14,6 @@ import WorkShedule from './WorkShedule/WorkShedule';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-
 const TopHeader = () => {
   const [burgerOpen, setBurgerOpen] = useState(false);
 
@@ -36,22 +35,20 @@ const TopHeader = () => {
           <Basket />
         </div>
         <CSSTransition
-        in={burgerOpen}
-        timeout={500}
-        classNames="fade"
-        unmountOnExit
-      >
-        {state => (
-          <BurgerMenu
-            open={burgerOpen}
-            setOpen={setBurgerOpen}
-            transitionState={state}
-          />
-        )}
-      </CSSTransition>
-      
-        <StyledBurgerButton onClick={toogleBurger}/>
-      
+          in={burgerOpen}
+          timeout={500}
+          classNames="fade"
+          unmountOnExit
+        >
+          {state => (
+            <BurgerMenu
+              open={burgerOpen}
+              setOpen={setBurgerOpen}
+              transitionState={state}
+            />
+          )}
+        </CSSTransition>
+        <StyledBurgerButton onClick={toogleBurger} />
       </TopHeaderContent>
     </TopHeaderWrapper>
   );
