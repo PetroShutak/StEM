@@ -1,4 +1,3 @@
-import ProductList from 'components/ProductList/ProductList';
 import React from 'react';
 
 const MainPage = () => {
@@ -9,16 +8,9 @@ const MainPage = () => {
         paddingBottom: '40px',
       }}
     >
-      <h1
-        style={{
-          color: 'var(--text-color-primary-black)',
-          fontFamily: 'var(--font-family-secondary)',
-          marginBottom: '20px',
-        }}
-      >
-        Каталог товарів
-      </h1>
-      <ProductList />
+      <h1 style={{
+        color: 'var(--text-color-primary-black)'
+      }}>Головна</h1>
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { testFetch } from 'utils/testFetch';
 import {
+  // useState,
+  useEffect,
+} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  FavoriteButton,
+  FavoriteButtonActive,
   ProductDescription,
   ProductImage,
   ProductItem,
@@ -9,42 +14,65 @@ import {
   ProductName,
   ProductPrice,
 } from './ProductList.styled';
-
-// const fetchAndLog = async () => {
-//   try {
-//     const result = await testFetch();
-//     console.log(result);
-//   } catch (error) {
-//     console.error('Помилка при отриманні відповіді з сервера:', error);
-//   }
-// };
-
-// // Виклик функції для отримання та виведення даних у консоль
-// fetchAndLog();
+import { getAllProducts } from '../../redux/products/operations';
+import {
+  selectAllProducts,
+  selectError,
+  selectFavorites,
+  selectLoading,
+} from '../../redux/products/selectors';
+import Loader from 'components/Loader/Loader';
+import {
+  addFavorite,
+  deleteFavorite,
+} from '../../redux/products/favoriteSlice';
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const result = await testFetch();
-        setProducts(result);
-      } catch (error) {
-        console.error('Помилка при отриманні відповіді з сервера:', error);
-      }
-    };
+  const products = useSelector(selectAllProducts);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+  const dispatch = useDispatch();
 
-    fetchProducts();
-  }, []);
+  
+    useEffect(() => {
+      dispatch(getAllProducts());
+    }, [dispatch]);
 
-  return (
+  const favorites = useSelector(selectFavorites);
+
+  const handleAddFavorites = favId => {
+    dispatch(addFavorite(favId));
+  };
+
+  const handleRemoveFavorites = favId => {
+    dispatch(deleteFavorite(favId));
+  };
+
+  const toggleFavorite = favId => {
+    if (favorites.includes(favId)) {
+      handleRemoveFavorites(favId);
+    } else {
+      handleAddFavorites(favId);
+    }
+  };
+
+    return (
     <ProductListStyled>
+      {loading && !error && <Loader />}
+
       {products.map(product => (
-        <ProductItem key={product.id}>
+        <ProductItem key={product._id}>
           <ProductImage src={product.image} alt={product.name} />
           <ProductName>{product.name}</ProductName>
           <ProductDescription>{product.description}</ProductDescription>
           <ProductPrice>{product.price} ₴</ProductPrice>
+          {favorites.includes(product._id) ? (
+            <FavoriteButtonActive onClick={() => toggleFavorite(product._id)} />
+          ) : (
+            <FavoriteButton
+              onClick={() => toggleFavorite(product._id)}
+            />
+          )}
         </ProductItem>
       ))}
     </ProductListStyled>

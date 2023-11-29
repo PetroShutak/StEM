@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
-// import MainPage from 'pages/MainPage';
+import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import NotFound from './NotFound/NotFound';
 import { startTextEffect } from 'utils/textEffectUtils';
+import CatalogPage from 'pages/CatalogPage';
+import FavoritePage from 'pages/FavoritePage';
 // import { useTheme } from 'hooks/useTheme';
 
-import { lazy } from 'react';
-const MainPage = lazy(() => import('pages/MainPage'));
+// import { lazy } from 'react';
+// const MainPage = lazy(() => import('pages/MainPage'));
 
 export const App = () => {
   // const { theme } = useTheme();
@@ -21,18 +23,100 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<p style={{color: 'var(--text-color-primary-black)'}}>Головна</p>} />
-          <Route path="/about" element={<p style={{color: 'var(--text-color-primary-black)'}}>Про нас</p>} />
-          <Route path="/delivery" element={<p style={{color: 'var(--text-color-primary-black)'}}>Доставка і оплата</p>} />
-          <Route path="/contacts" element={<p style={{color: 'var(--text-color-primary-black)'}}>Контакти</p>} />
-          <Route path="/shoppinglist" element={<p style={{color: 'var(--text-color-primary-black)'}}>Корзина</p>} />
-          <Route path="/favorite" element={<p style={{color: 'var(--text-color-primary-black)'}}>Список бажань</p>} />
-          <Route path="/catalog" element={<MainPage style={{color: 'var(--text-color-primary-black)'}} />} />
-          <Route path="/servis" element={<p style={{color: 'var(--text-color-primary-black)'}}>Сервісний центр</p>} />
-          <Route path="/catalog/:category" element={<p style={{color: 'var(--text-color-primary-black)'}}>Category</p>} />
-          <Route path="/catalog/:productId" element={<p style={{color: 'var(--text-color-primary-black)'}}>ProductItem</p>}>
-            <Route path="desc" element={<p style={{color: 'var(--text-color-primary-black)'}}>description</p>} />
-            <Route path="more" element={<p style={{color: 'var(--text-color-primary-black)'}}>more information</p>} />
+          <Route
+            index
+            element={
+              <MainPage style={{ color: 'var(--text-color-primary-black)' }} />
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Про нас
+              </p>
+            }
+          />
+          <Route
+            path="/delivery"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Доставка і оплата
+              </p>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Контакти
+              </p>
+            }
+          />
+          <Route
+            path="/shoppinglist"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Корзина
+              </p>
+            }
+          />
+          <Route
+            path="/favorite"
+            element={
+              <FavoritePage
+                style={{ color: 'var(--text-color-primary-black)' }}
+              />
+            }
+          />
+          <Route
+            path="/catalog"
+            element={
+              <CatalogPage
+                style={{ color: 'var(--text-color-primary-black)' }}
+              />
+            }
+          />
+          <Route
+            path="/servis"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Сервісний центр
+              </p>
+            }
+          />
+          <Route
+            path="/catalog/:category"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Category
+              </p>
+            }
+          />
+          <Route
+            path="/catalog/:productId"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                ProductItem
+              </p>
+            }
+          >
+            <Route
+              path="desc"
+              element={
+                <p style={{ color: 'var(--text-color-primary-black)' }}>
+                  description
+                </p>
+              }
+            />
+            <Route
+              path="more"
+              element={
+                <p style={{ color: 'var(--text-color-primary-black)' }}>
+                  more information
+                </p>
+              }
+            />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
