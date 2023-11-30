@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import { GrFavorite } from 'react-icons/gr';
+import { MdFavorite } from 'react-icons/md';
 
 export const ProductItemWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,17 +58,15 @@ export const ProductButton = styled.button`
   }
 `;
 
-export const ProductFavoriteButton = styled.button`
+export const FavoriteButton = styled(GrFavorite)`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 30px;
+  right: 30px;
   width: 30px;
   height: 30px;
   padding: 0;
   border: none;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  color: var(--text-color-primary-white);
+  color: var(--bg-secondary);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -73,10 +74,30 @@ export const ProductFavoriteButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: var(--color-primary-dark);
+    transform: scale(1.1);
   }
 `;
 
+
+export const FavoriteButtonActive = styled(MdFavorite)`
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  color: var(--bg-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+`;
 
 
 

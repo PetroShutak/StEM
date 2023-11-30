@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 import { productsReducer } from "./products/productSlice";
-// import { filterReducer } from "./filtersSlice";
+import { filterReducer} from "./products/filterSlice";
 import { favoriteReducer } from "./products/favoriteSlice";
 
 const persistConfig = {
@@ -25,7 +25,7 @@ const persistedFavoriteReducer = persistReducer(persistConfig, favoriteReducer);
 export const store = configureStore({
 	reducer: {
 		products: productsReducer,
-		// filter: filterReducer,
+		filter: filterReducer,
 		favorites: persistedFavoriteReducer
 	},
 	middleware: (getDefaultMiddleware) =>

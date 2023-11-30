@@ -26,6 +26,7 @@ import {
   addFavorite,
   deleteFavorite,
 } from '../../redux/products/favoriteSlice';
+import { updateFilter } from 'redux/products/filterSlice';
 
 const ProductList = () => {
   const products = useSelector(selectAllProducts);
@@ -33,15 +34,15 @@ const ProductList = () => {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
 
-  
-    useEffect(() => {
-      dispatch(getAllProducts());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   const favorites = useSelector(selectFavorites);
 
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
+    dispatch(updateFilter());
   };
 
   const handleRemoveFavorites = favId => {
@@ -55,8 +56,11 @@ const ProductList = () => {
       handleAddFavorites(favId);
     }
   };
+  console.log(products);
 
-    return (
+  console.log(Array.isArray(products)); // Перевірка, чи products масив
+console.log(products.length); // Перевірка, чи products масив
+  return (
     <ProductListStyled>
       {loading && !error && <Loader />}
 
@@ -69,9 +73,7 @@ const ProductList = () => {
           {favorites.includes(product._id) ? (
             <FavoriteButtonActive onClick={() => toggleFavorite(product._id)} />
           ) : (
-            <FavoriteButton
-              onClick={() => toggleFavorite(product._id)}
-            />
+            <FavoriteButton onClick={() => toggleFavorite(product._id)} />
           )}
         </ProductItem>
       ))}
