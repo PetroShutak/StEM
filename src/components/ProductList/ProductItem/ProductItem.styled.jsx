@@ -10,9 +10,11 @@ export const Item = styled.div`
   width: 300px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid var(--border-color-primary);
+  border: 1px solid var(--bg-secondary);
   border-radius: 4px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #aaa;
+  color: var(--text-color-primary-black);
 `;
 
 export const ProductImage = styled.img`
@@ -40,23 +42,23 @@ export const ProductPrice = styled.p`
   text-align: center;
 `;
 
-export const ProductButton = styled.button`
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: var(--color-primary);
-  color: var(--text-color-primary-white);
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 250ms ease-in-out;
+// export const ProductButton = styled.button`
+//   width: 100%;
+//   padding: 10px;
+//   border: none;
+//   border-radius: 4px;
+//   background-color: var(--color-primary);
+//   color: var(--text-color-primary-white);
+//   font-size: 16px;
+//   font-weight: 700;
+//   cursor: pointer;
+//   transition: all 250ms ease-in-out;
 
-  &:hover,
-  &:focus {
-    background-color: var(--color-primary-dark);
-  }
-`;
+//   &:hover,
+//   &:focus {
+//     background-color: var(--color-primary-dark);
+//   }
+// `;
 
 export const FavoriteButton = styled(GrFavorite)`
   position: absolute;
