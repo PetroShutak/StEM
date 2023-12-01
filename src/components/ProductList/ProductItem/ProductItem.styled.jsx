@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { GrFavorite } from 'react-icons/gr';
 import { MdFavorite } from 'react-icons/md';
 
-export const ProductItemWrapper = styled.div`
+export const Item = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,6 @@ export const FavoriteButton = styled(GrFavorite)`
   }
 `;
 
-
 export const FavoriteButtonActive = styled(MdFavorite)`
   position: absolute;
   top: 30px;
@@ -98,6 +97,3 @@ export const FavoriteButtonActive = styled(MdFavorite)`
     transform: scale(1.1);
   }
 `;
-
-
-

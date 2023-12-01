@@ -1,8 +1,5 @@
-import React,{useEffect} from 'react';
-import {
-  useSelector,
-   useDispatch
-} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectFavoriteProducts,
   selectFiltredFavoriteProducts,
@@ -22,13 +19,25 @@ const FavoritePage = () => {
 
   useEffect(() => {
     dispatch(getAllProducts());
-    dispatch(resetFilter())
+    dispatch(resetFilter());
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>FavoritePage</h1>
-    
+    <div
+      style={{
+        paddingTop: '40px',
+        paddingBottom: '40px',
+      }}
+    >
+      <h1
+        style={{
+          color: 'var(--text-color-primary-black)',
+          fontFamily: 'var(--font-family-secondary)',
+          marginBottom: '20px',
+        }}
+      >
+        FavoritePage
+      </h1>
       {favorites.length === 0 ? (
         <NoFavorites />
       ) : (
