@@ -56,10 +56,7 @@ const ProductList = () => {
       handleAddFavorites(favId);
     }
   };
-  console.log(products);
 
-  console.log(Array.isArray(products)); // Перевірка, чи products масив
-console.log(products.length); // Перевірка, чи products масив
   return (
     <ProductListStyled>
       {loading && !error && <Loader />}

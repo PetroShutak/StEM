@@ -25,11 +25,6 @@ const FavoritePage = () => {
     dispatch(resetFilter())
   }, [dispatch]);
 
-
-
-  console.log('isFiltred', isFiltred);
-  console.log('favorites', favorites);
-  console.log('filtredFavorites', filtredFavorites);
   return (
     <div>
       <h1>FavoritePage</h1>
