@@ -28,7 +28,7 @@ const CatalogDropDown = () => {
   }, []);
   return (
     <CatalogDropDownWrapper onClick={toggleSelect}>
-      <p>Каталог</p>
+      <p>Категорії</p>
       <RiArrowDropDownLine size={32} color="gray" />
       {showSelect && (
         <SelectCatalogWrapper ref={selectRef}>
