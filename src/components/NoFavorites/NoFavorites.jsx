@@ -17,10 +17,10 @@ const NoFavorites = () => {
         <Container>
           <img src={noResultsFound} alt="No results found" width="400" />
           <Text>
-            Sorry, you have no favorites. <br />
-            Go to the catalog and add some products.
+            Тут поки нічого немає... <br />
+            Переходь в каталог і додай товар.
           </Text>
-          <Button onClick={() => navigate('/catalog')}>See catalog</Button>
+          <Button onClick={() => navigate('/catalog')}>Відкрити каталог</Button>
         </Container>
       )}
     </>

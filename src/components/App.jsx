@@ -6,6 +6,7 @@ import NotFound from './NotFound/NotFound';
 import { startTextEffect } from 'utils/textEffectUtils';
 import CatalogPage from 'pages/CatalogPage';
 import FavoritePage from 'pages/FavoritePage';
+import ShoppingListPage from 'pages/ShoppingListPage';
 // import { useTheme } from 'hooks/useTheme';
 
 // import { lazy } from 'react';
@@ -56,9 +57,9 @@ export const App = () => {
           <Route
             path="/shoppinglist"
             element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Корзина
-              </p>
+              <ShoppingListPage
+                style={{ color: 'var(--text-color-primary-black)' }}
+              />
             }
           />
           <Route
