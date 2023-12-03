@@ -14,13 +14,15 @@ const ShoppingListPage = () => {
   const isFiltred = useSelector(selectIsFiltred);
   const shoppingList = useSelector(selectShoppingListProducts);
   const filtredShoppingList = useSelector(selectFiltredShoppingListProducts);
-
+  
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(resetFilter());
   }, [dispatch]);
+
 
   return (
     <div

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    shoppingList: []
+    shoppingList: [],
+    totalPrice: 0,
 };      
 
     const shoppingListSlice = createSlice({
@@ -14,9 +15,12 @@ const initialState = {
         deleteFromList(state, { payload }) {
             state.shoppingList = state.shoppingList.filter((product) => product !== payload);
         },
+        setTotalPrice(state, { payload }) {
+            state.totalPrice = payload;
+        },
     },
 });
 
 
 export const shoppingListReducer = shoppingListSlice.reducer;
-export const { addToList, deleteFromList } = shoppingListSlice.actions;
+export const { addToList, deleteFromList, setTotalPrice } = shoppingListSlice.actions;

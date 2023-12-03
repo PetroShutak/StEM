@@ -27,6 +27,8 @@ import {
   addToList,
   deleteFromList,
 } from '../../../redux/products/shoppingListSlice';
+import calculateTotalPrice from '../../../utils/calculateTotal';
+import { setTotalPrice } from '../../../redux/products/shoppingListSlice';
 
 const ProductItem = ({
   id,
@@ -37,12 +39,14 @@ const ProductItem = ({
   // category,
   // subcategory,
 }) => {
-  // const [count, setCount] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
-
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
+  
+
+ const totalPrice = calculateTotalPrice(price, parseInt(quantity));
 
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
@@ -57,7 +61,6 @@ const ProductItem = ({
       dispatch(deleteFromList(listId));
     } else {
       setShowModal(true);
-      dispatch(addToList(listId));
     }
   };
 
@@ -66,7 +69,8 @@ const ProductItem = ({
   };
 
   const handleConfirmAddToShoppingList = listId => {
-    dispatch(addToList(listId));
+    dispatch(addToList(listId, parseInt(quantity)));
+    dispatch(setTotalPrice(totalPrice)); 
     setShowModal(false);
   };
 
@@ -91,13 +95,18 @@ const ProductItem = ({
           <ModalQuantity>
             <ModalContent>
               <h2>Вкажіть кількість</h2>
-              <input type="number" />
+              <input
+                type="number"
+                value={quantity}
+                onChange={e => setQuantity(e.target.value)}
+              />
               <ModalCloseButton onClick={handleModalClose}>
                 &times;
               </ModalCloseButton>
               <Button onClick={() => handleConfirmAddToShoppingList(id)}>
                 Підтвердити
               </Button>
+              <p>Загальна вартість: {totalPrice} $</p>
             </ModalContent>
           </ModalQuantity>
         </ModalBackdrop>

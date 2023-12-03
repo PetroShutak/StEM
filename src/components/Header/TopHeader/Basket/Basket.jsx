@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IoCartOutline } from 'react-icons/io5';
 import {
@@ -7,8 +8,11 @@ import {
   Counter,
   BasketTitle,
 } from './Basket.styled';
+import {selectShoppingList} from '../../../../redux/products/selectors';
 
 const Basket = () => {
+  const shoppingList = useSelector(selectShoppingList);
+  const selectedShoppingListCount = shoppingList.length;
   return (
     <BasketWrapper>
       <Link to="/shoppinglist">
@@ -19,7 +23,7 @@ const Basket = () => {
             }}
           >
             <IoCartOutline size={40} />
-            <Counter>0</Counter>
+            <Counter>{selectedShoppingListCount}</Counter>
           </div>
           <BasketTitle>Мій кошик</BasketTitle>
         </BasketContainer>
