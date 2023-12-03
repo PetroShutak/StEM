@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/StEM/static/css/main.c2682fb5.css",
-    "main.js": "/StEM/static/js/main.87c37af6.js",
+    "main.js": "/StEM/static/js/main.a6f62aa5.js",
     "static/media/Play-Bold.ttf": "/StEM/static/media/Play-Bold.b78f3be6adabf73cde7f.ttf",
     "static/media/Play-Regular.ttf": "/StEM/static/media/Play-Regular.e0424c5771f87080b05e.ttf",
     "static/media/valves.jpg": "/StEM/static/media/valves.0fb9a469b6a263483e83.jpg",
@@ -16,10 +16,10 @@
     "static/media/No_results_found.jpg": "/StEM/static/media/No_results_found.8c760407be35134a6fef.jpg",
     "index.html": "/StEM/index.html",
     "main.c2682fb5.css.map": "/StEM/static/css/main.c2682fb5.css.map",
-    "main.87c37af6.js.map": "/StEM/static/js/main.87c37af6.js.map"
+    "main.a6f62aa5.js.map": "/StEM/static/js/main.a6f62aa5.js.map"
   },
   "entrypoints": [
     "static/css/main.c2682fb5.css",
-    "static/js/main.87c37af6.js"
+    "static/js/main.a6f62aa5.js"
   ]
 }
