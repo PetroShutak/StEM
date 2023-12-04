@@ -16,6 +16,9 @@ export const NavBarHeaderWrapper = styled.div`
     &:hover {
       color: var(--text-color-primary-orange);
     }
+    &.active {
+      color: var(--text-color-primary-orange);
+    }
   }
   @media (max-width: 768px) {
     display: none;

@@ -6,7 +6,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   // outline: 2px solid tomato;
-
+  background-color: var(--text-color-primary-white);
+  img {
+    border-radius: 12px;
+  }
   max-width: 100%;
   padding: 50px 25px;
   margin-left: auto;
@@ -26,6 +29,7 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.p`
+  font-family: var(--font-family-secondary);
   margin-top: 50px;
   margin-bottom: 25px;
   color: var(--text-color-primary-black);
@@ -38,9 +42,11 @@ export const Text = styled.p`
 `;
 
 export const Button = styled.button`
+  font-family: var(--font-family-secondary);
     width: 270px;
     height: 44px;
     margin-bottom: 50px;
+    border: 0.5px solid var(--bg-secondary);
     border-radius: 12px;
     background-color: var(--bg-primary-white);
     color: var(--text-color-primary-black);

@@ -36,7 +36,7 @@ const FavoritePage = () => {
           marginBottom: '20px',
         }}
       >
-        FavoritePage
+        Список бажань
       </h1>
       {favorites.length === 0 ? (
         <NoFavorites />

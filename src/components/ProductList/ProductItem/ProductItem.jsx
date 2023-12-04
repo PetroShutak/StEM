@@ -22,6 +22,8 @@ import {
   ModalContent,
   ModalBackdrop,
   Button,
+  QuantityInput,
+  TotalPrice,
   ButtonAdd,
   Tooltip,
 } from './ProductItem.styled';
@@ -71,6 +73,12 @@ const ProductItem = ({
     setShowModal(false);
   };
 
+  const closeModal = event => {
+    if (event.target.classList.contains('backdrop')) {
+      setShowModal(false);
+    }
+  };
+
   const handleConfirmAddToShoppingList = listId => {
     dispatch(addToList(listId, parseInt(quantity)));
     dispatch(setTotalPrice(totalPrice));
@@ -105,11 +113,11 @@ const ProductItem = ({
         </div>
       </div>
       {showModal && (
-        <ModalBackdrop>
+        <ModalBackdrop className="backdrop" onClick={closeModal}>
           <ModalQuantity>
             <ModalContent>
               <h2>Вкажіть кількість</h2>
-              <input
+              <QuantityInput
                 type="number"
                 value={quantity}
                 onChange={e => setQuantity(e.target.value)}
@@ -120,7 +128,7 @@ const ProductItem = ({
               <Button onClick={() => handleConfirmAddToShoppingList(id)}>
                 Підтвердити
               </Button>
-              <p>Загальна вартість: {totalPrice} $</p>
+              <TotalPrice>Загальна вартість: {totalPrice} $</TotalPrice>
             </ModalContent>
           </ModalQuantity>
         </ModalBackdrop>

@@ -17,6 +17,7 @@
   --text-color-primary-orange: #ff6b09;
   --transition-default: all 0.3s ease-in-out;
   --bg-backdrop: rgba(0, 0, 0, 0.5);
+  --bg-secondary-hover: #e24617;
 }
 
 /* light theme */
@@ -33,6 +34,8 @@ html[data-theme='light'] {
   --text-color-primary-orange: #ff6b09;
   --transition-default: all 0.3s ease-in-out;
   --bg-backdrop: rgba(0, 0, 0, 0.5);
+  --bg-cart-item: #fff;
+  --shadow-item: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 
 /* dark theme */
@@ -50,6 +53,8 @@ html[data-theme='dark'] {
   --text-color-primary-orange: #ff6b09;
   --transition-default: all 0.3s ease-in-out;
   --bg-backdrop: rgba(0, 0, 0, 0.5);
+  --bg-cart-item: transparent;
+  --shadow-item: inset 0px 0px 15px 0px rgba(255, 255, 255, 0.75);
 }
 
 /* Global styles */

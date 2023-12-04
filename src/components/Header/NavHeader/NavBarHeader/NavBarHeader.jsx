@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { NavBarHeaderWrapper } from './NavBarHeader.styled';
 
 const NavBarHeader = () => {
+
   return (
     <NavBarHeaderWrapper>
       <NavLink to="/catalog">Каталог</NavLink>

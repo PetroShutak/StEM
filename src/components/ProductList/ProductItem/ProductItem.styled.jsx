@@ -13,14 +13,15 @@ export const Item = styled.div`
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: var(--shadow-item);
+  background-color: var(--bg-cart-item);
   color: var(--text-color-primary-black);
 `;
 
 export const ProductImage = styled.img`
   width: 100%;
   margin-bottom: 20px;
+  border-radius: 4px;
 `;
 
 export const ProductName = styled.h2`
@@ -42,24 +43,6 @@ export const ProductPrice = styled.p`
   margin-bottom: 20px;
   text-align: center;
 `;
-
-// export const ProductButton = styled.button`
-//   width: 100%;
-//   padding: 10px;
-//   border: none;
-//   border-radius: 4px;
-//   background-color: var(--color-primary);
-//   color: var(--text-color-primary-white);
-//   font-size: 16px;
-//   font-weight: 700;
-//   cursor: pointer;
-//   transition: all 250ms ease-in-out;
-
-//   &:hover,
-//   &:focus {
-//     background-color: var(--color-primary-dark);
-//   }
-// `;
 
 export const FavoriteButton = styled(GrFavorite)`
   position: absolute;
@@ -101,8 +84,9 @@ export const FavoriteButtonActive = styled(MdFavorite)`
   }
 `;
 
-//
+// modal styled
 export const ModalQuantity = styled.div`
+font-family: var(--font-family-secondary);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -110,16 +94,17 @@ export const ModalQuantity = styled.div`
   padding: 20px;
   border: 1px solid var(--bg-secondary);
   border-radius: 4px;
-  background-color: var(--bg-secondary);
   transform: translate(-50%, -50%);
-  color: var(--text-color-primary-black);
+  color: #000000;
   z-index: 1100;
+  background-color: #ffffff;
 `;
 
 export const ModalBackdrop = styled.div`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   z-index: 1000;
 `;
 
@@ -127,20 +112,11 @@ export const ModalCloseButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 30px;
-  height: 30px;
-  padding: 0;
   border: none;
-  color: var(--bg-secondary);
-  font-size: 16px;
-  font-weight: 700;
+  background: none;
+  font-size: 24px;
   cursor: pointer;
-  transition: all 250ms ease-in-out;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
+  color: var(--bg-secondary);
 `;
 
 export const ModalContent = styled.div`
@@ -149,25 +125,37 @@ export const ModalContent = styled.div`
   gap: 20px;
   align-items: center;
   width: 100%;
+ 
 `;
 
 export const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: var(--bg-secondary);
+  color: white;
+  border: none;
   border-radius: 4px;
-  background-color: var(--color-primary);
-  color: var(--text-color-primary-white);
-  font-size: 16px;
-  font-weight: 700;
   cursor: pointer;
-  transition: all 250ms ease-in-out;
+  transition: background-color 0.3s ease;
 
-  &:hover,
-  &:focus {
-    background-color: var(--color-primary-dark);
+  &:hover {
+    background-color: var(--bg-secondary-hover);
   }
 `;
+
+export const QuantityInput = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+`;
+
+export const TotalPrice = styled.p`
+  margin-top: 10px;
+  font-size: 18px;
+`;
+//
 
 export const ButtonAdd = styled(IoCartOutline)`
   position: absolute;
@@ -185,7 +173,7 @@ export const ButtonAdd = styled(IoCartOutline)`
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
 `;
 
