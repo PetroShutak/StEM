@@ -22,6 +22,8 @@ import {
   ModalContent,
   ModalBackdrop,
   Button,
+  ButtonAdd,
+  Tooltip,
 } from './ProductItem.styled';
 import {
   addToList,
@@ -29,6 +31,7 @@ import {
 } from '../../../redux/products/shoppingListSlice';
 import calculateTotalPrice from '../../../utils/calculateTotal';
 import { setTotalPrice } from '../../../redux/products/shoppingListSlice';
+const DEFAULT_URL = '../../../images/no-image.jpg';
 
 const ProductItem = ({
   id,
@@ -41,12 +44,12 @@ const ProductItem = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
-  
 
- const totalPrice = calculateTotalPrice(price, parseInt(quantity));
+  const totalPrice = calculateTotalPrice(price, parseInt(quantity));
 
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
@@ -70,7 +73,7 @@ const ProductItem = ({
 
   const handleConfirmAddToShoppingList = listId => {
     dispatch(addToList(listId, parseInt(quantity)));
-    dispatch(setTotalPrice(totalPrice)); 
+    dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
   };
 
@@ -82,13 +85,24 @@ const ProductItem = ({
         ) : (
           <FavoriteButton onClick={() => handleAddFavorites(id)} />
         )}
-        <ProductImage src={image} alt={name} />
+        <ProductImage src={image ? image : DEFAULT_URL} alt={name} />
         <ProductName>{name}</ProductName>
         <ProductDescription>{description}</ProductDescription>
         <ProductPrice>{price} $</ProductPrice>
-        <button onClick={() => handleAddToShoppingList(id)}>
-          {shoppingList.includes(id) ? 'Забрати з кошика' : 'Додати в кошик'}
-        </button>
+
+        <div
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+        >
+          <ButtonAdd onClick={() => handleAddToShoppingList(id)} />
+          {showTooltip && (
+            <Tooltip>
+              {shoppingList.includes(id)
+                ? 'Забрати з кошика'
+                : 'Додати в кошик'}
+            </Tooltip>
+          )}
+        </div>
       </div>
       {showModal && (
         <ModalBackdrop>

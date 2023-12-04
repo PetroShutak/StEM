@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { GrFavorite } from 'react-icons/gr';
 import { MdFavorite } from 'react-icons/md';
+import { IoCartOutline } from 'react-icons/io5';
 
 export const Item = styled.div`
   position: relative;
@@ -10,10 +11,10 @@ export const Item = styled.div`
   width: 300px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid var(--bg-secondary);
+  border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  background-color: #aaa;
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgba(255, 255, 255, 0.75);
   color: var(--text-color-primary-black);
 `;
 
@@ -100,7 +101,7 @@ export const FavoriteButtonActive = styled(MdFavorite)`
   }
 `;
 
-// 
+//
 export const ModalQuantity = styled.div`
   position: fixed;
   top: 50%;
@@ -153,7 +154,7 @@ export const ModalContent = styled.div`
 export const Button = styled.button`
   width: 100%;
   padding: 10px;
-  
+
   border-radius: 4px;
   background-color: var(--color-primary);
   color: var(--text-color-primary-white);
@@ -168,3 +169,33 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonAdd = styled(IoCartOutline)`
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  color: var(--bg-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+`;
+
+export const Tooltip = styled.span`
+  position: absolute;
+  bottom: 60px;
+  right: 0px;
+  background-color: #aaa;
+  color: var(--text-color-primary-black);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+`;

@@ -8,11 +8,13 @@ import {
   Counter,
   BasketTitle,
 } from './Basket.styled';
-import {selectShoppingList} from '../../../../redux/products/selectors';
+import { selectShoppingList } from '../../../../redux/products/selectors';
 
 const Basket = () => {
   const shoppingList = useSelector(selectShoppingList);
-  const selectedShoppingListCount = shoppingList.length;
+  // const selectedShoppingListCount = shoppingList.length;
+  const selectedShoppingListCount =
+    shoppingList.length > 99 ? '99+' : shoppingList.length;
   return (
     <BasketWrapper>
       <Link to="/shoppinglist">
@@ -23,7 +25,9 @@ const Basket = () => {
             }}
           >
             <IoCartOutline size={40} />
-            <Counter>{selectedShoppingListCount}</Counter>
+            {selectedShoppingListCount > 0 && (
+              <Counter>{selectedShoppingListCount}</Counter>
+            )}
           </div>
           <BasketTitle>Мій кошик</BasketTitle>
         </BasketContainer>
