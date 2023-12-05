@@ -9,6 +9,7 @@ import {
   SearchHeaderButton,
   SearchResultList,
   SearchResultItem,
+  SearchHeaderForm,
 } from './SearchHeader.styled';
 import { useDispatch } from 'react-redux';
 import {
@@ -56,24 +57,24 @@ const SearchHeader = () => {
     }
   };
 
-  const handleSearch = (value) => {
-    const filteredResults = allProducts.filter(
-      product => product.name.toLowerCase().includes(value.toLowerCase())
+  const handleSearch = value => {
+    const filteredResults = allProducts.filter(product =>
+      product.name.toLowerCase().includes(value.toLowerCase())
     );
     dispatch(setSearchResult(filteredResults));
   };
-  
-  const handleResultItemClick = (result) => {
+
+  const handleResultItemClick = result => {
     setSearchQuery(result.name);
     setShowResults(false);
-    handleSearch(result.name); 
+    handleSearch(result.name);
   };
-  
+
   const handleSearchSubmit = event => {
     event.preventDefault();
     console.log('Search submitted');
     setShowResults(false);
-    handleSearch(searchQuery); 
+    handleSearch(searchQuery);
   };
 
   if (searchQuery === '') {
@@ -82,7 +83,7 @@ const SearchHeader = () => {
 
   return (
     <SearchHeaderWrapper ref={searchRef}>
-      <form onSubmit={handleSearchSubmit}>
+      <SearchHeaderForm onSubmit={handleSearchSubmit}>
         <SearchHeaderInput
           type="text"
           placeholder="Пошук"
@@ -92,7 +93,7 @@ const SearchHeader = () => {
         <SearchHeaderButton type="submit">
           <BiSearchAlt2 size={28} />
         </SearchHeaderButton>
-      </form>
+      </SearchHeaderForm>
       {showResults && searchResults.length > 0 && (
         <SearchResultList>
           {searchResults.map(result => (

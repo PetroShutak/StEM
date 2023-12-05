@@ -15,6 +15,15 @@ export const SearchHeaderWrapper = styled.div`
   }
 `;
 
+export const SearchHeaderForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+
 
 
 export const SearchHeaderInput = styled.input`

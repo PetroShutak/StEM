@@ -1,4 +1,6 @@
 import React from 'react';
+import ProductsItem from '../../../../ProductList/ProductItem/ProductItem';
+import { SearchList } from './SearchResultsDisplay.styled';
 
 const SearchResultsDisplay = ({ searchResults }) => {
   return (
@@ -9,11 +11,20 @@ const SearchResultsDisplay = ({ searchResults }) => {
         marginBottom: '20px',
       }}
       >Результати пошуку</h2>
-      <ul>
+      <SearchList>
         {searchResults.map(result => (
-          <li key={result.id}>{result.name}</li>
+          <ProductsItem
+            key={result.id}
+            id={result.id}
+            name={result.name}
+            image={result.image}
+            description={result.description}
+            price={result.price}
+            category={result.category}
+            subcategory={result.subcategory}
+        />
         ))}
-      </ul>
+      </SearchList>
     </div>
   );
 };
