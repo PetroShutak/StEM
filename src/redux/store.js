@@ -14,6 +14,7 @@ import { productsReducer } from './products/productSlice';
 import { filterReducer } from './products/filterSlice';
 import { favoriteReducer } from './products/favoriteSlice';
 import { shoppingListReducer } from './products/shoppingListSlice';
+import { searchReducer } from './products/searchSlice';
 
 const persistConfig = {
   key: 'root',
@@ -33,6 +34,7 @@ export const store = configureStore({
     filter: filterReducer,
     favorites: persistedFavoriteReducer,
     shoppingList: persistedShoppingListReducer,
+    searchResult: searchReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

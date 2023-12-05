@@ -4,6 +4,7 @@ export const selectAllProducts = state => state.products.products;
 export const selectShoppingList = state => state.shoppingList.shoppingList;
 export const selectFavorites = state => state.favorites.favorites;
 export const selectIsFiltred = state => state.filter.isFiltred;
+export const selectSearchResults = state => state.searchResult.searchResults;
 export const selectLoading = state => state.products.isLoading;
 
 export const selectError = state => state.products.error;

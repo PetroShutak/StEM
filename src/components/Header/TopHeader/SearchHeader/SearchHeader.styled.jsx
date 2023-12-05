@@ -15,6 +15,8 @@ export const SearchHeaderWrapper = styled.div`
   }
 `;
 
+
+
 export const SearchHeaderInput = styled.input`
   padding-left: 16px;
   border: none;
@@ -58,3 +60,28 @@ export const SearchHeaderButton = styled.button`
     }
   }
 `;
+
+export const SearchResultList = styled.ul`
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+`;
+
+export const SearchResultItem = styled.li`
+  padding: 10px;
+  font-size: 14px;
+  font-family: var(--font-family-primary);
+  color: var(--text-color-primary-grey);
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    background-color: var(--text-color-primary-orange);
+    color: #fff;
+  }
+`;
+
