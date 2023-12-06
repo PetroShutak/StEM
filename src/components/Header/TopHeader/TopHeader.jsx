@@ -11,11 +11,16 @@ import Basket from './Basket/Basket';
 import ContactsHeader from './ContactsHeader/ContactsHeader';
 import SearchHeader from './SearchHeader/SearchHeader';
 import WorkShedule from './WorkShedule/WorkShedule';
-
+import { useNavigate } from 'react-router-dom';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 const TopHeader = () => {
   const [burgerOpen, setBurgerOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSearchRedirect = () => {
+    navigate('/catalog');
+  };
 
   const toogleBurger = () => {
     setBurgerOpen(!burgerOpen);
@@ -26,7 +31,7 @@ const TopHeader = () => {
         <Logo />
         <div>
           <ContactsHeader />
-          <SearchHeader />
+          <SearchHeader onSearchRedirect={handleSearchRedirect}/>
         </div>
         <div>
           <WorkShedule />

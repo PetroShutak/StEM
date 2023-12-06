@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import {useNavigate} from 'react-router-dom';
 import { selectAllProducts } from '../../../../redux/products/selectors';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {
@@ -18,13 +17,12 @@ import {
   resetSearchResult,
 } from '../../../../redux/products/searchSlice';
 
-const SearchHeader = () => {
+const SearchHeader = ({ onSearchRedirect }) => {
   const allProducts = useSelector(selectAllProducts);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,7 +52,7 @@ const SearchHeader = () => {
       setSearchResults(filteredResults);
       setShowResults(true);
       dispatch(setSearchResult(filteredResults));
-      navigate('/catalog');
+      onSearchRedirect('/catalog');
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
@@ -75,9 +73,9 @@ const SearchHeader = () => {
 
   const handleSearchSubmit = event => {
     event.preventDefault();
-    console.log('Search submitted');
     setShowResults(false);
     handleSearch(searchQuery);
+    onSearchRedirect('/catalog');
   };
 
   if (searchQuery === '') {
