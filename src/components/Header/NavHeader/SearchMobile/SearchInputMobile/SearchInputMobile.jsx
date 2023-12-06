@@ -15,7 +15,7 @@ import {
   resetSearchResult,
 } from '../../../../../redux/products/searchSlice';
 
-const SearchInputMobile = ({ setOpen }) => {
+const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
   const allProducts = useSelector(selectAllProducts);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -50,6 +50,7 @@ const SearchInputMobile = ({ setOpen }) => {
       setSearchResults(filteredResults);
       setShowResults(true);
       dispatch(setSearchResult(filteredResults));
+      onSearchRedirect('/catalog');
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
