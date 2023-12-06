@@ -14,8 +14,8 @@ const SearchResultsDisplay = ({ searchResults }) => {
       <SearchList>
         {searchResults.map(result => (
           <ProductsItem
-            key={result.id}
-            id={result.id}
+            key={result._id}
+            id={result._id}
             name={result.name}
             image={result.image}
             description={result.description}
