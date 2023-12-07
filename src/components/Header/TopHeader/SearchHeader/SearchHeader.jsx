@@ -71,6 +71,7 @@ const SearchHeader = ({ onSearchRedirect }) => {
     setSearchQuery(result.name);
     setShowResults(false);
     handleSearch(result.name);
+    onSearchRedirect('/searchresult');
   };
 
   const handleSearchSubmit = event => {

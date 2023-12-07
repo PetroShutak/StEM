@@ -70,6 +70,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
     setSearchQuery(result.name);
     setShowResults(false);
     handleSearch(result.name);
+    onSearchRedirect('/searchresult');
     setOpen(false);
   };
 
