@@ -19,7 +19,7 @@ import { searchReducer } from './products/searchSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites', 'shoppingList'],
+  whitelist: ['favorites', 'shoppingList', 'totalPrice'],
 };
 
 const persistedFavoriteReducer = persistReducer(persistConfig, favoriteReducer);

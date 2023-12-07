@@ -2,6 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 export const selectAllProducts = state => state.products.products;
 export const selectShoppingList = state => state.shoppingList.shoppingList;
+export const selectTotalPrice = state => state.shoppingList.totalPrice;
 export const selectFavorites = state => state.favorites.favorites;
 export const selectIsFiltred = state => state.filter.isFiltred;
 export const selectSearchResults = state => state.searchResult.searchResults;

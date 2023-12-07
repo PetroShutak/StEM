@@ -5,6 +5,7 @@ import {
   selectIsFiltred,
   selectShoppingListProducts,
   selectFiltredShoppingListProducts,
+  selectTotalPrice,
 } from '../redux/products/selectors';
 import ProductList from 'components/ProductList/ProductList';
 import NoFavorites from 'components/NoFavorites/NoFavorites';
@@ -14,15 +15,13 @@ const ShoppingListPage = () => {
   const isFiltred = useSelector(selectIsFiltred);
   const shoppingList = useSelector(selectShoppingListProducts);
   const filtredShoppingList = useSelector(selectFiltredShoppingListProducts);
-  
   const dispatch = useDispatch();
-
+  const totalPrice = useSelector(selectTotalPrice);
   
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(resetFilter());
   }, [dispatch]);
-
 
   return (
     <div
@@ -40,6 +39,16 @@ const ShoppingListPage = () => {
       >
         Кошик
       </h1>
+      <p
+        style={{
+          color: 'var(--text-color-primary-black)',
+          fontFamily: 'var(--font-family-secondary)',
+          marginBottom: '10px',
+        }}
+      >
+        Загальна вартість: {totalPrice}
+      </p>
+
       {shoppingList.length === 0 ? (
         <NoFavorites />
       ) : (

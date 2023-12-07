@@ -32,7 +32,10 @@ import {
   deleteFromList,
 } from '../../../redux/products/shoppingListSlice';
 import calculateTotalPrice from '../../../utils/calculateTotal';
-import { setTotalPrice } from '../../../redux/products/shoppingListSlice';
+import {
+  setTotalPrice,
+  resetTotalPrice,
+} from '../../../redux/products/shoppingListSlice';
 const DEFAULT_URL = '../../../images/no-image.jpg';
 
 const ProductItem = ({
@@ -64,6 +67,9 @@ const ProductItem = ({
   const handleAddToShoppingList = listId => {
     if (shoppingList.includes(listId)) {
       dispatch(deleteFromList(listId));
+      if (shoppingList.length === 1) {
+        dispatch(resetTotalPrice(listId));
+      }
     } else {
       setShowModal(true);
     }
