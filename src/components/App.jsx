@@ -9,6 +9,7 @@ import CatalogPage from 'pages/CatalogPage';
 import FavoritePage from 'pages/FavoritePage';
 import ShoppingListPage from 'pages/ShoppingListPage';
 import { getAllProducts } from 'redux/products/operations';
+import SearchResultPage from 'pages/SearchResultPage';
 // import { useTheme } from 'hooks/useTheme';
 
 // import { lazy } from 'react';
@@ -22,9 +23,7 @@ export const App = () => {
   // }, [theme]);
   useEffect(() => {
     dispatch(getAllProducts());
-  }
-  , [dispatch]);
-
+  }, [dispatch]);
 
   useEffect(() => {
     return startTextEffect();
@@ -83,6 +82,14 @@ export const App = () => {
             path="/catalog"
             element={
               <CatalogPage
+                style={{ color: 'var(--text-color-primary-black)' }}
+              />
+            }
+          />
+          <Route
+            path="/searchresult"
+            element={
+              <SearchResultPage
                 style={{ color: 'var(--text-color-primary-black)' }}
               />
             }

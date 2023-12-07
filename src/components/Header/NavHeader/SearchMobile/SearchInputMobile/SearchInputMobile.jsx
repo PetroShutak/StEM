@@ -9,19 +9,23 @@ import {
 } from './SearchInputMobile.styled';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAllProducts } from '../../../../../redux/products/selectors';
+import {
+  selectAllProducts,
+  selectSearchQuery,
+} from '../../../../../redux/products/selectors';
 import {
   setSearchResult,
-  resetSearchResult,
+  setSearchQuery,
+  // resetSearchResult,
 } from '../../../../../redux/products/searchSlice';
 
 const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
+  const dispatch = useDispatch();
   const allProducts = useSelector(selectAllProducts);
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchQuery = useSelector(selectSearchQuery);
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef(null);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleOutsideClick = event => {
@@ -37,7 +41,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
 
   const handleSearchChange = async event => {
     const { value } = event.target;
-    setSearchQuery(value);
+    dispatch(setSearchQuery(value));
 
     try {
       const filteredResults = allProducts.filter(product =>
@@ -50,7 +54,6 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
       setSearchResults(filteredResults);
       setShowResults(true);
       dispatch(setSearchResult(filteredResults));
-      onSearchRedirect('/catalog');
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
@@ -72,14 +75,17 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
 
   const handleSearchSubmit = event => {
     event.preventDefault();
-    setShowResults(false);
-    handleSearch(searchQuery);
-    setOpen(false);
+    if (searchQuery.trim() !== '') {
+      setShowResults(false);
+      handleSearch(searchQuery);
+      onSearchRedirect('/searchresult');
+      setOpen(false);
+    }
   };
 
-  if (searchQuery === '') {
-    dispatch(resetSearchResult());
-  }
+  // if (searchQuery === '') {
+  //   dispatch(resetSearchResult());
+  // }
 
   const submitSearch = () => {
     setOpen(false);

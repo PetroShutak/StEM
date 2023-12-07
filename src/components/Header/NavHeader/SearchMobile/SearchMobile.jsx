@@ -14,7 +14,7 @@ const SearchMobile = () => {
   };
 
   const handleSearchRedirect = () => {
-    navigate('/catalog');
+    navigate('/searchresult');
   };
   return (
     <SearchMobileWrapper>

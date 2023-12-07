@@ -19,7 +19,7 @@ const TopHeader = () => {
   const navigate = useNavigate();
 
   const handleSearchRedirect = () => {
-    navigate('/catalog');
+    navigate('/searchresult');
   };
 
   const toogleBurger = () => {
@@ -31,7 +31,7 @@ const TopHeader = () => {
         <Logo />
         <div>
           <ContactsHeader />
-          <SearchHeader onSearchRedirect={handleSearchRedirect}/>
+          <SearchHeader onSearchRedirect={handleSearchRedirect} />
         </div>
         <div>
           <WorkShedule />

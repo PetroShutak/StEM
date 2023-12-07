@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { selectAllProducts } from '../../../../redux/products/selectors';
+import {
+  selectAllProducts,
+  selectSearchQuery,
+} from '../../../../redux/products/selectors';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {
   SearchHeaderWrapper,
@@ -14,16 +17,17 @@ import {
 import { useDispatch } from 'react-redux';
 import {
   setSearchResult,
-  resetSearchResult,
+  setSearchQuery,
+  // resetSearchResult,
 } from '../../../../redux/products/searchSlice';
 
 const SearchHeader = ({ onSearchRedirect }) => {
+  const dispatch = useDispatch();
   const allProducts = useSelector(selectAllProducts);
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchQuery = useSelector(selectSearchQuery);
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef(null);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleOutsideClick = event => {
@@ -39,8 +43,7 @@ const SearchHeader = ({ onSearchRedirect }) => {
 
   const handleSearchChange = async event => {
     const { value } = event.target;
-    setSearchQuery(value);
-
+    dispatch(setSearchQuery(value));
     try {
       const filteredResults = allProducts.filter(product =>
         Object.values(product).some(
@@ -52,7 +55,6 @@ const SearchHeader = ({ onSearchRedirect }) => {
       setSearchResults(filteredResults);
       setShowResults(true);
       dispatch(setSearchResult(filteredResults));
-      onSearchRedirect('/catalog');
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
@@ -73,14 +75,16 @@ const SearchHeader = ({ onSearchRedirect }) => {
 
   const handleSearchSubmit = event => {
     event.preventDefault();
-    setShowResults(false);
-    handleSearch(searchQuery);
-    onSearchRedirect('/catalog');
+    if (searchQuery.trim() !== '') {
+      setShowResults(false);
+      handleSearch(searchQuery);
+      onSearchRedirect('/searchresult');
+    }
   };
 
-  if (searchQuery === '') {
-    dispatch(resetSearchResult());
-  }
+  // if (searchQuery === '') {
+  //   dispatch(resetSearchResult());
+  // }
 
   return (
     <SearchHeaderWrapper ref={searchRef}>
@@ -90,6 +94,7 @@ const SearchHeader = ({ onSearchRedirect }) => {
           placeholder="Пошук"
           value={searchQuery}
           onChange={handleSearchChange}
+          validate={searchQuery}
         />
         <SearchHeaderButton type="submit">
           <BiSearchAlt2 size={28} />
