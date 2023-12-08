@@ -10,6 +10,8 @@ import FavoritePage from 'pages/FavoritePage';
 import ShoppingListPage from 'pages/ShoppingListPage';
 import { getAllProducts } from 'redux/products/operations';
 import SearchResultPage from 'pages/SearchResultPage';
+import Details from './Details/Details';
+
 // import { useTheme } from 'hooks/useTheme';
 
 // import { lazy } from 'react';
@@ -111,30 +113,11 @@ export const App = () => {
             }
           />
           <Route
-            path="/catalog/:productId"
+            path="/details/:id"
             element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                ProductItem
-              </p>
+              <Details style={{ color: 'var(--text-color-primary-black)' }} />
             }
-          >
-            <Route
-              path="desc"
-              element={
-                <p style={{ color: 'var(--text-color-primary-black)' }}>
-                  description
-                </p>
-              }
-            />
-            <Route
-              path="more"
-              element={
-                <p style={{ color: 'var(--text-color-primary-black)' }}>
-                  more information
-                </p>
-              }
-            />
-          </Route>
+          ></Route>
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

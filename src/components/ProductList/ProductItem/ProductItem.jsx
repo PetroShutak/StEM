@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addFavorite,
@@ -36,6 +36,7 @@ import {
   setTotalPrice,
   resetTotalPrice,
 } from '../../../redux/products/shoppingListSlice';
+import { Link } from 'react-router-dom';
 const DEFAULT_URL = '../../../images/no-image.jpg';
 
 const ProductItem = ({
@@ -53,6 +54,7 @@ const ProductItem = ({
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const totalPrice = calculateTotalPrice(price, parseInt(quantity));
 
@@ -100,7 +102,10 @@ const ProductItem = ({
           <FavoriteButton onClick={() => handleAddFavorites(id)} />
         )}
         <ProductImage src={image ? image : DEFAULT_URL} alt={name} />
-        <ProductName>{name}</ProductName>
+
+        <Link to={`/details/${id}`} state={{ from: location }}>
+          <ProductName>{name}</ProductName>
+        </Link>
         <ProductDescription>{description}</ProductDescription>
         <ProductPrice>{price} $</ProductPrice>
 
