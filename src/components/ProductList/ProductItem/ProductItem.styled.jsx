@@ -21,7 +21,9 @@ export const Item = styled.div`
 export const ProductImage = styled.img`
   width: 100%;
   margin-bottom: 20px;
+  border: 0.5px solid #ccc;
   border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
 `;
 
 export const ProductName = styled.h2`

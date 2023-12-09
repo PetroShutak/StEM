@@ -11,6 +11,7 @@ import ShoppingListPage from 'pages/ShoppingListPage';
 import { getAllProducts } from 'redux/products/operations';
 import SearchResultPage from 'pages/SearchResultPage';
 import Details from './Details/Details';
+import CallButton from './CallButton/CallButton';
 
 // import { useTheme } from 'hooks/useTheme';
 
@@ -121,6 +122,7 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <CallButton />
       <div
         style={{
           height: '100vh',
