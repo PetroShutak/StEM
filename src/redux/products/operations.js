@@ -1,16 +1,28 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://stem-server-db.onrender.com";
+axios.defaults.baseURL = 'https://stem-server-db.onrender.com';
 
 export const getAllProducts = createAsyncThunk(
-    "products/getAllProducts",
-    async (_, thunkAPI) => {
-        try {
-            const response = await axios.get("/api/products");
-            return response.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.response.data);
-        }
+  'products/getAllProducts',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/api/products');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
     }
-    );
+  }
+);
+
+export const getProductById = createAsyncThunk(
+  'products/getProductById',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`/api/products/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);

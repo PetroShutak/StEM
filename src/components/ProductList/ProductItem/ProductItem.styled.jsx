@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { GrFavorite } from 'react-icons/gr';
 import { MdFavorite } from 'react-icons/md';
 import { IoCartOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 export const Item = styled.div`
   position: relative;
@@ -27,6 +28,7 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductName = styled.h2`
+  position: relative;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -183,6 +185,33 @@ export const Tooltip = styled.span`
   position: absolute;
   bottom: 60px;
   right: 0px;
+  background-color: #aaa;
+  color: var(--text-color-primary-black);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+`;
+
+export const TitleLinkContainer = styled.div`
+  position: relative;
+
+`;
+
+export const TitleLink = styled(Link)`
+  text-decoration: none;
+  color: var(--text-color-primary-black);
+  transition: color 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+   text-decoration: underline;
+  }
+`;
+
+export const TooltipDetails = styled.span`
+  position: absolute;
+  bottom: 20px; 
+  right: 60px; 
   background-color: #aaa;
   color: var(--text-color-primary-black);
   padding: 5px;
