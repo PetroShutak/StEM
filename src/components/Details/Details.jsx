@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   DetailsFavoriteBtnWrapper,
   DetailsContainer,
@@ -14,12 +14,26 @@ import { getProductById } from 'redux/products/operations';
 import { selectProductById } from 'redux/products/selectors';
 import { GrFavorite } from 'react-icons/gr';
 import Rating from 'utils/rating';
+import QuantityModal from 'components/QuantityModal/QuantityModal';
+import { addToList } from 'redux/products/shoppingListSlice';
+import { setTotalPrice } from 'redux/products/shoppingListSlice';
 
 const Details = () => {
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const product = useSelector(state => selectProductById(state, id));
+
+  const handleAddToShoppingList = () => {
+    setShowModal(true);
+  };
+
+  const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
+    dispatch(addToList(id, parseInt(quantity)));
+    dispatch(setTotalPrice(totalPrice));
+    setShowModal(false);
+  };
 
   useEffect(() => {
     dispatch(getProductById(id));
@@ -46,9 +60,20 @@ const Details = () => {
           <p>Підкатегорія: {product?.subcategory}</p>
           <Rating rating={product?.raiting} />
           <p>Країна-виробник: {product?.country}</p>
-          <BuyButton>Додати в кошик</BuyButton>
+          <BuyButton onClick={handleAddToShoppingList}>
+            Додати в кошик
+          </BuyButton>
         </DescriptionWrapper>
       </DetailsContainer>
+      {showModal && (
+        <QuantityModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          handleConfirmAddToShoppingList={handleConfirmAddToShoppingList}
+          id={id}
+          price={product?.price}
+        />
+      )}
     </div>
   );
 };
