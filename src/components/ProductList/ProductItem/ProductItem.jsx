@@ -44,6 +44,7 @@ const DEFAULT_URL = '../../../images/no-image.jpg';
 const ProductItem = ({
   id,
   name,
+  brand,
   // description,
   price,
   image,
@@ -110,9 +111,11 @@ const ProductItem = ({
           onMouseLeave={() => setShowTooltipDetails(false)}
         >
           <TitleLink to={`/details/${id}`} state={{ from: location }}>
-            <ProductName>{name}</ProductName>
+            <ProductName>
+              {name} - {brand}
+            </ProductName>
           </TitleLink>
-          {showTooltipDetails && (<TooltipDetails>Детальніше</TooltipDetails>)}
+          {showTooltipDetails && <TooltipDetails>Детальніше</TooltipDetails>}
         </TitleLinkContainer>
 
         {/* <ProductDescription>{description}</ProductDescription> */}

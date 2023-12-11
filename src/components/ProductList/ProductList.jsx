@@ -7,7 +7,19 @@ const ProductList = ({ products }) => {
     <ProductListStyled>
       <List>
         {products.map(
-          ({ _id, name, description, price, image, category, subcategory }) => (
+          ({
+            _id,
+            name,
+            brand,
+            model,
+            description,
+            price,
+            image,
+            category,
+            subcategory,
+            raiting,
+            country,
+          }) => (
             <ProductsItem
               key={_id}
               id={_id}
@@ -17,6 +29,10 @@ const ProductList = ({ products }) => {
               price={price}
               category={category}
               subcategory={subcategory}
+              brand={brand}
+              model={model}
+              raiting={raiting}
+              country={country}
             />
           )
         )}
