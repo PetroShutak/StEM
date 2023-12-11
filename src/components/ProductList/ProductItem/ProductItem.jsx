@@ -13,17 +13,9 @@ import {
   Item,
   ProductImage,
   ProductName,
-  // ProductDescription,
   ProductPrice,
   FavoriteButton,
   FavoriteButtonActive,
-  ModalQuantity,
-  ModalCloseButton,
-  ModalContent,
-  ModalBackdrop,
-  Button,
-  QuantityInput,
-  TotalPrice,
   ButtonAdd,
   Tooltip,
   TooltipDetails,
@@ -34,24 +26,15 @@ import {
   addToList,
   deleteFromList,
 } from '../../../redux/products/shoppingListSlice';
-import calculateTotalPrice from '../../../utils/calculateTotal';
+
 import {
   setTotalPrice,
   resetTotalPrice,
 } from '../../../redux/products/shoppingListSlice';
+import QuantityModal from 'components/QuantityModal/QuantityModal';
 const DEFAULT_URL = '../../../images/no-image.jpg';
 
-const ProductItem = ({
-  id,
-  name,
-  brand,
-  // description,
-  price,
-  image,
-  // category,
-  // subcategory,
-}) => {
-  const [quantity, setQuantity] = useState(1);
+const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showTooltipDetails, setShowTooltipDetails] = useState(false);
@@ -59,8 +42,6 @@ const ProductItem = ({
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
   const location = useLocation();
-
-  const totalPrice = calculateTotalPrice(price, parseInt(quantity));
 
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
@@ -81,18 +62,8 @@ const ProductItem = ({
     }
   };
 
-  const handleModalClose = () => {
-    setShowModal(false);
-  };
-
-  const closeModal = event => {
-    if (event.target.classList.contains('backdrop')) {
-      setShowModal(false);
-    }
-  };
-
-  const handleConfirmAddToShoppingList = listId => {
-    dispatch(addToList(listId, parseInt(quantity)));
+  const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
+    dispatch(addToList(id, parseInt(quantity)));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
   };
@@ -117,10 +88,7 @@ const ProductItem = ({
           </TitleLink>
           {showTooltipDetails && <TooltipDetails>Детальніше</TooltipDetails>}
         </TitleLinkContainer>
-
-        {/* <ProductDescription>{description}</ProductDescription> */}
         <ProductPrice>{price} $</ProductPrice>
-
         <div
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
@@ -135,27 +103,13 @@ const ProductItem = ({
           )}
         </div>
       </div>
-      {showModal && (
-        <ModalBackdrop className="backdrop" onClick={closeModal}>
-          <ModalQuantity>
-            <ModalContent>
-              <h2>Вкажіть кількість</h2>
-              <QuantityInput
-                type="number"
-                value={quantity}
-                onChange={e => setQuantity(e.target.value)}
-              />
-              <ModalCloseButton onClick={handleModalClose}>
-                &times;
-              </ModalCloseButton>
-              <Button onClick={() => handleConfirmAddToShoppingList(id)}>
-                Підтвердити
-              </Button>
-              <TotalPrice>Загальна вартість: {totalPrice} $</TotalPrice>
-            </ModalContent>
-          </ModalQuantity>
-        </ModalBackdrop>
-      )}
+      <QuantityModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleConfirmAddToShoppingList={handleConfirmAddToShoppingList}
+        id={id}
+        price={price}
+      />
     </Item>
   );
 };
