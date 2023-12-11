@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductById } from 'redux/products/operations';
 import { selectProductById } from 'redux/products/selectors';
 import { GrFavorite } from 'react-icons/gr';
+import Rating from 'utils/rating';
 
 const Details = () => {
   const { id } = useParams();
@@ -43,7 +44,7 @@ const Details = () => {
           <p>Ціна: {product?.price}</p>
           <p>Категорія: {product?.category}</p>
           <p>Підкатегорія: {product?.subcategory}</p>
-          <p>Рейтинг: {product?.raiting}</p>
+          <Rating rating={product?.raiting} />
           <p>Країна-виробник: {product?.country}</p>
           <BuyButton>Додати в кошик</BuyButton>
         </DescriptionWrapper>
