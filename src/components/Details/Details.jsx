@@ -11,17 +11,26 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductById } from 'redux/products/operations';
-import { selectProductById } from 'redux/products/selectors';
-import { GrFavorite } from 'react-icons/gr';
+import { selectFavorites, selectProductById } from 'redux/products/selectors';
+import { addFavorite, deleteFavorite } from 'redux/products/favoriteSlice';
 import Rating from 'utils/rating';
 import QuantityModal from 'components/QuantityModal/QuantityModal';
 import { addToList } from 'redux/products/shoppingListSlice';
 import { setTotalPrice } from 'redux/products/shoppingListSlice';
+import { FavoriteButton, FavoriteButtonActive } from 'components/ProductList/ProductItem/ProductItem.styled';
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+  const handleAddFavorites = favId => {
+    dispatch(addFavorite(favId));
+  };
+
+  const handleRemoveFavorites = favId => {
+    dispatch(deleteFavorite(favId));
+  };
 
   const product = useSelector(state => selectProductById(state, id));
 
@@ -47,7 +56,11 @@ const Details = () => {
         </DetailsImageWrapper>
         <DescriptionWrapper>
           <DetailsFavoriteBtnWrapper>
-            <GrFavorite size={30} />
+          {favorites.includes(id) ? (
+          <FavoriteButtonActive onClick={() => handleRemoveFavorites(id)} />
+        ) : (
+          <FavoriteButton onClick={() => handleAddFavorites(id)} />
+        )}
           </DetailsFavoriteBtnWrapper>
           <h2>
             {product?.name} - {product?.brand}
