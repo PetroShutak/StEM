@@ -16,7 +16,6 @@ import {
 import {
   setSearchResult,
   setSearchQuery,
-  // resetSearchResult,
 } from '../../../../../redux/products/searchSlice';
 
 const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
@@ -61,7 +60,11 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
 
   const handleSearch = value => {
     const filteredResults = allProducts.filter(product =>
-      product.name.toLowerCase().includes(value.toLowerCase())
+      Object.values(product).some(
+        field =>
+          typeof field === 'string' &&
+          field.toLowerCase().includes(value.toLowerCase())
+      )
     );
     dispatch(setSearchResult(filteredResults));
   };
@@ -84,9 +87,6 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
     }
   };
 
-  // if (searchQuery === '') {
-  //   dispatch(resetSearchResult());
-  // }
 
   const submitSearch = () => {
     setOpen(false);
@@ -116,7 +116,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
           <SearchResultList>
             {searchResults.map(result => (
               <SearchResultItem
-                key={result.id}
+                key={result._id}
                 onClick={() => handleResultItemClick(result)}
               >
                 {result.name}
