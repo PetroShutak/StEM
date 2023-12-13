@@ -109,6 +109,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
             placeholder="Пошук..."
             value={searchQuery}
             onChange={handleSearchChange}
+            autoFocus
             required
           />
           <SearchMobileInputButton type="submit">
