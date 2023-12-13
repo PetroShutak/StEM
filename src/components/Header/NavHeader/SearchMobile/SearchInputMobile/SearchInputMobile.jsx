@@ -87,8 +87,10 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
     }
   };
 
-
   const submitSearch = () => {
+    if (searchQuery.trim() === '') {
+      return;
+    }
     setOpen(false);
   };
 
@@ -107,6 +109,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
             placeholder="Пошук..."
             value={searchQuery}
             onChange={handleSearchChange}
+            required
           />
           <SearchMobileInputButton type="submit">
             <BiSearchAlt2 size={28} onClick={submitSearch} />

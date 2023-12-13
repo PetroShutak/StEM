@@ -18,6 +18,7 @@ import QuantityModal from 'components/QuantityModal/QuantityModal';
 import { addToList } from 'redux/products/shoppingListSlice';
 import { setTotalPrice } from 'redux/products/shoppingListSlice';
 import { FavoriteButton, FavoriteButtonActive } from 'components/ProductList/ProductItem/ProductItem.styled';
+import  DEFAULT_URL  from 'images/no-image.jpg'
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
@@ -48,11 +49,21 @@ const Details = () => {
     dispatch(getProductById(id));
   }, [dispatch, id]);
 
+  const isImageLink = str => {
+    return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(str);
+  };
+
   return (
     <div className="container">
       <DetailsContainer>
         <DetailsImageWrapper>
+          {/* <DetailsImage src={product?.image} alt={product?.name} /> */}
+        {isImageLink(product?.image) ? (
           <DetailsImage src={product?.image} alt={product?.name} />
+        ) : (
+          <DetailsImage src={DEFAULT_URL} alt={product?.name} />
+        )  
+        }
         </DetailsImageWrapper>
         <DescriptionWrapper>
           <DetailsFavoriteBtnWrapper>

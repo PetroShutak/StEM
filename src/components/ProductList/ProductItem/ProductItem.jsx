@@ -32,7 +32,7 @@ import {
   resetTotalPrice,
 } from '../../../redux/products/shoppingListSlice';
 import QuantityModal from 'components/QuantityModal/QuantityModal';
-const DEFAULT_URL = '../../../images/no-image.jpg';
+import  DEFAULT_URL  from 'images/no-image.jpg'
 
 const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
@@ -68,6 +68,10 @@ const ProductItem = ({ id, name, brand, price, image }) => {
     setShowModal(false);
   };
 
+  const isImageLink = str => {
+    return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(str);
+  };
+
   return (
     <Item>
       <div>
@@ -76,7 +80,13 @@ const ProductItem = ({ id, name, brand, price, image }) => {
         ) : (
           <FavoriteButton onClick={() => handleAddFavorites(id)} />
         )}
-        <ProductImage src={image ? image : DEFAULT_URL} alt={name} />
+        {/* <ProductImage src={image ? image : DEFAULT_URL} alt={name} /> */}
+        {isImageLink(image) ? (
+          <ProductImage src={image} alt={name} />
+        ) : (
+          <ProductImage src={DEFAULT_URL} alt={name} />
+        )}
+
         <TitleLinkContainer
           onMouseEnter={() => setShowTooltipDetails(true)}
           onMouseLeave={() => setShowTooltipDetails(false)}

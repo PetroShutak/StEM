@@ -100,6 +100,7 @@ const SearchHeader = ({ onSearchRedirect }) => {
           value={searchQuery}
           onChange={handleSearchChange}
           validate={searchQuery}
+          required
         />
         <SearchHeaderButton type="submit">
           <BiSearchAlt2 size={28} />
