@@ -23,6 +23,8 @@ const SearchResultsDisplay = ({ searchResults }) => {
             key={result._id}
             id={result._id}
             name={result.name}
+
+            brand={result.brand}
             image={result.image}
             description={result.description}
             price={result.price}
