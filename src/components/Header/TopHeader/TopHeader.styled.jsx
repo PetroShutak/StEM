@@ -22,7 +22,7 @@ export const TopHeaderContent = styled.div`
 export const StyledBurgerButton = styled(BsJustifyRight)`
   cursor: pointer;
   font-size: 40px;
-  color: var(--text-color-secondary-grey);
+  color: var(--text-color-primary-black);
   display: none;
   @media screen and (max-width: 768px) {
     display: block;

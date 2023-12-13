@@ -15,8 +15,18 @@ const SearchResultsDisplay = ({ searchResults }) => {
           marginBottom: '20px',
         }}
       >
-        Результати пошуку: '{searchQuery}'{' '}
+        Результати пошуку: "{searchQuery}" :
       </h2>
+      <p
+        style={{
+          color: 'var(--text-color-primary-black)',
+          fontFamily: 'var(--font-family-secondary)',
+          marginBottom: '20px',
+        }}
+      >
+        Знайдено: {searchResults.length} .
+      </p>
+
       <SearchList>
         {searchResults.map(result => (
           <ProductsItem

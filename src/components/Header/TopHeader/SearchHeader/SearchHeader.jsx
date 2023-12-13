@@ -72,7 +72,7 @@ const SearchHeader = ({ onSearchRedirect }) => {
   };
 
   const handleResultItemClick = result => {
-    setSearchQuery(result.name);
+    dispatch(setSearchQuery(''));
     setShowResults(false);
     handleSearch(result.name);
     onSearchRedirect('/searchresult');

@@ -70,7 +70,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
   };
 
   const handleResultItemClick = result => {
-    setSearchQuery(result.name);
+    dispatch(setSearchQuery(''));
     setShowResults(false);
     handleSearch(result.name);
     onSearchRedirect('/searchresult');
@@ -92,6 +92,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
       return;
     }
     setOpen(false);
+    
   };
 
   const handleCloseSearch = event => {

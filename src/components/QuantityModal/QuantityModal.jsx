@@ -31,6 +31,10 @@ const QuantityModal = ({
   };
 
   const handleConfirm = () => {
+    if (quantity < 1 || quantity === '' || quantity === null) {
+      setQuantity(1);
+      return;
+    }
     handleConfirmAddToShoppingList(id, quantity, totalPrice);
     setShowModal(false);
   };
@@ -45,12 +49,13 @@ const QuantityModal = ({
               type="number"
               value={quantity}
               onChange={e => setQuantity(e.target.value)}
+              required
             />
             <ModalCloseButton onClick={handleModalClose}>
               &times;
             </ModalCloseButton>
             <Button onClick={handleConfirm}>Підтвердити</Button>
-            <TotalPrice>Загальна вартість: {totalPrice} $</TotalPrice>
+            <TotalPrice>Загальна вартість: {totalPrice} ₴</TotalPrice>
           </ModalContent>
         </ModalQuantity>
       </ModalBackdrop>

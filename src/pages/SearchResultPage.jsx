@@ -20,7 +20,7 @@ const SearchResultPage = () => {
             marginBottom: '20px',
           }}
         >
-          Нічого не знайдено
+          Нічого не знайдено. Спробуй ще.
         </h2>
       ) : (
         <SearchResultsDisplay searchResults={searchResults} />

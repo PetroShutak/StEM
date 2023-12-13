@@ -6,7 +6,7 @@ export const ProductListStyled = styled.div`
 
 export const List = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 40px;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;

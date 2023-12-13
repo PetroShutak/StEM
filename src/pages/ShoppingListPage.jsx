@@ -46,7 +46,7 @@ const ShoppingListPage = () => {
           marginBottom: '10px',
         }}
       >
-        Загальна вартість: {totalPrice}
+        Загальна вартість: {totalPrice} ₴.
       </p>
 
       {shoppingList.length === 0 ? (

@@ -80,7 +80,6 @@ const ProductItem = ({ id, name, brand, price, image }) => {
         ) : (
           <FavoriteButton onClick={() => handleAddFavorites(id)} />
         )}
-        {/* <ProductImage src={image ? image : DEFAULT_URL} alt={name} /> */}
         {isImageLink(image) ? (
           <ProductImage src={image} alt={name} />
         ) : (
@@ -98,7 +97,7 @@ const ProductItem = ({ id, name, brand, price, image }) => {
           </TitleLink>
           {showTooltipDetails && <TooltipDetails>Детальніше</TooltipDetails>}
         </TitleLinkContainer>
-        <ProductPrice>{price} $</ProductPrice>
+        <ProductPrice>{price} ₴</ProductPrice>
         <div
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
