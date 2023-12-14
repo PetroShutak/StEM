@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   DetailsFavoriteBtnWrapper,
   DetailsContainer,
@@ -7,9 +10,11 @@ import {
   DescriptionWrapper,
   BuyButton,
 } from './Details.styled';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { notifyAddShopingList,
+  // notifyRemove,
+  notifyAddToFavorite,
+  notifyRemoveFromFavorite
+} from 'utils/toasts';
 import { getProductById } from 'redux/products/operations';
 import { selectFavorites, selectProductById } from 'redux/products/selectors';
 import { addFavorite, deleteFavorite } from 'redux/products/favoriteSlice';
@@ -25,12 +30,15 @@ const Details = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
+
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
+    notifyAddToFavorite();
   };
 
   const handleRemoveFavorites = favId => {
     dispatch(deleteFavorite(favId));
+    notifyRemoveFromFavorite();
   };
 
   const product = useSelector(state => selectProductById(state, id));
@@ -43,6 +51,7 @@ const Details = () => {
     dispatch(addToList(id, parseInt(quantity)));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
+    notifyAddShopingList();
   };
 
   useEffect(() => {

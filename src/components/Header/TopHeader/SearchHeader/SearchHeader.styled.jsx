@@ -23,9 +23,6 @@ export const SearchHeaderForm = styled.form`
   height: 100%;
 `;
 
-
-
-
 export const SearchHeaderInput = styled.input`
   padding-left: 16px;
   border: none;
@@ -51,22 +48,35 @@ export const SearchHeaderInput = styled.input`
 `;
 
 export const SearchHeaderButton = styled.button`
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: 0.5s;
-  padding: 0;
-  svg {
+  &:not([disabled]) {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
     transition: 0.5s;
-  }
-  &:hover {
+    padding: 0;
     svg {
-      color: var(--text-color-primary-orange);
+      transition: 0.5s;
     }
+    &:hover {
+      svg {
+        color: var(--text-color-primary-orange);
+      }
+    }
+  }
+  &[disabled] {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: default;
+    transition: 0.5s;
+    padding: 0;
   }
 `;
 
@@ -93,4 +103,3 @@ export const SearchResultItem = styled.li`
     color: #fff;
   }
 `;
-

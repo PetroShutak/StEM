@@ -20,6 +20,7 @@ import {
   setSearchQuery,
   // resetSearchResult,
 } from '../../../../redux/products/searchSlice';
+import { notifyNoSearchResults } from 'utils/toasts';
 
 const SearchHeader = ({ onSearchRedirect }) => {
   const dispatch = useDispatch();
@@ -69,6 +70,9 @@ const SearchHeader = ({ onSearchRedirect }) => {
       )
     );
     dispatch(setSearchResult(filteredResults));
+    if (filteredResults.length === 0) {
+      notifyNoSearchResults();
+    }
   };
 
   const handleResultItemClick = result => {
@@ -87,10 +91,6 @@ const SearchHeader = ({ onSearchRedirect }) => {
     }
   };
 
-  // if (searchQuery === '') {
-  //   dispatch(resetSearchResult());
-  // }
-
   return (
     <SearchHeaderWrapper ref={searchRef}>
       <SearchHeaderForm onSubmit={handleSearchSubmit}>
@@ -100,9 +100,8 @@ const SearchHeader = ({ onSearchRedirect }) => {
           value={searchQuery}
           onChange={handleSearchChange}
           validate={searchQuery}
-          required
         />
-        <SearchHeaderButton type="submit">
+        <SearchHeaderButton type="submit" disabled={!searchQuery.trim()}>
           <BiSearchAlt2 size={28} />
         </SearchHeaderButton>
       </SearchHeaderForm>

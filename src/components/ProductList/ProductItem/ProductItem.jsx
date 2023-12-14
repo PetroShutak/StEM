@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { notifyAddShopingList,
+  notifyRemove,
+  notifyAddToFavorite,
+  notifyRemoveFromFavorite
+} from 'utils/toasts';
 import {
   addFavorite,
   deleteFavorite,
@@ -34,6 +39,9 @@ import {
 import QuantityModal from 'components/QuantityModal/QuantityModal';
 import  DEFAULT_URL  from 'images/no-image.jpg'
 
+
+
+
 const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -43,17 +51,21 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
+ 
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
+    notifyAddToFavorite();
   };
 
   const handleRemoveFavorites = favId => {
     dispatch(deleteFavorite(favId));
+    notifyRemoveFromFavorite();
   };
 
   const handleAddToShoppingList = listId => {
     if (shoppingList.includes(listId)) {
       dispatch(deleteFromList(listId));
+      notifyRemove();
       if (shoppingList.length === 1) {
         dispatch(resetTotalPrice(listId));
       }
@@ -66,6 +78,7 @@ const ProductItem = ({ id, name, brand, price, image }) => {
     dispatch(addToList(id, parseInt(quantity)));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
+    notifyAddShopingList();
   };
 
   const isImageLink = str => {
@@ -74,6 +87,7 @@ const ProductItem = ({ id, name, brand, price, image }) => {
 
   return (
     <Item>
+      
       <div>
         {favorites.includes(id) ? (
           <FavoriteButtonActive onClick={() => handleRemoveFavorites(id)} />

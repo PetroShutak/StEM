@@ -92,7 +92,6 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
       return;
     }
     setOpen(false);
-    
   };
 
   const handleCloseSearch = event => {
@@ -100,6 +99,8 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
       setOpen(false);
     }
   };
+
+  const disabled = searchQuery.trim() === '';
 
   return (
     <Backdrop className="backdrop" onClick={handleCloseSearch}>
@@ -111,9 +112,8 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
             value={searchQuery}
             onChange={handleSearchChange}
             autoFocus
-            required
           />
-          <SearchMobileInputButton type="submit">
+          <SearchMobileInputButton type="submit" disabled={disabled}>
             <BiSearchAlt2 size={28} onClick={submitSearch} />
           </SearchMobileInputButton>
         </form>

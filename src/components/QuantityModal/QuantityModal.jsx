@@ -10,6 +10,7 @@ import {
 } from './QuantityModal.styled';
 import calculateTotalPrice from '../../utils/calculateTotal';
 
+
 const QuantityModal = ({
   showModal,
   setShowModal,
@@ -30,12 +31,17 @@ const QuantityModal = ({
     }
   };
 
-  const handleConfirm = () => {
-    if (quantity < 1 || quantity === '' || quantity === null) {
+  const handleQuantityChange = e => {
+    const value = e.target.value;
+    if (value <= 0 || isNaN(value)) {
       setQuantity(1);
-      return;
+    } else {
+      setQuantity(value);
     }
-    handleConfirmAddToShoppingList(id, quantity, totalPrice);
+  };
+
+  const handleConfirm = () => {
+       handleConfirmAddToShoppingList(id, quantity, totalPrice);
     setShowModal(false);
   };
 
@@ -48,7 +54,7 @@ const QuantityModal = ({
             <QuantityInput
               type="number"
               value={quantity}
-              onChange={e => setQuantity(e.target.value)}
+              onChange={handleQuantityChange}
               required
             />
             <ModalCloseButton onClick={handleModalClose}>

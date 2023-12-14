@@ -1,0 +1,35 @@
+import toast from 'react-hot-toast';
+
+export const toastError = message => {
+  toast.error(message);
+};
+
+export const toastSuccess = message => {
+  toast.success(message);
+};
+
+export const toastLoading = message => {
+  toast.loading(message);
+};
+
+export const toastDismiss = () => {
+  toast.dismiss();
+};
+
+export const notifyAddShopingList = () =>
+  toast.success('Товар додано в кошик', toastSuccess);
+export const notifyRemove = () =>
+  toast.success('Товар видалено з кошика', toastSuccess);
+  export const notifyAddToFavorite = () =>
+    toast.success('Товар додано в обране', toastSuccess);
+export const notifyRemoveFromFavorite = () =>
+    toast.success('Товар видалено з обраного', toastSuccess);
+
+
+
+// search
+    export const notifyNoSearchResults = () =>
+    toast.error('Нічого не знайдено', toastError);
+
+
+

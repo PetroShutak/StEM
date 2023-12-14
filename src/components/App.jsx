@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { startTextEffect } from 'utils/textEffectUtils';
+import { Toaster } from 'react-hot-toast';
+import MainPage from 'pages/MainPage';
 import Layout from './Layout/Layout';
 import NotFound from './NotFound/NotFound';
-import { startTextEffect } from 'utils/textEffectUtils';
 import CatalogPage from 'pages/CatalogPage';
 import FavoritePage from 'pages/FavoritePage';
 import ShoppingListPage from 'pages/ShoppingListPage';
@@ -13,17 +14,12 @@ import SearchResultPage from 'pages/SearchResultPage';
 import Details from './Details/Details';
 import CallButton from './CallButton/CallButton';
 
-// import { useTheme } from 'hooks/useTheme';
 
 // import { lazy } from 'react';
 // const MainPage = lazy(() => import('pages/MainPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const { theme } = useTheme();
-  // useEffect(() => {
-  //   document.body.className = theme;
-  // }, [theme]);
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -33,6 +29,7 @@ export const App = () => {
   }, []);
   return (
     <>
+    <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
@@ -123,6 +120,7 @@ export const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <CallButton />
+ 
       <div
         style={{
           height: '100vh',
