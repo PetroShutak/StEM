@@ -66,7 +66,6 @@ const Details = () => {
     <div className="container">
       <DetailsContainer>
         <DetailsImageWrapper>
-          {/* <DetailsImage src={product?.image} alt={product?.name} /> */}
         {isImageLink(product?.image) ? (
           <DetailsImage src={product?.image} alt={product?.name} />
         ) : (

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { notifyAddShopingList,
+import {
+  notifyAddShopingList,
   notifyRemove,
   notifyAddToFavorite,
-  notifyRemoveFromFavorite
+  notifyRemoveFromFavorite,
+  notifyLoadingDetails,
 } from 'utils/toasts';
 import {
   addFavorite,
@@ -37,10 +39,7 @@ import {
   resetTotalPrice,
 } from '../../../redux/products/shoppingListSlice';
 import QuantityModal from 'components/QuantityModal/QuantityModal';
-import  DEFAULT_URL  from 'images/no-image.jpg'
-
-
-
+import DEFAULT_URL from 'images/no-image.jpg';
 
 const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
@@ -51,7 +50,14 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
- 
+  const handleDetailsClick = () => {
+    notifyLoadingDetails();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
     notifyAddToFavorite();
@@ -87,7 +93,6 @@ const ProductItem = ({ id, name, brand, price, image }) => {
 
   return (
     <Item>
-      
       <div>
         {favorites.includes(id) ? (
           <FavoriteButtonActive onClick={() => handleRemoveFavorites(id)} />
@@ -104,7 +109,11 @@ const ProductItem = ({ id, name, brand, price, image }) => {
           onMouseEnter={() => setShowTooltipDetails(true)}
           onMouseLeave={() => setShowTooltipDetails(false)}
         >
-          <TitleLink to={`/details/${id}`} state={{ from: location }}>
+          <TitleLink
+            to={`/details/${id}`}
+            state={{ from: location }}
+            onClick={handleDetailsClick}
+          >
             <ProductName>
               {name} - {brand}
             </ProductName>
