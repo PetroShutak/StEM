@@ -34,7 +34,7 @@ const QuantityModal = ({
   const handleQuantityChange = e => {
     const value = e.target.value;
     if (value <= 0 || isNaN(value)) {
-      setQuantity(1);
+      setQuantity('');
     } else {
       setQuantity(value);
     }
