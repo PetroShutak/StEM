@@ -25,6 +25,10 @@ export const notifyAddToFavorite = () =>
 export const notifyRemoveFromFavorite = () =>
   toast.success('Товар видалено з обраного', toastSuccess);
 
+// quantity
+export const notifyQuantityLessThanOne = () =>
+  toast.error('Кількість товару не може бути менше 1', toastError);
+
 // search
 export const notifyNoSearchResults = () =>
   toast.error('Нічого не знайдено', toastError);

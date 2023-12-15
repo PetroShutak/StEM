@@ -9,7 +9,7 @@ import {
   ModalBackdrop,
 } from './QuantityModal.styled';
 import calculateTotalPrice from '../../utils/calculateTotal';
-
+import { notifyQuantityLessThanOne } from 'utils/toasts';
 
 const QuantityModal = ({
   showModal,
@@ -19,7 +19,7 @@ const QuantityModal = ({
   price,
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const totalPrice = calculateTotalPrice(price, parseInt(quantity));
+  const totalPrice = calculateTotalPrice(price, parseInt(quantity) || 0);
 
   const handleModalClose = () => {
     setShowModal(false);
@@ -34,14 +34,18 @@ const QuantityModal = ({
   const handleQuantityChange = e => {
     const value = e.target.value;
     if (value <= 0 || isNaN(value)) {
-      setQuantity('');
+      setQuantity(0);
     } else {
       setQuantity(value);
     }
   };
 
   const handleConfirm = () => {
-       handleConfirmAddToShoppingList(id, quantity, totalPrice);
+    if (quantity <= 0 || isNaN(quantity)) {
+      notifyQuantityLessThanOne();
+      return;
+    }
+    handleConfirmAddToShoppingList(id, quantity, totalPrice);
     setShowModal(false);
   };
 
