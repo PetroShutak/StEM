@@ -12,7 +12,6 @@ import {
 } from './Details.styled';
 import {
   notifyAddShopingList,
-  // notifyRemove,
   notifyAddToFavorite,
   notifyRemove,
   notifyRemoveFromFavorite,

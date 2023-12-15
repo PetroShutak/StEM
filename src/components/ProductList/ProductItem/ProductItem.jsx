@@ -110,7 +110,7 @@ const ProductItem = ({ id, name, brand, price, image }) => {
           onMouseLeave={() => setShowTooltipDetails(false)}
         >
           <TitleLink
-            to={`/details/${id}`}
+            to={`/catalog/${id}`}
             state={{ from: location }}
             onClick={handleDetailsClick}
           >

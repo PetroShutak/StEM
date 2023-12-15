@@ -14,7 +14,6 @@ import SearchResultPage from 'pages/SearchResultPage';
 import Details from './Details/Details';
 import CallButton from './CallButton/CallButton';
 
-
 // import { lazy } from 'react';
 // const MainPage = lazy(() => import('pages/MainPage'));
 
@@ -29,7 +28,7 @@ export const App = () => {
   }, []);
   return (
     <>
-    <Toaster />
+      <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
@@ -86,22 +85,7 @@ export const App = () => {
               />
             }
           />
-          <Route
-            path="/searchresult"
-            element={
-              <SearchResultPage
-                style={{ color: 'var(--text-color-primary-black)' }}
-              />
-            }
-          />
-          <Route
-            path="/servis"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Сервісний центр
-              </p>
-            }
-          />
+          <Route path="/catalog/:id" element={<Details />} />
           <Route
             path="/catalog/:category"
             element={
@@ -110,17 +94,20 @@ export const App = () => {
               </p>
             }
           />
+          <Route path="/searchresult" element={<SearchResultPage />} />
           <Route
-            path="/details/:id"
+            path="/servis"
             element={
-              <Details style={{ color: 'var(--text-color-primary-black)' }} />
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Сервісний центр
+              </p>
             }
-          ></Route>
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <CallButton />
- 
+
       <div
         style={{
           height: '100vh',
