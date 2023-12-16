@@ -14,7 +14,7 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </div>
-     {*/ <Footer />/*}
+     {/* <Footer />/*}
     </div>
   );
 };
