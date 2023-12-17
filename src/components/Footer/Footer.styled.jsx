@@ -15,6 +15,7 @@ export const FooterContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
+  flex-wrap: wrap;
   gap: 40px;
   width: 100%;
   max-width: 1200px;
@@ -22,16 +23,20 @@ export const FooterContent = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 1400px;
   }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+`;
 
-   a {
-    color: var(--text-color-primary-black);
-    transition: color 0.3s ease-in-out;
-    &:hover {
-        color: var(--text-color-primary-orange);
-    }
-
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-    }
+export const SocialSubscribeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
 `;

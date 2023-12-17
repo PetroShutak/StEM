@@ -46,6 +46,30 @@ export const App = () => {
             }
           />
           <Route
+            path="/ourteam"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Наша команда
+              </p>
+            }
+          />
+          <Route
+            path="/joboffers"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Вакансії
+              </p>
+            }
+          />
+          <Route
+            path="/reviews"
+            element={
+              <p style={{ color: 'var(--text-color-primary-black)' }}>
+                Відгуки
+              </p>
+            }
+          />
+          <Route
             path="/delivery"
             element={
               <p style={{ color: 'var(--text-color-primary-black)' }}>
