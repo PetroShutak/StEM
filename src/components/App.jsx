@@ -13,6 +13,7 @@ import { getAllProducts } from 'redux/products/operations';
 import SearchResultPage from 'pages/SearchResultPage';
 import Details from './Details/Details';
 import CallButton from './CallButton/CallButton';
+import AboutPage from 'pages/AboutPage';
 
 // import { lazy } from 'react';
 // const MainPage = lazy(() => import('pages/MainPage'));
@@ -37,14 +38,7 @@ export const App = () => {
               <MainPage style={{ color: 'var(--text-color-primary-black)' }} />
             }
           />
-          <Route
-            path="/about"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Про нас
-              </p>
-            }
-          />
+          <Route path="/about" element={<AboutPage />} />
           <Route
             path="/ourteam"
             element={
