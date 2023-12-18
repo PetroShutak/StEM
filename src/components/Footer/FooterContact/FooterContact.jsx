@@ -38,7 +38,6 @@ const FooterContact = () => {
             width="320"
             height="280"
             style={{ border: 0, margin: '10px 0' }}
-            allowFFooterContactListlScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="My Map"
