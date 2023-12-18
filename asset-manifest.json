@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/StEM/static/css/main.b8250b19.css",
-    "main.js": "/StEM/static/js/main.39df3045.js",
+    "main.js": "/StEM/static/js/main.af280b26.js",
     "static/media/Play-Bold.ttf": "/StEM/static/media/Play-Bold.b78f3be6adabf73cde7f.ttf",
     "static/media/Play-Regular.ttf": "/StEM/static/media/Play-Regular.e0424c5771f87080b05e.ttf",
     "static/media/valves.jpg": "/StEM/static/media/valves.0fb9a469b6a263483e83.jpg",
@@ -15,11 +15,12 @@
     "static/media/Barlow-ExtraLight.ttf": "/StEM/static/media/Barlow-ExtraLight.0920cad6f358df4532ff.ttf",
     "static/media/No_results_found.jpg": "/StEM/static/media/No_results_found.8c760407be35134a6fef.jpg",
     "index.html": "/StEM/index.html",
+    "static/media/stem.svg": "/StEM/static/media/stem.1024f6f3f6e2b4ee53b1e2562f46ff86.svg",
     "main.b8250b19.css.map": "/StEM/static/css/main.b8250b19.css.map",
-    "main.39df3045.js.map": "/StEM/static/js/main.39df3045.js.map"
+    "main.af280b26.js.map": "/StEM/static/js/main.af280b26.js.map"
   },
   "entrypoints": [
     "static/css/main.b8250b19.css",
-    "static/js/main.39df3045.js"
+    "static/js/main.af280b26.js"
   ]
 }
