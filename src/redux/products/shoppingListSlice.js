@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFavorite, deleteFavorite } from './favoriteSlice';
+
 
 const initialState = {
   shoppingList: [],
