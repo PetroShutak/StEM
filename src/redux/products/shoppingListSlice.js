@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
 const initialState = {
   shoppingList: [],
-favorites: [],
   totalPrice: 0,
 };
 
@@ -13,7 +11,6 @@ const shoppingListSlice = createSlice({
   reducers: {
     addToList(state, { payload }) {
       state.shoppingList.push(payload);
-state.favorites = state.favorites.filter((product) => product !== payload);
     },
     deleteFromList(state, { payload }) {
       state.shoppingList = state.shoppingList.filter(
