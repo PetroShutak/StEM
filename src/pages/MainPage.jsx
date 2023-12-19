@@ -1,4 +1,4 @@
-import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
+// import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
@@ -28,6 +28,15 @@ const MainPage = () => {
   ];
   return (
     <>
+    <p style={{
+      textAlign: 'center',
+      fontSize: '24px',
+      fontWeight: 'bold',
+      color: 'var(--text-color-primary-black)',
+      paddingTop: '40px',
+      paddingBottom: '40px',
+    }}
+    >Тут будуть слайди основні, а поки такий слайдер</p>
       <ImageGallery
         items={images}
         showFullscreenButton={false}
@@ -40,7 +49,7 @@ const MainPage = () => {
         lazyLoad={true}
         slideDuration={1000}
       />
-      <BrandCarousel />
+      {/* <BrandCarousel /> */}
       {/* <div
       style={{
         paddingTop: '40px',

@@ -28,6 +28,8 @@ import {
   TooltipDetails,
   TitleLink,
   TitleLinkContainer,
+  CounterButton,
+  Counter,
 } from './ProductItem.styled';
 import {
   addToList,
@@ -45,10 +47,13 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showTooltipDetails, setShowTooltipDetails] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
   const location = useLocation();
+
+
 
   const handleDetailsClick = () => {
     notifyLoadingDetails();
@@ -84,9 +89,18 @@ const ProductItem = ({ id, name, brand, price, image }) => {
     dispatch(addToList(id, parseInt(quantity)));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
+    setQuantity(parseInt(quantity));
     notifyAddShopingList();
   };
 
+  const isInShoppingList = id => {
+    return shoppingList.includes(id);
+  };
+   const itemTotalPrice = (price, quantity) => {
+    return price * quantity;
+  };
+
+   
   const isImageLink = str => {
     return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(str);
   };
@@ -134,6 +148,18 @@ const ProductItem = ({ id, name, brand, price, image }) => {
             </Tooltip>
           )}
         </div>
+        {isInShoppingList(id) && (
+          <Counter>
+            <CounterButton onClick={() => setQuantity(quantity + 1)}>
+              +
+            </CounterButton>
+            <div>{quantity}</div>
+            <CounterButton onClick={() => setQuantity(quantity - 1)}>
+              -
+            </CounterButton>
+            <div>{itemTotalPrice}</div>
+          </Counter>
+        )}
       </div>
       <QuantityModal
         showModal={showModal}
@@ -141,6 +167,7 @@ const ProductItem = ({ id, name, brand, price, image }) => {
         handleConfirmAddToShoppingList={handleConfirmAddToShoppingList}
         id={id}
         price={price}
+        setQuantity={setQuantity}
       />
     </Item>
   );
