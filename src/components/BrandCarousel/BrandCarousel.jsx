@@ -13,9 +13,9 @@ const BrandCarousel = () => {
     },
     {
       original:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703062383/stem-screen-1_csn8mw.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703063540/stem-screen-1_vdedgs.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703062383/stem-screen-1_csn8mw.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703063540/stem-screen-1_vdedgs.jpg',
     },
   ];
 
