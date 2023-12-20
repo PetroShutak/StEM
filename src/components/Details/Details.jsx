@@ -55,23 +55,24 @@ const Details = () => {
 
   const product = useSelector(state => selectProductById(state, id));
 
-  const handleAddToShoppingList = id => {
-    if (shoppingList.includes(id)) {
-      dispatch(deleteFromList(id));
+  const handleAddToShoppingList = listId => {
+    if (shoppingList.some(item => item.id === listId)) {
+      dispatch(deleteFromList(listId));
       notifyRemove();
       if (shoppingList.length === 1) {
-        dispatch(resetTotalPrice(id));
+        dispatch(resetTotalPrice());
       }
     } else {
       setShowModal(true);
     }
   };
 
-  const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
-    dispatch(addToList(id, parseInt(quantity)));
+  const handleConfirmAddToShoppingList = (id, quantity, totalPrice, price) => {
+    dispatch(addToList({ id, price, quantity }));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
     notifyAddShopingList();
+    console.log(shoppingList, totalPrice);
   };
 
   useEffect(() => {

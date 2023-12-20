@@ -28,8 +28,6 @@ import {
   TooltipDetails,
   TitleLink,
   TitleLinkContainer,
-  CounterButton,
-  Counter,
 } from './ProductItem.styled';
 import {
   addToList,
@@ -47,13 +45,10 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showTooltipDetails, setShowTooltipDetails] = useState(false);
-  const [quantity, setQuantity] = useState(1);
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
   const location = useLocation();
-
-
 
   const handleDetailsClick = () => {
     notifyLoadingDetails();
@@ -73,12 +68,32 @@ const ProductItem = ({ id, name, brand, price, image }) => {
     notifyRemoveFromFavorite();
   };
 
+  // const handleAddToShoppingList = listId => {
+  //   if (shoppingList.includes(listId)) {
+  //     dispatch(deleteFromList(listId));
+  //     notifyRemove();
+  //     if (shoppingList.length === 1) {
+  //       dispatch(resetTotalPrice(listId));
+  //     }
+  //   } else {
+  //     setShowModal(true);
+  //   }
+  // };
+
+  // const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
+  //   dispatch(addToList(id, parseInt(quantity),));
+  //   dispatch(setTotalPrice(totalPrice));
+  //   setShowModal(false);
+  //   notifyAddShopingList();
+  //   console.log(shoppingList, totalPrice);
+  // };
+
   const handleAddToShoppingList = listId => {
-    if (shoppingList.includes(listId)) {
+    if (shoppingList.some(item => item.id === listId)) {
       dispatch(deleteFromList(listId));
       notifyRemove();
       if (shoppingList.length === 1) {
-        dispatch(resetTotalPrice(listId));
+        dispatch(resetTotalPrice());
       }
     } else {
       setShowModal(true);
@@ -86,25 +101,16 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   };
 
   const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
-    dispatch(addToList(id, parseInt(quantity)));
+    dispatch(addToList({ id, price, quantity }));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
-    setQuantity(parseInt(quantity));
     notifyAddShopingList();
+    console.log(shoppingList, totalPrice);
   };
 
-  const isInShoppingList = id => {
-    return shoppingList.includes(id);
-  };
-   const itemTotalPrice = (price, quantity) => {
-    return price * quantity;
-  };
-
-   
   const isImageLink = str => {
     return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(str);
   };
-
   return (
     <Item>
       <div>
@@ -142,24 +148,12 @@ const ProductItem = ({ id, name, brand, price, image }) => {
           <ButtonAdd onClick={() => handleAddToShoppingList(id)} />
           {showTooltip && (
             <Tooltip>
-              {shoppingList.includes(id)
+              {shoppingList.some(item => item.id === id)
                 ? 'Забрати з кошика'
                 : 'Додати в кошик'}
             </Tooltip>
           )}
         </div>
-        {isInShoppingList(id) && (
-          <Counter>
-            <CounterButton onClick={() => setQuantity(quantity + 1)}>
-              +
-            </CounterButton>
-            <div>{quantity}</div>
-            <CounterButton onClick={() => setQuantity(quantity - 1)}>
-              -
-            </CounterButton>
-            <div>{itemTotalPrice}</div>
-          </Counter>
-        )}
       </div>
       <QuantityModal
         showModal={showModal}
@@ -167,7 +161,6 @@ const ProductItem = ({ id, name, brand, price, image }) => {
         handleConfirmAddToShoppingList={handleConfirmAddToShoppingList}
         id={id}
         price={price}
-        setQuantity={setQuantity}
       />
     </Item>
   );

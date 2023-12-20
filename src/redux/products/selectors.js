@@ -17,7 +17,9 @@ export const selectError = state => state.products.error;
 export const selectShoppingListProducts = createSelector(
   [selectAllProducts, selectShoppingList],
   (allProducts, shoppingList) => {
-    return allProducts.filter(product => shoppingList.includes(product._id));
+    return allProducts.filter(product =>
+      shoppingList.some(item => item.id === product._id)
+    );
   }
 );
 

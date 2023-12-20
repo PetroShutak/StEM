@@ -12,11 +12,50 @@ const shoppingListSlice = createSlice({
     addToList(state, { payload }) {
       state.shoppingList.push(payload);
     },
+    // deleteFromList(state, { payload }) {
+    //   state.shoppingList = state.shoppingList.filter(
+    //     product => product !== payload
+    //   );
+    // },
+
+    // deleteFromList(state, { payload }) {
+    //   const deletedProductId = payload.id;
+    //   console.log('Deleted Product ID:', deletedProductId);
+    //   const deletedProduct = state.shoppingList.find(
+    //     product => product._id === deletedProductId
+    //   );
+
+    //   if (deletedProduct) {
+    //     state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
+    //         console.log('Price:', deletedProduct.price);
+    //     console.log('Quantity:', deletedProduct.quantity);
+    //     state.shoppingList = state.shoppingList.filter(
+    //       product => product._id !== deletedProductId
+    //     );
+    //     console.log('Price after:', state.totalPrice);
+    //   }
+    // },
+
     deleteFromList(state, { payload }) {
-      state.shoppingList = state.shoppingList.filter(
-        product => product !== payload
+      const deletedProductId = payload._id;
+      console.log('Deleted Product ID:', deletedProductId);
+
+      const deletedProductIndex = state.shoppingList.findIndex(
+        product => product._id === deletedProductId
       );
+
+      if (deletedProductIndex !== -1) {
+        const deletedProduct = state.shoppingList[deletedProductIndex];
+        state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
+        console.log('Price:', deletedProduct.price);
+        console.log('Quantity:', deletedProduct.quantity);
+
+        state.shoppingList.splice(deletedProductIndex, 1);
+
+        console.log('Price after:', state.totalPrice);
+      }
     },
+
     setTotalPrice(state, { payload }) {
       state.totalPrice += payload;
     },
