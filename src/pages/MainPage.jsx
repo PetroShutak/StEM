@@ -1,4 +1,4 @@
-// import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
+import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
@@ -49,7 +49,7 @@ const MainPage = () => {
         lazyLoad={true}
         slideDuration={1000}
       />
-      {/* <BrandCarousel /> */}
+      <BrandCarousel />
       {/* <div
       style={{
         paddingTop: '40px',
