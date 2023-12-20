@@ -7,15 +7,15 @@ const BrandCarousel = () => {
   const images = [
     {
       original:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1702923600/Redditech_IT_Networks_1_ilahhs.png',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703062383/stem-screen_ybfq37.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1702923600/Redditech_IT_Networks_1_ilahhs.png',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703062383/stem-screen_ybfq37.jpg',
     },
     {
       original:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1702923599/Redditech_IT_Networks_xaqwkn.png',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703062383/stem-screen-1_csn8mw.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1702923599/Redditech_IT_Networks_xaqwkn.png',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703062383/stem-screen-1_csn8mw.jpg',
     },
   ];
 
