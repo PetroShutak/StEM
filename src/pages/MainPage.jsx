@@ -28,6 +28,7 @@ const MainPage = () => {
   ];
   return (
     <>
+      <BrandCarousel />
     <p style={{
       textAlign: 'center',
       fontSize: '24px',
@@ -49,7 +50,6 @@ const MainPage = () => {
         lazyLoad={true}
         slideDuration={1000}
       />
-      <BrandCarousel />
       {/* <div
       style={{
         paddingTop: '40px',
