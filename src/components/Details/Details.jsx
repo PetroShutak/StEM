@@ -54,6 +54,7 @@ const Details = () => {
   };
 
   const product = useSelector(state => selectProductById(state, id));
+  console.log('Product:', product);
   useEffect(() => {
     dispatch(getProductById(id));
   }, [dispatch, id]);
