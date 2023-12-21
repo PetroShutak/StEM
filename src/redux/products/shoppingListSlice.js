@@ -41,11 +41,11 @@ const shoppingListSlice = createSlice({
   console.log('Deleted Product ID:', deletedProductId);
 
   const updatedShoppingList = state.shoppingList.filter(
-    product => product._id !== deletedProductId
+    product => product.id !== deletedProductId
   );
 
   const deletedProduct = state.shoppingList.find(
-    product => product._id === deletedProductId 
+    product => product.id === deletedProductId
   );
 
   if (deletedProduct) {
@@ -58,7 +58,6 @@ const shoppingListSlice = createSlice({
   console.log('Shopping List after deletion:', state.shoppingList);
   console.log('Price after:', state.totalPrice);
 },
-
    
     setTotalPrice(state, { payload }) {
       state.totalPrice += payload;
