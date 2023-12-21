@@ -13,30 +13,9 @@ const shoppingListSlice = createSlice({
       state.shoppingList.push(payload);
       console.log('Product to be added:', payload);
     },
-    // deleteFromList(state, { payload }) {
-    //   state.shoppingList = state.shoppingList.filter(
-    //     product => product !== payload
-    //   );
-    // },
-
-    // deleteFromList(state, { payload }) {
-    //   const deletedProductId = payload.id;
-    //   console.log('Deleted Product ID:', deletedProductId);
-    //   const deletedProduct = state.shoppingList.find(
-    //     product => product._id === deletedProductId
-    //   );
-
-    //   if (deletedProduct) {
-    //     state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
-    //         console.log('Price:', deletedProduct.price);
-    //     console.log('Quantity:', deletedProduct.quantity);
-    //     state.shoppingList = state.shoppingList.filter(
-    //       product => product._id !== deletedProductId
-    //     );
-    //     console.log('Price after:', state.totalPrice);
-    //   }
-    // },
+  
     deleteFromList(state, { payload }) {
+        console.log('Payload ID:', payload.id);
   const deletedProductId = payload.id;
   console.log('Deleted Product ID:', deletedProductId);
 
