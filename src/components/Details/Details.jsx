@@ -71,13 +71,15 @@ const Details = () => {
   }
 };
 
-    const handleConfirmAddToShoppingList = (id, quantity, totalPrice, price) => {
-    dispatch(addToList({ id, price, quantity }));
-    dispatch(setTotalPrice(totalPrice));
-    setShowModal(false);
-    notifyAddShopingList();
-    console.log(shoppingList, totalPrice);
-  };
+const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
+  const product = useSelector(state => selectProductById(state, id));
+  const price = product?.price || 0; 
+  dispatch(addToList({ id, price, quantity }));
+  dispatch(setTotalPrice(totalPrice));
+  setShowModal(false);
+  notifyAddShopingList();
+  console.log(shoppingList, totalPrice);
+};
 
   useEffect(() => {
     dispatch(getProductById(id));
