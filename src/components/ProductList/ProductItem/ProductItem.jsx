@@ -89,6 +89,8 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   // };
 
   const handleAddToShoppingList = listId => {
+    console.log('Item ID:', id); // Вивести id товару
+  console.log('List ID:', listId); // Вивести listId перед порівнянням
     if (shoppingList.some(item => item.id === listId)) {
       dispatch(deleteFromList(listId));
       notifyRemove();
