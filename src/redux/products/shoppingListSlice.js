@@ -36,34 +36,30 @@ const shoppingListSlice = createSlice({
     //     console.log('Price after:', state.totalPrice);
     //   }
     // },
-
-   deleteFromList(state, { payload }) {
+    deleteFromList(state, { payload }) {
   const deletedProductId = payload.id;
   console.log('Deleted Product ID:', deletedProductId);
 
-  const deletedProductIndex = state.shoppingList.findIndex(
-    product => product._id === deletedProductId
+  const updatedShoppingList = state.shoppingList.filter(
+    product => product.id !== deletedProductId // Змінили з product._id на product.id
   );
-  console.log('Deleted Product Index:', deletedProductIndex);
 
-  console.log('Shopping List before deletion:', state.shoppingList);
+  const deletedProduct = state.shoppingList.find(
+    product => product.id === deletedProductId // Змінили з product._id на product.id
+  );
 
-  if (deletedProductIndex !== -1) {
-    const deletedProduct = state.shoppingList[deletedProductIndex];
+  if (deletedProduct) {
     state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
     console.log('Price:', deletedProduct.price);
     console.log('Quantity:', deletedProduct.quantity);
-
-    state.shoppingList.splice(deletedProductIndex, 1);
-
-    console.log('Shopping List after deletion:', state.shoppingList);
-    console.log('Price after:', state.totalPrice);
-  } else {
-    console.log('Product not found in the shopping list.');
   }
+
+  state.shoppingList = updatedShoppingList;
+  console.log('Shopping List after deletion:', state.shoppingList);
+  console.log('Price after:', state.totalPrice);
 },
 
-
+   
     setTotalPrice(state, { payload }) {
       state.totalPrice += payload;
     },
