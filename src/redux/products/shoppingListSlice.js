@@ -41,11 +41,11 @@ const shoppingListSlice = createSlice({
   console.log('Deleted Product ID:', deletedProductId);
 
   const updatedShoppingList = state.shoppingList.filter(
-    product => product.id !== deletedProductId // Змінили з product._id на product.id
+    product => product._id !== deletedProductId
   );
 
   const deletedProduct = state.shoppingList.find(
-    product => product.id === deletedProductId // Змінили з product._id на product.id
+    product => product._id === deletedProductId 
   );
 
   if (deletedProduct) {
