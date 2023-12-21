@@ -76,7 +76,7 @@ const Details = () => {
 
    const handleConfirmAddToShoppingList = (id, quantity, totalPrice, price) => {
      console.log('Product Price:', price);
-    dispatch(addToList({ id, price, quantity }));
+    dispatch(addToList({ id, price: product.price, quantity }));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
     notifyAddShopingList();
