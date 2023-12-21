@@ -11,6 +11,7 @@ const shoppingListSlice = createSlice({
   reducers: {
     addToList(state, { payload }) {
       state.shoppingList.push(payload);
+      console.log('Product to be added:', payload);
     },
     // deleteFromList(state, { payload }) {
     //   state.shoppingList = state.shoppingList.filter(
