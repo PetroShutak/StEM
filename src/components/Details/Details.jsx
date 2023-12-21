@@ -111,7 +111,7 @@ const Details = () => {
           <p>Виробник: {product?.brand}</p>
           <p>Модель: {product?.model}</p>
           <p>Опис: {product?.description}</p>
-          <p>Ціна: {product?.price}</p>
+          <p>Ціна: {product ? product.price : 'Loading...'}</p>
           <p>Категорія: {product?.category}</p>
           <p>Підкатегорія: {product?.subcategory}</p>
           <Rating rating={product?.raiting} />
