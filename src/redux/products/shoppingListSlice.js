@@ -37,11 +37,11 @@ const shoppingListSlice = createSlice({
     // },
 
    deleteFromList(state, { payload }) {
-  const deletedProductId = payload._id;
+  const deletedProductId = payload.id;
   console.log('Deleted Product ID:', deletedProductId);
 
   const deletedProductIndex = state.shoppingList.findIndex(
-    product => product._id === deletedProductId
+    product => product.id === deletedProductId
   );
   console.log('Deleted Product Index:', deletedProductIndex);
 
