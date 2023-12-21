@@ -88,19 +88,21 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   //   console.log(shoppingList, totalPrice);
   // };
 
-  const handleAddToShoppingList = listId => {
-    console.log('Item ID:', id); // Вивести id товару
-  console.log('List ID:', listId); // Вивести listId перед порівнянням
-    if (shoppingList.some(item => item.id === listId)) {
-      dispatch(deleteFromList(listId));
-      notifyRemove();
-      if (shoppingList.length === 1) {
-        dispatch(resetTotalPrice());
-      }
-    } else {
-      setShowModal(true);
+const handleAddToShoppingList = listId => {
+  const payload = { id: listId }; // Створюємо об'єкт payload з полем id
+  console.log('List ID:', listId); // Вивести listId перед передачею
+  console.log('Payload ID:', payload.id); // Вивести id з payload перед передачею
+
+  if (shoppingList.some(item => item.id === listId)) {
+    dispatch(deleteFromList(payload));
+    notifyRemove();
+    if (shoppingList.length === 1) {
+      dispatch(resetTotalPrice());
     }
-  };
+  } else {
+    setShowModal(true);
+  }
+};
 
   const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
     dispatch(addToList({ id, price, quantity }));
