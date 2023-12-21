@@ -55,17 +55,21 @@ const Details = () => {
 
   const product = useSelector(state => selectProductById(state, id));
 
-  const handleAddToShoppingList = listId => {
-    if (shoppingList.some(item => item.id === listId)) {
-      dispatch(deleteFromList(listId));
-      notifyRemove();
-      if (shoppingList.length === 1) {
-        dispatch(resetTotalPrice());
-      }
-    } else {
-      setShowModal(true);
+ const handleAddToShoppingList = listId => {
+  const payload = { id: listId }; // Створюємо об'єкт payload з полем id
+  console.log('List ID:', listId); // Вивести listId перед передачею
+  console.log('Payload ID:', payload.id); // Вивести id з payload перед передачею
+
+  if (shoppingList.some(item => item.id === listId)) {
+    dispatch(deleteFromList(payload));
+    notifyRemove();
+    if (shoppingList.length === 1) {
+      dispatch(resetTotalPrice());
     }
-  };
+  } else {
+    setShowModal(true);
+  }
+};
 
   const handleConfirmAddToShoppingList = (id, quantity, totalPrice, price) => {
     dispatch(addToList({ id, price, quantity }));
@@ -113,7 +117,7 @@ const Details = () => {
           <Rating rating={product?.raiting} />
           <p>Країна-виробник: {product?.country}</p>
           <BuyButton onClick={() => handleAddToShoppingList(id)}>
-            {shoppingList.includes(id) ? 'Забрати з кошика' : 'Додати в кошик'}
+            {shoppingList.some(item => item.id === id) ? 'Забрати з кошика' : 'Додати в кошик'}
           </BuyButton>
         </DescriptionWrapper>
       </DetailsContainer>
