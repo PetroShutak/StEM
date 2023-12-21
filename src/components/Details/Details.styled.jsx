@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const DetailsContainer = styled.div`
   padding-top: 40px;
+  padding-bottom: 40px;
   width: 100%;
   display: flex;
   gap: 30px;

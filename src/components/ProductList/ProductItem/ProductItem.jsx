@@ -28,6 +28,7 @@ import {
   TooltipDetails,
   TitleLink,
   TitleLinkContainer,
+  TooltipQuantity,
 } from './ProductItem.styled';
 import {
   addToList,
@@ -40,11 +41,13 @@ import {
 } from '../../../redux/products/shoppingListSlice';
 import QuantityModal from 'components/QuantityModal/QuantityModal';
 import DEFAULT_URL from 'images/no-image.jpg';
+import QuantityCounter from 'components/QuantityModal/QuantityCounter/QuantityCounter';
 
 const ProductItem = ({ id, name, brand, price, image }) => {
   const [showModal, setShowModal] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showTooltipDetails, setShowTooltipDetails] = useState(false);
+  // const [showTooltipQuantity, setShowTooltipQuantity] = useState(false);
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
@@ -68,48 +71,25 @@ const ProductItem = ({ id, name, brand, price, image }) => {
     notifyRemoveFromFavorite();
   };
 
-  // const handleAddToShoppingList = listId => {
-  //   if (shoppingList.includes(listId)) {
-  //     dispatch(deleteFromList(listId));
-  //     notifyRemove();
-  //     if (shoppingList.length === 1) {
-  //       dispatch(resetTotalPrice(listId));
-  //     }
-  //   } else {
-  //     setShowModal(true);
-  //   }
-  // };
+  const handleAddToShoppingList = listId => {
+    const payload = { id: listId };
 
-  // const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
-  //   dispatch(addToList(id, parseInt(quantity),));
-  //   dispatch(setTotalPrice(totalPrice));
-  //   setShowModal(false);
-  //   notifyAddShopingList();
-  //   console.log(shoppingList, totalPrice);
-  // };
-
-const handleAddToShoppingList = listId => {
-  const payload = { id: listId }; // Створюємо об'єкт payload з полем id
-  console.log('List ID:', listId); // Вивести listId перед передачею
-  console.log('Payload ID:', payload.id); // Вивести id з payload перед передачею
-
-  if (shoppingList.some(item => item.id === listId)) {
-    dispatch(deleteFromList(payload));
-    notifyRemove();
-    if (shoppingList.length === 1) {
-      dispatch(resetTotalPrice());
+    if (shoppingList.some(item => item.id === listId)) {
+      dispatch(deleteFromList(payload));
+      notifyRemove();
+      if (shoppingList.length === 1) {
+        dispatch(resetTotalPrice());
+      }
+    } else {
+      setShowModal(true);
     }
-  } else {
-    setShowModal(true);
-  }
-};
+  };
 
   const handleConfirmAddToShoppingList = (id, quantity, totalPrice) => {
     dispatch(addToList({ id, price, quantity }));
     dispatch(setTotalPrice(totalPrice));
     setShowModal(false);
     notifyAddShopingList();
-    console.log(shoppingList, totalPrice);
   };
 
   const isImageLink = str => {
@@ -159,6 +139,11 @@ const handleAddToShoppingList = listId => {
           )}
         </div>
       </div>
+      {/* переписати у відповідність до продукту */}
+      <TooltipQuantity>
+        <QuantityCounter />
+      </TooltipQuantity>
+
       <QuantityModal
         showModal={showModal}
         setShowModal={setShowModal}
