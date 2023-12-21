@@ -36,25 +36,32 @@ const shoppingListSlice = createSlice({
     //   }
     // },
 
-    deleteFromList(state, { payload }) {
-      const deletedProductId = payload._id;
-      console.log('Deleted Product ID:', deletedProductId);
+   deleteFromList(state, { payload }) {
+  const deletedProductId = payload._id;
+  console.log('Deleted Product ID:', deletedProductId);
 
-      const deletedProductIndex = state.shoppingList.findIndex(
-        product => product._id === deletedProductId
-      );
+  const deletedProductIndex = state.shoppingList.findIndex(
+    product => product._id === deletedProductId
+  );
+  console.log('Deleted Product Index:', deletedProductIndex);
 
-      if (deletedProductIndex !== -1) {
-        const deletedProduct = state.shoppingList[deletedProductIndex];
-        state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
-        console.log('Price:', deletedProduct.price);
-        console.log('Quantity:', deletedProduct.quantity);
+  console.log('Shopping List before deletion:', state.shoppingList);
 
-        state.shoppingList.splice(deletedProductIndex, 1);
+  if (deletedProductIndex !== -1) {
+    const deletedProduct = state.shoppingList[deletedProductIndex];
+    state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
+    console.log('Price:', deletedProduct.price);
+    console.log('Quantity:', deletedProduct.quantity);
 
-        console.log('Price after:', state.totalPrice);
-      }
-    },
+    state.shoppingList.splice(deletedProductIndex, 1);
+
+    console.log('Shopping List after deletion:', state.shoppingList);
+    console.log('Price after:', state.totalPrice);
+  } else {
+    console.log('Product not found in the shopping list.');
+  }
+},
+
 
     setTotalPrice(state, { payload }) {
       state.totalPrice += payload;
