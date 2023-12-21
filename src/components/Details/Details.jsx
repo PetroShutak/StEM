@@ -56,7 +56,7 @@ const Details = () => {
     notifyRemoveFromFavorite();
   };
 
-  const product = useSelector(state => selectProductById(state, id));
+  const product = useSelector(state => selectProductById(state.products, id));
 
   const handleAddToShoppingList = listId => {
     const payload = { id: listId };
