@@ -61,7 +61,7 @@ const Details = () => {
   const handleAddToShoppingList = listId => {
     const payload = { id: listId };
 
-    if (shoppingList.includes(item => item.id === listId)) {
+    if (shoppingList.some(item => item.id === listId)) {
       dispatch(deleteFromList(payload));
       notifyRemove();
       if (shoppingList.length === 1) {
@@ -113,7 +113,7 @@ const Details = () => {
           <Rating rating={product?.raiting} />
           <p>Країна-виробник: {product?.country}</p>
           <BuyButton onClick={() => handleAddToShoppingList(id)}>
-            {shoppingList.includes(item => item.id === id)
+            {shoppingList.some(item => item.id === id)
               ? 'Забрати з кошика'
               : 'Додати в кошик'}
           </BuyButton>
