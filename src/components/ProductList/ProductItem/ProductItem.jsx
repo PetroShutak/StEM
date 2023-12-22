@@ -139,9 +139,8 @@ const ProductItem = ({ id, name, brand, price, image }) => {
           )}
         </div>
       </div>
-      {/* переписати у відповідність до продукту */}
       <TooltipQuantity>
-        <QuantityCounter />
+        <QuantityCounter productId={id} />
       </TooltipQuantity>
 
       <QuantityModal

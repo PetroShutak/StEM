@@ -10,38 +10,50 @@ const shoppingListSlice = createSlice({
   initialState,
   reducers: {
     addToList(state, { payload }) {
-      console.log('Product to be added:', payload);
-      // state.shoppingList.push(payload);
+      // console.log('Product to be added:', payload);
       return {
         ...state,
         shoppingList: [...state.shoppingList, payload],
       };
     },
-
+    updateQuantityInList(state, action) {
+      const { id, changeQuantity } = action.payload;
+      const itemToUpdate = state.shoppingList.find(item => item.id === id);
+      if (itemToUpdate) {
+        itemToUpdate.quantity += changeQuantity;
+        state.totalPrice += itemToUpdate.price * changeQuantity;
+      }
+    },
     deleteFromList(state, { payload }) {
       const deletedProductId = payload.id;
-      const updatedShoppingList = state.shoppingList.filter(
-        product => product.id !== deletedProductId
-      );
       const deletedProduct = state.shoppingList.find(
         product => product.id === deletedProductId
       );
-
       if (deletedProduct) {
         state.totalPrice -= deletedProduct.price * deletedProduct.quantity;
       }
-      state.shoppingList = updatedShoppingList;
+      state.shoppingList = state.shoppingList.filter(
+        product => product.id !== deletedProductId
+      );
     },
-
     setTotalPrice(state, { payload }) {
       state.totalPrice += payload;
     },
     resetTotalPrice(state) {
       state.totalPrice = 0;
     },
+    resetShoppingList(state) {
+      state.shoppingList = [];
+    },
   },
 });
 
 export const shoppingListReducer = shoppingListSlice.reducer;
-export const { addToList, deleteFromList, setTotalPrice, resetTotalPrice } =
-  shoppingListSlice.actions;
+export const {
+  addToList,
+  deleteFromList,
+  setTotalPrice,
+  resetTotalPrice,
+  updateQuantityInList,
+  resetShoppingList,
+} = shoppingListSlice.actions;

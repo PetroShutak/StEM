@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const Counter = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-family-secondary);
   position: absolute;
-  bottom: -60px;
+  bottom: 0;
   left: 0;
   display: flex;
   justify-content: center;
@@ -11,10 +14,11 @@ export const Counter = styled.div`
 `;
 
 export const CounterButton = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   border: none;
+  border-radius: 5px;
   background-color: var(--bg-secondary);
   color: white;
   font-size: 16px;

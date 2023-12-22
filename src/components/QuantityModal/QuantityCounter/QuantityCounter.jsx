@@ -1,31 +1,47 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Counter, CounterButton } from './QuantityCounter.styled';
 import { selectShoppingList } from '../../../redux/products/selectors';
+import {
+  deleteFromList,
+  updateQuantityInList,
+} from '../../../redux/products/shoppingListSlice';
+import { notifyRemove } from 'utils/toasts';
 
-const QuantityCounter = () => {
-  const shoppingListCount = useSelector(selectShoppingList);
+const QuantityCounter = ({ productId }) => {
+  const dispatch = useDispatch();
+  const shoppingList = useSelector(selectShoppingList);
 
-  const handleIncrement = () => {
-    console.log('handleIncrement');
+  const product = shoppingList.find(item => item.id === productId);
+
+  const handleIncrement = id => {
+    dispatch(updateQuantityInList({ id, changeQuantity: 1 }));
   };
-  const handleDecrement = () => {
-    console.log('handleDecrement');
+
+  const handleDecrement = id => {
+    if (product.quantity > 1) {
+      dispatch(updateQuantityInList({ id, changeQuantity: -1 }));
+    } else if (product.quantity === 1) {
+      dispatch(updateQuantityInList({ id, changeQuantity: -1 }));
+      dispatch(deleteFromList({ id }));
+      notifyRemove();
+    }
   };
 
-  if (shoppingListCount.length === 0) {
+  if (!product) {
     return null;
   }
+
   return (
     <div>
       <Counter>
-        <CounterButton onClick={handleDecrement}>-</CounterButton>
-        {shoppingListCount.map(item => (
-          <div key={item.id}>
-            <p>{item.quantity}</p>
-          </div>
-        ))}
-        <CounterButton onClick={handleIncrement}>+</CounterButton>
+        <CounterButton onClick={() => handleDecrement(product.id)}>
+          -
+        </CounterButton>
+        <p>{product.quantity}</p>
+        <CounterButton onClick={() => handleIncrement(product.id)}>
+          +
+        </CounterButton>
       </Counter>
     </div>
   );

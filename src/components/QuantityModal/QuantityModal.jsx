@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import calculateTotalPrice from '../../utils/calculateTotal';
+import { notifyQuantityLessThanOne } from 'utils/toasts';
 import {
+  ModalBackdrop,
   ModalQuantity,
   ModalContent,
   ModalCloseButton,
-  Button,
   QuantityInput,
   TotalPrice,
-  ModalBackdrop,
+  Button,
 } from './QuantityModal.styled';
-import calculateTotalPrice from '../../utils/calculateTotal';
-import { notifyQuantityLessThanOne } from 'utils/toasts';
+import { updateQuantityInList } from 'redux/products/shoppingListSlice';
 
 const QuantityModal = ({
+  id,
+  price,
   showModal,
   setShowModal,
   handleConfirmAddToShoppingList,
-  id,
-  price,
 }) => {
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const totalPrice = calculateTotalPrice(price, parseInt(quantity) || 0);
+
+  const updateQuantityInReduxState = newQuantity => {
+    dispatch(
+      updateQuantityInList({ id, changeQuantity: newQuantity - quantity })
+    );
+    setQuantity(newQuantity);
+  };
 
   const handleModalClose = () => {
     setShowModal(false);
@@ -32,11 +41,11 @@ const QuantityModal = ({
   };
 
   const handleQuantityChange = e => {
-    const value = e.target.value;
-    if (value <= 0 || isNaN(value)) {
-      setQuantity(0);
+    const newQuantity = parseInt(e.target.value) || 0;
+    if (newQuantity >= 1) {
+      updateQuantityInReduxState(newQuantity);
     } else {
-      setQuantity(value);
+      setQuantity(0);
     }
   };
 
@@ -48,6 +57,8 @@ const QuantityModal = ({
     handleConfirmAddToShoppingList(id, quantity, totalPrice);
     setShowModal(false);
   };
+
+  const totalPrice = calculateTotalPrice(price, parseInt(quantity) || 0);
 
   return (
     showModal && (

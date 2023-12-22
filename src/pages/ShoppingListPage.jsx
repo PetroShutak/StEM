@@ -10,7 +10,30 @@ import {
 import ProductList from 'components/ProductList/ProductList';
 import NoFavorites from 'components/NoFavorites/NoFavorites';
 import { resetFilter } from 'redux/products/filterSlice';
+import {
+  resetShoppingList,
+  resetTotalPrice,
+} from 'redux/products/shoppingListSlice';
+import styled from 'styled-components';
+import { notifyRemove } from 'utils/toasts';
 
+const CleanBtn = styled.button`
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bg-secondary);
+  font-family: var(--font-family-secondary);
+  color: var(--text-color-primary-white);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: var(--bg-secondary-hover);
+  }
+`;
 
 const ShoppingListPage = () => {
   const isFiltred = useSelector(selectIsFiltred);
@@ -19,12 +42,16 @@ const ShoppingListPage = () => {
   const dispatch = useDispatch();
   const totalPrice = useSelector(selectTotalPrice);
 
+  const handleClearShoppingList = () => {
+    dispatch(resetTotalPrice());
+    dispatch(resetShoppingList());
+    notifyRemove();
+  };
 
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(resetFilter());
   }, [dispatch]);
-
 
   return (
     <div
@@ -54,16 +81,15 @@ const ShoppingListPage = () => {
         Загальна вартість: {totalPrice} ₴.
       </p>
 
-      <p>Кількість одиниць: {shoppingList.length}</p>
-
-    
-
       {shoppingList.length === 0 ? (
         <NoFavorites />
       ) : (
         <ProductList
           products={isFiltred ? filtredShoppingList : shoppingList}
         />
+      )}
+      {shoppingList.length === 0 ? null : (
+        <CleanBtn onClick={handleClearShoppingList}>Очистити кошик</CleanBtn>
       )}
     </div>
   );
