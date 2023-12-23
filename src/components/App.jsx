@@ -1,28 +1,38 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startTextEffect } from 'utils/textEffectUtils';
 import { Toaster } from 'react-hot-toast';
-import MainPage from 'pages/MainPage';
 import Layout from './Layout/Layout';
-import NotFound from './NotFound/NotFound';
+import MainPage from 'pages/MainPage';
 import CatalogPage from 'pages/CatalogPage';
 import FavoritePage from 'pages/FavoritePage';
 import ShoppingListPage from 'pages/ShoppingListPage';
-import { getAllProducts } from 'redux/products/operations';
 import SearchResultPage from 'pages/SearchResultPage';
+import AboutPage from 'pages/AboutPage';
+import NotFound from './NotFound/NotFound';
+import { getAllProducts } from 'redux/products/operations';
 import Details from './Details/Details';
 import CallButton from './CallButton/CallButton';
-import AboutPage from 'pages/AboutPage';
+import Loader from './Loader/Loader';
+import { selectLoading } from 'redux/products/selectors';
 
 // import { lazy } from 'react';
 // const MainPage = lazy(() => import('pages/MainPage'));
+// const CatalogPage = lazy(() => import('pages/CatalogPage'));
+// const FavoritePage = lazy(() => import('pages/FavoritePage'));
+// const ShoppingListPage = lazy(() => import('pages/ShoppingListPage'));
+// const SearchResultPage = lazy(() => import('pages/SearchResultPage'));
+// const AboutPage = lazy(() => import('pages/AboutPage'));
 
 export const App = () => {
+  const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
+  
 
   useEffect(() => {
     return startTextEffect();
@@ -124,6 +134,7 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {isLoading && <Loader />}
       <CallButton />
 
       <div

@@ -19,6 +19,7 @@ import {
 import { getProductById } from 'redux/products/operations';
 import {
   selectFavorites,
+  selectLoading,
   selectProductById,
   selectShoppingList,
 } from 'redux/products/selectors';
@@ -36,6 +37,7 @@ import {
   FavoriteButtonActive,
 } from 'components/ProductList/ProductItem/ProductItem.styled';
 import DEFAULT_URL from 'images/no-image.jpg';
+import Loader from 'components/Loader/Loader';
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
@@ -43,6 +45,7 @@ const Details = () => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
+  const isLoading = useSelector(selectLoading)
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
     notifyAddToFavorite();
@@ -85,6 +88,7 @@ const Details = () => {
 
   return (
     <div className="container">
+      {isLoading && <Loader />}
       <DetailsContainer>
         <DetailsImageWrapper>
           {isImageLink(product?.image) ? (

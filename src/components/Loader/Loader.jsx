@@ -4,11 +4,17 @@ const Loader = () => {
   return (
     <div
       style={{
-        width: '100%',
-        height: '100%',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        background: 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: 'blur(3px)',
+        zIndex: 1,
       }}
     >
       <ProgressBar
@@ -17,8 +23,8 @@ const Loader = () => {
         ariaLabel="progress-bar-loading"
         wrapperStyle={{}}
         wrapperClass="progress-bar-wrapper"
-        borderColor="#F4442E"
-        barColor="#f44336"
+        borderColor="#e24617"
+        barColor="#ff6b09"
       />
     </div>
   );
