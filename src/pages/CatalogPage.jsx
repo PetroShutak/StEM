@@ -1,48 +1,53 @@
 import Loader from 'components/Loader/Loader';
 import ProductList from 'components/ProductList/ProductList';
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import {
   selectAllProducts,
   selectError,
   selectLoading,
 } from 'redux/products/selectors';
-import { getAllProducts } from 'redux/products/operations';
-import { resetFilter } from 'redux/products/filterSlice';
+import {
+  CatalogPageWrapper,
+  FilterWrapper,
+  ProductListTitle,
+  ProductListWrapper,
+} from 'components/PageStyled/CatalogPage.styled';
+import Filter from 'components/Filter/Filter';
 
 const CatalogPage = () => {
-  const products = useSelector(selectAllProducts);
+  const allProducts = useSelector(selectAllProducts);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(resetFilter());
-  }, [dispatch]);
+    setFilteredProducts(allProducts);
+  }, [allProducts]);
+
+  const applyFilter = selectedBrands => {
+    const filtered = allProducts.filter(product =>
+      selectedBrands.includes(product.brand)
+    );
+    setFilteredProducts(filtered);
+    if (selectedBrands.length === 0) {
+      setFilteredProducts(allProducts);
+    }
+  };
 
   return (
-    <div
-      style={{
-        paddingTop: '40px',
-        paddingBottom: '40px',
-      }}
-    >
-      <h1
-        style={{
-          color: 'var(--text-color-primary-black)',
-          fontFamily: 'var(--font-family-secondary)',
-          marginBottom: '20px',
-        }}
-      >
-        Каталог товарів
-      </h1>
-      <ProductList products={products} />
+    <CatalogPageWrapper>
+      <FilterWrapper>
+        <Filter products={allProducts} applyFilter={applyFilter} />
+      </FilterWrapper>
+      <ProductListWrapper>
+        <ProductListTitle>Каталог товарів</ProductListTitle>
+        <ProductList products={filteredProducts} />
+      </ProductListWrapper>
       {error && <h2>Упс, щось пішло не так</h2>}
       {loading && !error && <Loader />}
-    </div>
+    </CatalogPageWrapper>
   );
 };
 
