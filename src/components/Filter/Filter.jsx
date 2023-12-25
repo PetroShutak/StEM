@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ApplyFilterButtton, BrandCheckboxContainer, BrandCheckboxInput, FilterTitle, FiterBrandContainer } from './Filter.styled';
 
 const Filter = ({ products, applyFilter }) => {
   const [brands, setBrands] = useState([]);
@@ -27,11 +28,11 @@ const Filter = ({ products, applyFilter }) => {
   };
 
   return (
-    <div>
-      <h3>Бренди</h3>
+    <FiterBrandContainer>
+      <FilterTitle>Бренди</FilterTitle>
       {brands.map(brand => (
-        <div key={brand}>
-          <input
+        <BrandCheckboxContainer key={brand}>
+          <BrandCheckboxInput
             type="checkbox"
             id={brand}
             name={brand}
@@ -39,10 +40,10 @@ const Filter = ({ products, applyFilter }) => {
             onChange={() => handleBrandChange(brand)}
           />
           <label htmlFor={brand}>{brand}</label>
-        </div>
+        </BrandCheckboxContainer>
       ))}
-      <button onClick={applyFilterHandler}>Застосувати фільтр</button>
-    </div>
+      <ApplyFilterButtton onClick={applyFilterHandler}>Застосувати фільтр</ApplyFilterButtton>
+    </FiterBrandContainer>
   );
 };
 

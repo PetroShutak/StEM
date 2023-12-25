@@ -14,11 +14,19 @@ export const CatalogPageWrapper = styled.div`
 `;
 
 export const FilterWrapper = styled.div`
-  border: 1px solid red;
+font-family: var(--font-family-secondary);
+color: var(--text-color-primary-black);
+border: 1px solid red;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const ProductListWrapper = styled.div`
   border: 1px solid green;
+  @media screen and (max-width: 768px) {
+    border: none;
+  }
 `;
 
 export const ProductListTitle = styled.h1`
