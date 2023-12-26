@@ -242,3 +242,19 @@ body.modalIsOpen {
   transform: translateY(-100%);
   transition: all 500ms;
 }
+
+/* range price filter */
+
+.rc-slider-track {
+  background-color: var(--bg-secondary);
+  height: 5px;
+}
+
+.rc-slider-handle {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--bg-secondary-hover);
+  height: 18px;
+  width: 18px;
+  margin-top: -7px;
+  /* box-shadow: 0 0 5px var(--bg-secondary); */
+}

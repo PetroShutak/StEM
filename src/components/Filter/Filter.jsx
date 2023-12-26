@@ -8,9 +8,11 @@ import {
   BrandCheckboxContainer,
   FiterContainer,
   FilterTitleHeader,
-  PriceRangeInput,
+  // PriceRangeInput,
   PriceLabel,
 } from './Filter.styled';
+import 'rc-slider/assets/index.css';
+import Slider from 'rc-slider';
 
 const Filter = ({
   products,
@@ -22,8 +24,7 @@ const Filter = ({
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [countries, setCountries] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
+  const [priceRange, setPriceRange] = useState([0, 1000]);
 
   useEffect(() => {
     const uniqueBrands = Array.from(
@@ -62,7 +63,7 @@ const Filter = ({
   const applyFilters = () => {
     applyBrandFilter(selectedBrands);
     applyCountryFilter(selectedCountries);
-    applyPriceFilter(minPrice, maxPrice);
+    applyPriceFilter(priceRange[0], priceRange[1]);
   };
 
   return (
@@ -100,21 +101,16 @@ const Filter = ({
       </div>
       <div>
         <FilterTitle>Ціна</FilterTitle>
-        <PriceLabel>Мінімальна ціна: {minPrice}</PriceLabel>
-        <PriceRangeInput
-          type="range"
+        <div>
+          <PriceLabel>Мінімальна ціна: {priceRange[0]}</PriceLabel>
+          <PriceLabel>Максимальна ціна: {priceRange[1]}</PriceLabel>
+        </div>
+        <Slider
           min={0}
-          max={100}
-          value={minPrice}
-          onChange={e => setMinPrice(parseInt(e.target.value))}
-        />
-        <PriceLabel>Максимальна ціна: {maxPrice}</PriceLabel>
-        <PriceRangeInput
-          type="range"
-          min={0}
-          max={100000}
-          value={maxPrice}
-          onChange={e => setMaxPrice(parseInt(e.target.value))}
+          max={50000}
+          value={priceRange}
+          onChange={setPriceRange}
+          range
         />
       </div>
       <ApplyFilterButton onClick={applyFilters}>

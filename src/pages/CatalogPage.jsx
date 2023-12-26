@@ -41,9 +41,11 @@ const CatalogPage = () => {
       );
     }
 
-    filtered = filtered.filter(
-      product => product.price >= minPrice && product.price <= maxPrice
-    );
+    if (minPrice !== 0 || maxPrice !== 1000) {
+      filtered = filtered.filter(
+        product => product.price >= minPrice && product.price <= maxPrice
+      );
+    }
 
     setFilteredProducts(filtered);
   }, [allProducts, selectedBrands, selectedCountries, minPrice, maxPrice]);
