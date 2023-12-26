@@ -8,13 +8,22 @@ import {
   BrandCheckboxContainer,
   FiterContainer,
   FilterTitleHeader,
+  PriceRangeInput,
+  PriceLabel,
 } from './Filter.styled';
 
-const Filter = ({ products, applyBrandFilter, applyCountryFilter }) => {
+const Filter = ({
+  products,
+  applyBrandFilter,
+  applyCountryFilter,
+  applyPriceFilter,
+}) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [countries, setCountries] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
 
   useEffect(() => {
     const uniqueBrands = Array.from(
@@ -53,6 +62,7 @@ const Filter = ({ products, applyBrandFilter, applyCountryFilter }) => {
   const applyFilters = () => {
     applyBrandFilter(selectedBrands);
     applyCountryFilter(selectedCountries);
+    applyPriceFilter(minPrice, maxPrice);
   };
 
   return (
@@ -87,6 +97,25 @@ const Filter = ({ products, applyBrandFilter, applyCountryFilter }) => {
             <label htmlFor={country}>{country}</label>
           </CountryCheckboxContainer>
         ))}
+      </div>
+      <div>
+        <FilterTitle>Ціна</FilterTitle>
+        <PriceLabel>Мінімальна ціна: {minPrice}</PriceLabel>
+        <PriceRangeInput
+          type="range"
+          min={0}
+          max={100}
+          value={minPrice}
+          onChange={e => setMinPrice(parseInt(e.target.value))}
+        />
+        <PriceLabel>Максимальна ціна: {maxPrice}</PriceLabel>
+        <PriceRangeInput
+          type="range"
+          min={0}
+          max={100000}
+          value={maxPrice}
+          onChange={e => setMaxPrice(parseInt(e.target.value))}
+        />
       </div>
       <ApplyFilterButton onClick={applyFilters}>
         Застосувати фільтр

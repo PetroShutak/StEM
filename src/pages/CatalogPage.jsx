@@ -1,5 +1,3 @@
-import Loader from 'components/Loader/Loader';
-import ProductList from 'components/ProductList/ProductList';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -15,6 +13,8 @@ import {
   ProductListWrapper,
 } from 'components/PageStyled/CatalogPage.styled';
 import Filter from 'components/Filter/Filter';
+import Loader from 'components/Loader/Loader';
+import ProductList from 'components/ProductList/ProductList';
 
 const CatalogPage = () => {
   const allProducts = useSelector(selectAllProducts);
@@ -23,6 +23,8 @@ const CatalogPage = () => {
   const error = useSelector(selectError);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
 
   useEffect(() => {
     let filtered = [...allProducts];
@@ -39,8 +41,12 @@ const CatalogPage = () => {
       );
     }
 
+    filtered = filtered.filter(
+      product => product.price >= minPrice && product.price <= maxPrice
+    );
+
     setFilteredProducts(filtered);
-  }, [allProducts, selectedBrands, selectedCountries]);
+  }, [allProducts, selectedBrands, selectedCountries, minPrice, maxPrice]);
 
   const applyBrandFilter = selectedBrands => {
     setSelectedBrands(selectedBrands);
@@ -50,6 +56,11 @@ const CatalogPage = () => {
     setSelectedCountries(selectedCountries);
   };
 
+  const applyPriceFilter = (minPrice, maxPrice) => {
+    setMinPrice(minPrice);
+    setMaxPrice(maxPrice);
+  };
+
   return (
     <CatalogPageWrapper>
       <FilterWrapper>
@@ -57,6 +68,7 @@ const CatalogPage = () => {
           products={allProducts}
           applyBrandFilter={applyBrandFilter}
           applyCountryFilter={applyCountryFilter}
+          applyPriceFilter={applyPriceFilter}
         />
       </FilterWrapper>
       <ProductListWrapper>

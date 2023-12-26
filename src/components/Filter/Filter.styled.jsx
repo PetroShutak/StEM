@@ -110,3 +110,12 @@ export const ApplyFilterButton = styled.button`
     background-color: var(--bg-secondary-hover);
   }
 `;
+
+export const PriceRangeInput = styled.input`
+  width: 100%;
+`;
+export const PriceLabel = styled.p`
+  font-family: var(--font-family-secondary);
+  color: var(--text-color-primary-black);
+  margin-bottom: 10px;
+`;
