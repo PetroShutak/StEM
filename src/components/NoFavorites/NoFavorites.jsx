@@ -15,7 +15,13 @@ const NoFavorites = () => {
         <Loader />
       ) : (
         <Container>
-          <img src={noResultsFound} alt="No results found" width="400" loading="lazy" />
+          <img
+            src={noResultsFound}
+            alt="No results found"
+            width="400"
+            height="400"
+            loading="lazy"
+          />
           <Text>
             Тут поки нічого немає... <br />
             Переходь в каталог і додай товар.

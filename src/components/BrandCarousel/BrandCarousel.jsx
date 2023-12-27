@@ -7,15 +7,15 @@ const BrandCarousel = () => {
   const images = [
     {
       original:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703062383/stem-screen_ybfq37.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703694154/stem-screen_ybfq37_1_lhdti1.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703062383/stem-screen_ybfq37.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703694154/stem-screen_ybfq37_1_lhdti1.jpg',
     },
     {
       original:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703063540/stem-screen-1_vdedgs.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703694154/stem-screen-1_vdedgs_1_i2h9z6.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703063540/stem-screen-1_vdedgs.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703694154/stem-screen-1_vdedgs_1_i2h9z6.jpg',
     },
   ];
 
@@ -32,6 +32,8 @@ const BrandCarousel = () => {
         slideInterval={5000}
         lazyLoad={true}
         slideDuration={1000}
+        width="100%"
+        height="100%"
       />
     </div>
   );
