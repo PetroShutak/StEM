@@ -9,11 +9,11 @@ export const Container = styled.div`
   background-color: var(--text-color-primary-white);
   img {
     border-radius: 12px;
+    margin-bottom: 25px;
   }
-  max-width: 100%;
-  padding: 50px 25px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 100%;
 
   @media screen and (min-width: 480px) {
     max-width: 480px;
@@ -30,7 +30,6 @@ export const Container = styled.div`
 
 export const Text = styled.p`
   font-family: var(--font-family-secondary);
-  margin-top: 50px;
   margin-bottom: 25px;
   color: var(--text-color-primary-black);
   text-align: center;
@@ -43,19 +42,19 @@ export const Text = styled.p`
 
 export const Button = styled.button`
   font-family: var(--font-family-secondary);
-    width: 270px;
-    height: 44px;
-    margin-bottom: 50px;
-    border: 0.5px solid var(--bg-secondary);
-    border-radius: 12px;
-    background-color: var(--bg-primary-white);
-    color: var(--text-color-primary-black);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.43;
-    cursor: pointer;
-    transition: background-color var(--transition-default);
+  width: 270px;
+  height: 44px;
+  margin-bottom: 50px;
+  border: 0.5px solid var(--bg-secondary);
+  border-radius: 12px;
+  background-color: var(--bg-secondary);
+  color: var(--text-color-primary-black);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43;
+  cursor: pointer;
+  transition: background-color var(--transition-default);
     &:hover,
     &:focus {
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-secondary-hover);
 `;

@@ -3,7 +3,7 @@ import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 const BrandCarousel = () => {
-    // test slider
+  // test slider
   const images = [
     {
       original:
@@ -19,8 +19,13 @@ const BrandCarousel = () => {
     },
   ];
 
+  const galleryStyle = {
+    width: '100%',
+    height: '100%',
+  };
+
   return (
-    <div>
+    <div style={galleryStyle}>
       <ImageGallery
         items={images}
         showFullscreenButton={false}
@@ -32,8 +37,6 @@ const BrandCarousel = () => {
         slideInterval={5000}
         lazyLoad={true}
         slideDuration={1000}
-        width="100%"
-        height="100%"
       />
     </div>
   );

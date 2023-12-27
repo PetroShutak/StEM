@@ -54,7 +54,7 @@ const BurgerMenu = ({ setOpen }) => {
           </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/favorite">
             <GrFavorite size={26} />
-            Список бажань
+            Обране
           </StyledLink>
           <StyledLink onClick={handleLinkClick} to="/shoppinglist">
             <IoCartOutline size={26} />

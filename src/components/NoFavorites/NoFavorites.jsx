@@ -15,6 +15,10 @@ const NoFavorites = () => {
         <Loader />
       ) : (
         <Container>
+          <Text>
+            Тут поки нічого немає... <br />
+            Переходь в каталог і додай товар.
+          </Text>
           <img
             src={noResultsFound}
             alt="No results found"
@@ -22,10 +26,6 @@ const NoFavorites = () => {
             height="400"
             loading="lazy"
           />
-          <Text>
-            Тут поки нічого немає... <br />
-            Переходь в каталог і додай товар.
-          </Text>
           <Button onClick={() => navigate('/catalog')}>Відкрити каталог</Button>
         </Container>
       )}
