@@ -104,9 +104,14 @@ const ProductItem = ({ id, name, brand, price, image }) => {
           <FavoriteButton onClick={() => handleAddFavorites(id)} />
         )}
         {isImageLink(image) ? (
-          <ProductImage src={image} alt={name} />
+          <ProductImage src={image} alt={name} width="100%" height="100%" />
         ) : (
-          <ProductImage src={DEFAULT_URL} alt={name} />
+          <ProductImage
+            src={DEFAULT_URL}
+            alt={name}
+            width="100%"
+            height="100%"
+          />
         )}
 
         <TitleLinkContainer
