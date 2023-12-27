@@ -1,10 +1,9 @@
 {
   "files": {
     "main.css": "/StEM/static/css/main.ba6a29dc.css",
-    "main.js": "/StEM/static/js/main.5057bec9.js",
+    "main.js": "/StEM/static/js/main.269b3da0.js",
     "static/media/Play-Bold.ttf": "/StEM/static/media/Play-Bold.b78f3be6adabf73cde7f.ttf",
     "static/media/Play-Regular.ttf": "/StEM/static/media/Play-Regular.e0424c5771f87080b05e.ttf",
-    "static/media/valves.jpg": "/StEM/static/media/valves.0fb9a469b6a263483e83.jpg",
     "static/media/Barlow-Black.ttf": "/StEM/static/media/Barlow-Black.5b6aa950a7733ff40634.ttf",
     "static/media/Barlow-LightItalic.ttf": "/StEM/static/media/Barlow-LightItalic.ec5b35408945fef61492.ttf",
     "static/media/Barlow-SemiBold.ttf": "/StEM/static/media/Barlow-SemiBold.8247eaeb0799c0acafc6.ttf",
@@ -13,14 +12,14 @@
     "static/media/Barlow-Medium.ttf": "/StEM/static/media/Barlow-Medium.d4afdc134fc10b739bab.ttf",
     "static/media/Barlow-Light.ttf": "/StEM/static/media/Barlow-Light.19f244ecb11218b9a7de.ttf",
     "static/media/Barlow-ExtraLight.ttf": "/StEM/static/media/Barlow-ExtraLight.0920cad6f358df4532ff.ttf",
+    "static/media/valves.jpg": "/StEM/static/media/valves.08e7223fc9cbfb6b0c6f.jpg",
     "static/media/No_results_found.jpg": "/StEM/static/media/No_results_found.8c760407be35134a6fef.jpg",
     "index.html": "/StEM/index.html",
-    "static/media/stem.svg": "/StEM/static/media/stem.1024f6f3f6e2b4ee53b1e2562f46ff86.svg",
     "main.ba6a29dc.css.map": "/StEM/static/css/main.ba6a29dc.css.map",
-    "main.5057bec9.js.map": "/StEM/static/js/main.5057bec9.js.map"
+    "main.269b3da0.js.map": "/StEM/static/js/main.269b3da0.js.map"
   },
   "entrypoints": [
     "static/css/main.ba6a29dc.css",
-    "static/js/main.5057bec9.js"
+    "static/js/main.269b3da0.js"
   ]
 }
