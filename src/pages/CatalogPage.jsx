@@ -7,6 +7,7 @@ import {
 } from 'redux/products/selectors';
 import {
   CatalogPageWrapper,
+  FilterButton,
   FilterWrapper,
   NoProductsMessage,
   ProductListTitle,
@@ -15,6 +16,7 @@ import {
 import Filter from 'components/Filter/Filter';
 import Loader from 'components/Loader/Loader';
 import ProductList from 'components/ProductList/ProductList';
+import FilterModal from 'components/Filter/FilterModal/FilterModal';
 
 const CatalogPage = () => {
   const allProducts = useSelector(selectAllProducts);
@@ -25,6 +27,11 @@ const CatalogPage = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalVisible(prevState => !prevState);
+  };
 
   useEffect(() => {
     let filtered = [...allProducts];
@@ -65,6 +72,16 @@ const CatalogPage = () => {
 
   return (
     <CatalogPageWrapper>
+      <FilterModal
+        isVisible={isModalVisible}
+        onClose={toggleModal}
+        filterProps={{
+          allProducts,
+          applyBrandFilter,
+          applyCountryFilter,
+          applyPriceFilter,
+        }}
+      />
       <FilterWrapper>
         <Filter
           products={allProducts}
@@ -74,7 +91,17 @@ const CatalogPage = () => {
         />
       </FilterWrapper>
       <ProductListWrapper>
-        <ProductListTitle>Каталог товарів</ProductListTitle>
+        <div
+          style={{
+            display: 'flex',
+            gap: '20px',
+            alignItems: 'center',
+            alignContent: 'center',
+          }}
+        >
+          <FilterButton onClick={toggleModal} />
+          <ProductListTitle>Каталог товарів</ProductListTitle>
+        </div>
         {filteredProducts.length === 0 ? (
           <NoProductsMessage>
             Немає товарів, що відповідають вибраним критеріям

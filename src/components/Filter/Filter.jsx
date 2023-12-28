@@ -19,6 +19,7 @@ const Filter = ({
   applyBrandFilter,
   applyCountryFilter,
   applyPriceFilter,
+  closeModal,
 }) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -64,7 +65,9 @@ const Filter = ({
     applyBrandFilter(selectedBrands);
     applyCountryFilter(selectedCountries);
     applyPriceFilter(priceRange[0], priceRange[1]);
+    closeModal()
   };
+
 
   return (
     <FiterContainer>

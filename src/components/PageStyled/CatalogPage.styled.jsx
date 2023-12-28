@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TbFilterSearch } from 'react-icons/tb';
 
 export const CatalogPageWrapper = styled.div`
   padding-top: 40px;
@@ -7,7 +8,7 @@ export const CatalogPageWrapper = styled.div`
   grid-template-columns: 1fr 4fr;
   gap: 40px;
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -38,4 +39,13 @@ export const NoProductsMessage = styled.p`
   color: var(--text-color-primary-black);
   text-align: center;
   font-size: 20px;
+`;
+
+export const FilterButton = styled(TbFilterSearch)`
+  font-size: 30px;
+  color: var(--text-color-primary-black);
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;

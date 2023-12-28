@@ -11,8 +11,8 @@ const pulse = keyframes`
 
 export const StyledCallButton = styled.button`
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 30px;
+  right: 30px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
