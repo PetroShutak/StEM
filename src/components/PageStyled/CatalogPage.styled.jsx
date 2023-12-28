@@ -6,6 +6,9 @@ export const CatalogPageWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 40px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr; 
+  }
 `;
 
 export const FilterWrapper = styled.div`
