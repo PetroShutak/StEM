@@ -13,6 +13,7 @@ import {
 } from './Filter.styled';
 import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
+import { ResetButton } from 'components/PageStyled/CatalogPage.styled';
 
 const Filter = ({
   products,
@@ -20,6 +21,7 @@ const Filter = ({
   applyCountryFilter,
   applyPriceFilter,
   closeModal,
+  resetFilters,
 }) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -61,13 +63,19 @@ const Filter = ({
     setSelectedCountries(updatedCountries);
   };
 
+  const handleResetFilters = () => {
+    setSelectedBrands([]);
+    setSelectedCountries([]);
+    setPriceRange([0, 1000]);
+    resetFilters();
+  };
+
   const applyFilters = () => {
     applyBrandFilter(selectedBrands);
     applyCountryFilter(selectedCountries);
     applyPriceFilter(priceRange[0], priceRange[1]);
-    closeModal()
+    closeModal();
   };
-
 
   return (
     <FiterContainer>
@@ -119,6 +127,7 @@ const Filter = ({
       <ApplyFilterButton onClick={applyFilters}>
         Застосувати фільтр
       </ApplyFilterButton>
+      <ResetButton onClick={handleResetFilters}>Скинути фільтри</ResetButton>
     </FiterContainer>
   );
 };

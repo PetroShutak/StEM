@@ -8,8 +8,9 @@ const FilterModal = ({ isVisible, onClose, filterProps }) => {
     applyBrandFilter,
     applyCountryFilter,
     applyPriceFilter,
+    resetFilters,
   } = filterProps;
-  
+
   const applyFilters = () => {
     closeModal();
   };
@@ -27,6 +28,7 @@ const FilterModal = ({ isVisible, onClose, filterProps }) => {
         applyCountryFilter={applyCountryFilter}
         applyPriceFilter={applyPriceFilter}
         closeModal={closeModal}
+        resetFilters={resetFilters}
       />
       <CloseButton onClick={onClose}>&times;</CloseButton>
     </ModalWrapper>

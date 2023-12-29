@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectAllProducts,
@@ -7,11 +7,13 @@ import {
 } from 'redux/products/selectors';
 import {
   CatalogPageWrapper,
+  FilterBtnTitleMobileContainer,
   FilterButton,
   FilterWrapper,
   NoProductsMessage,
   ProductListTitle,
   ProductListWrapper,
+  ResetButton,
 } from 'components/PageStyled/CatalogPage.styled';
 import Filter from 'components/Filter/Filter';
 import Loader from 'components/Loader/Loader';
@@ -70,6 +72,13 @@ const CatalogPage = () => {
     setMaxPrice(maxPrice);
   };
 
+  const resetFilters = useCallback(() => {
+    setSelectedBrands([]);
+    setSelectedCountries([]);
+    setMinPrice(0);
+    setMaxPrice(1000);
+  }, []);
+
   return (
     <CatalogPageWrapper>
       <FilterModal
@@ -80,6 +89,7 @@ const CatalogPage = () => {
           applyBrandFilter,
           applyCountryFilter,
           applyPriceFilter,
+          resetFilters,
         }}
       />
       <FilterWrapper>
@@ -88,24 +98,21 @@ const CatalogPage = () => {
           applyBrandFilter={applyBrandFilter}
           applyCountryFilter={applyCountryFilter}
           applyPriceFilter={applyPriceFilter}
+          resetFilters={resetFilters}
         />
       </FilterWrapper>
       <ProductListWrapper>
-        <div
-          style={{
-            display: 'flex',
-            gap: '20px',
-            alignItems: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <FilterButton onClick={toggleModal} />
+        <FilterBtnTitleMobileContainer>
           <ProductListTitle>Каталог товарів</ProductListTitle>
-        </div>
+          <FilterButton onClick={toggleModal} />
+        </FilterBtnTitleMobileContainer>
         {filteredProducts.length === 0 ? (
-          <NoProductsMessage>
-            Немає товарів, що відповідають вибраним критеріям
-          </NoProductsMessage>
+          <div>
+            <NoProductsMessage>
+              Немає товарів, що відповідають вибраним критеріям
+            </NoProductsMessage>
+            <ResetButton onClick={resetFilters}>Скинути фільтри</ResetButton>
+          </div>
         ) : (
           <ProductList products={filteredProducts} />
         )}

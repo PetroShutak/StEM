@@ -31,7 +31,6 @@ export const ProductListWrapper = styled.div`
 export const ProductListTitle = styled.h1`
   color: var(--text-color-primary-black);
   font-family: var(--font-family-secondary);
-  margin-bottom: 20px;
 `;
 
 export const NoProductsMessage = styled.p`
@@ -39,13 +38,37 @@ export const NoProductsMessage = styled.p`
   color: var(--text-color-primary-black);
   text-align: center;
   font-size: 20px;
+  margin-bottom: 20px;
 `;
 
 export const FilterButton = styled(TbFilterSearch)`
   font-size: 30px;
+  padding: 0;
   color: var(--text-color-primary-black);
   cursor: pointer;
   @media screen and (min-width: 768px) {
     display: none;
+  }
+`;
+
+export const FilterBtnTitleMobileContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+export const ResetButton = styled.button`
+  padding: 10px 20px;
+  margin: 0 auto;
+  display: block;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bg-secondary);
+  color: var(--text-color-primary-white);
+
+  &:hover {
+    background-color: var(--bg-secondary-hover);
   }
 `;
