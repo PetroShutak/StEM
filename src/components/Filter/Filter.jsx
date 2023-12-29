@@ -74,7 +74,9 @@ const Filter = ({
     applyBrandFilter(selectedBrands);
     applyCountryFilter(selectedCountries);
     applyPriceFilter(priceRange[0], priceRange[1]);
-    closeModal();
+    if (typeof closeModal === 'function') {
+      closeModal();
+    }
   };
 
   return (
