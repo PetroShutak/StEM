@@ -14,6 +14,7 @@ import {
   ProductListTitle,
   ProductListWrapper,
   ResetButton,
+  ResultTitleWRP,
 } from 'components/PageStyled/CatalogPage.styled';
 import Filter from 'components/Filter/Filter';
 import Loader from 'components/Loader/Loader';
@@ -31,7 +32,7 @@ const CatalogPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [isFilterReset, setIsFilterReset] = useState(true);
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
@@ -84,17 +85,44 @@ const CatalogPage = () => {
     setMaxPrice(maxPrice);
   };
 
+  let title = <ProductListTitle>Каталог товарів</ProductListTitle>;
+  if (!isFilterReset && filteredProducts.length > 0) {
+    title = (
+      <ResultTitleWRP>
+        <h2>Результати:</h2>
+        <p>Знайдено: {filteredProducts.length}</p>
+      </ResultTitleWRP>
+    );
+  }
+
   const resetFilters = useCallback(() => {
     setSelectedBrands([]);
     setSelectedCountries([]);
     setMinPrice(0);
     setMaxPrice(1000);
+    setIsFilterReset(true);
   }, []);
+
+  useEffect(() => {
+    if (
+      selectedBrands.length === 0 &&
+      selectedCountries.length === 0 &&
+      minPrice === 0 &&
+      maxPrice === 1000
+    ) {
+      setIsFilterReset(true);
+    } else {
+      setIsFilterReset(false);
+    }
+  }, [selectedBrands, selectedCountries, minPrice, maxPrice]);
 
   // pagination
   const paginate = ({ selected }) => {
     setCurrentPage(selected + 1);
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -121,7 +149,7 @@ const CatalogPage = () => {
       </FilterWrapper>
       <ProductListWrapper>
         <FilterBtnTitleMobileContainer>
-          <ProductListTitle>Каталог товарів</ProductListTitle>
+          {title}
           <FilterButton onClick={toggleModal} />
         </FilterBtnTitleMobileContainer>
         {filteredProducts.length === 0 ? (
@@ -155,7 +183,7 @@ const CatalogPage = () => {
                 : ''
             }
           />
-        )} 
+        )}
       </ProductListWrapper>
       {error && <h2>Упс, щось пішло не так</h2>}
       {loading && !error && <Loader />}

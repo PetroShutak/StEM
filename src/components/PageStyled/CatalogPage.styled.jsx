@@ -72,3 +72,13 @@ export const ResetButton = styled.button`
     background-color: var(--bg-secondary-hover);
   }
 `;
+export const ResultTitleWRP = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-color-primary-black);
+  font-family: var(--font-family-secondary);
+`;
