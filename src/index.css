@@ -269,3 +269,40 @@ body.modalIsOpen {
   margin-top: -7px;
   /* box-shadow: 0 0 5px var(--bg-secondary); */
 }
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.pagination li {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.pagination li a {
+  cursor: pointer;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid var(--bg-secondary);
+  color: var(--text-color-primary-black);
+}
+
+.pagination li a:hover {
+  background-color: var(--bg-secondary);
+}
+
+.pagination .active a {
+  background-color: var(--bg-secondary);
+  color: #fff;
+  border: 1px solid var(--bg-secondary);
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

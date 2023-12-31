@@ -19,6 +19,7 @@ import Filter from 'components/Filter/Filter';
 import Loader from 'components/Loader/Loader';
 import ProductList from 'components/ProductList/ProductList';
 import FilterModal from 'components/Filter/FilterModal/FilterModal';
+import ReactPaginate from 'react-paginate';
 
 const CatalogPage = () => {
   const allProducts = useSelector(selectAllProducts);
@@ -30,6 +31,17 @@ const CatalogPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+  // pagination
 
   const toggleModal = () => {
     setIsModalVisible(prevState => !prevState);
@@ -55,7 +67,7 @@ const CatalogPage = () => {
         product => product.price >= minPrice && product.price <= maxPrice
       );
     }
-
+    setCurrentPage(1);
     setFilteredProducts(filtered);
   }, [allProducts, selectedBrands, selectedCountries, minPrice, maxPrice]);
 
@@ -78,6 +90,12 @@ const CatalogPage = () => {
     setMinPrice(0);
     setMaxPrice(1000);
   }, []);
+
+  // pagination
+  const paginate = ({ selected }) => {
+    setCurrentPage(selected + 1);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <CatalogPageWrapper>
@@ -114,8 +132,30 @@ const CatalogPage = () => {
             <ResetButton onClick={resetFilters}>Скинути фільтри</ResetButton>
           </div>
         ) : (
-          <ProductList products={filteredProducts} />
+          <ProductList products={currentProducts} />
         )}
+        {filteredProducts.length > 0 && (
+          <ReactPaginate
+            previousLabel={'<'}
+            nextLabel={'>'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={Math.ceil(filteredProducts.length / productsPerPage)}
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={3}
+            containerClassName={'pagination'}
+            activeClassName={'active'}
+            onPageChange={paginate}
+            disableInitialCallback={true}
+            previousClassName={currentPage === 1 ? 'disabled' : ''}
+            nextClassName={
+              currentPage ===
+              Math.ceil(filteredProducts.length / productsPerPage)
+                ? 'disabled'
+                : ''
+            }
+          />
+        )} 
       </ProductListWrapper>
       {error && <h2>Упс, щось пішло не так</h2>}
       {loading && !error && <Loader />}
