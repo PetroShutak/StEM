@@ -293,6 +293,18 @@ body.modalIsOpen {
   color: var(--text-color-primary-black);
 }
 
+@media screen and (max-width: 834px) {
+  .pagination li a {
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .pagination li a {
+    padding: 5px 5px;
+  }
+}
+
 .pagination li a:hover {
   background-color: var(--bg-secondary);
 }

@@ -142,7 +142,7 @@ const CatalogPage = () => {
             breakClassName={'break-me'}
             pageCount={Math.ceil(filteredProducts.length / productsPerPage)}
             marginPagesDisplayed={1}
-            pageRangeDisplayed={3}
+            pageRangeDisplayed={2}
             containerClassName={'pagination'}
             activeClassName={'active'}
             onPageChange={paginate}
