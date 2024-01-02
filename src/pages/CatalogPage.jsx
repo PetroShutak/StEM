@@ -21,6 +21,7 @@ import Loader from 'components/Loader/Loader';
 import ProductList from 'components/ProductList/ProductList';
 import FilterModal from 'components/Filter/FilterModal/FilterModal';
 import ReactPaginate from 'react-paginate';
+import SortSelect from 'components/SortSelect/SortSelect';
 
 const CatalogPage = () => {
   const allProducts = useSelector(selectAllProducts);
@@ -124,6 +125,20 @@ const CatalogPage = () => {
       behavior: 'smooth',
     });
   };
+  // pagination
+
+  const sortProductByPrice = (sortType) => {
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+      if (sortType === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+    setFilteredProducts(sortedProducts);
+  };
+
+  
 
   return (
     <CatalogPageWrapper>
@@ -152,6 +167,9 @@ const CatalogPage = () => {
           {title}
           <FilterButton onClick={toggleModal} />
         </FilterBtnTitleMobileContainer>
+        <SortSelect products={allProducts} 
+          sortProductByPrice={sortProductByPrice}
+        />
         {filteredProducts.length === 0 ? (
           <div>
             <NoProductsMessage>

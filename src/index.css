@@ -126,6 +126,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: var(--transition-default);
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 ul {
@@ -270,6 +274,7 @@ body.modalIsOpen {
   /* box-shadow: 0 0 5px var(--bg-secondary); */
 }
 
+
 /* pagination */
 
 .pagination {
@@ -318,3 +323,5 @@ body.modalIsOpen {
   pointer-events: none;
   opacity: 0.6;
 }
+
+

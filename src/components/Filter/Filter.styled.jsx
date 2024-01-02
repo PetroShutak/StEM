@@ -9,12 +9,22 @@ export const FiterContainer = styled.div`
   padding: 20px;
   font-family: var(--font-family-secondary);
   color: var(--text-color-primary-black);
+  @media screen and (min-width: 768px) {
+    height: 80vh;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    position: sticky;
+    top: 0;
+  }
 `;
 
 export const FilterTitleHeader = styled.h2`
   font-family: var(--font-family-secondary);
   color: var(--text-color-primary-black);
-  margin-bottom: 20px;
   text-align: center;
   text-transform: uppercase;
 `;

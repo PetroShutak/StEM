@@ -68,6 +68,7 @@ const Filter = ({
     setSelectedCountries([]);
     setPriceRange([0, 1000]);
     resetFilters();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const applyFilters = () => {
@@ -77,6 +78,7 @@ const Filter = ({
     if (typeof closeModal === 'function') {
       closeModal();
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
