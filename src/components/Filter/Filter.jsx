@@ -69,6 +69,9 @@ const Filter = ({
     setPriceRange([0, 1000]);
     resetFilters();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof closeModal === 'function') {
+      closeModal();
+    }
   };
 
   const applyFilters = () => {

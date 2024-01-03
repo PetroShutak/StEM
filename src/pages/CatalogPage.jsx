@@ -127,7 +127,7 @@ const CatalogPage = () => {
   };
   // pagination
 
-  const sortProductByPrice = (sortType) => {
+  const sortProductByPrice = sortType => {
     const sortedProducts = [...filteredProducts].sort((a, b) => {
       if (sortType === 'asc') {
         return a.price - b.price;
@@ -138,7 +138,16 @@ const CatalogPage = () => {
     setFilteredProducts(sortedProducts);
   };
 
-  
+  const sortProductByRaiting = sortType => {
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+      if (sortType === 'desc') {
+        return a.raiting - b.raiting;
+      } else {
+        return b.raiting - a.raiting;
+      }
+    });
+    setFilteredProducts(sortedProducts);
+  };
 
   return (
     <CatalogPageWrapper>
@@ -167,9 +176,12 @@ const CatalogPage = () => {
           {title}
           <FilterButton onClick={toggleModal} />
         </FilterBtnTitleMobileContainer>
-        <SortSelect products={allProducts} 
-          sortProductByPrice={sortProductByPrice}
-        />
+        {filteredProducts.length > 0 && (
+          <SortSelect
+            sortProductByPrice={sortProductByPrice}
+            sortProductByRaiting={sortProductByRaiting}
+          />
+        )}
         {filteredProducts.length === 0 ? (
           <div>
             <NoProductsMessage>
