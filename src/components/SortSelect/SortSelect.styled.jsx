@@ -15,6 +15,13 @@ export const SortSelectStyled = styled.div`
     color: #333;
     outline: none;
   }
+   option {
+    padding: 5px 10px;
+    cursor: pointer;
+   &:hover {
+      background-color: var(--bg-secondary);
+    }
+  }
 `;
 
 export const SortSelectWrapper = styled.div`
