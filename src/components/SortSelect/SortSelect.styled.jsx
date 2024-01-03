@@ -49,10 +49,7 @@ export const SortSelectSelect = styled.select`
   option {
     padding: 5px 10px;
     cursor: pointer;
-    &:hover {
-      background-color: var(--bg-secondary);
-    }
-    &:checked {
+   &:hover {
       background-color: var(--bg-secondary);
     }
   }
