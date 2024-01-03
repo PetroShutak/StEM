@@ -126,10 +126,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: var(--transition-default);
-  scrollbar-width: none;
+  /* scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
-  }
+  } */
 }
 
 ul {

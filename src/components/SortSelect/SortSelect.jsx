@@ -9,7 +9,7 @@ const SelectWrapper = styled.div`
   width: 100%;
   margin-bottom: 20px;
   @media screen and (max-width: 767px) {
-    justify-content: start;
+    justify-content: center;
   }
 `;
 
