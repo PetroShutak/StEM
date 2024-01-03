@@ -22,6 +22,7 @@ import ProductList from 'components/ProductList/ProductList';
 import FilterModal from 'components/Filter/FilterModal/FilterModal';
 import ReactPaginate from 'react-paginate';
 import SortSelect from 'components/SortSelect/SortSelect';
+import WelcomeComponent from 'components/Filter/WelcomeComponent/WelcomeComponent';
 
 const CatalogPage = () => {
   const allProducts = useSelector(selectAllProducts);
@@ -163,6 +164,7 @@ const CatalogPage = () => {
         }}
       />
       <FilterWrapper>
+        <WelcomeComponent />
         <Filter
           products={allProducts}
           applyBrandFilter={applyBrandFilter}
