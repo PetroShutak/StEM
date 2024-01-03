@@ -52,6 +52,9 @@ export const SortSelectSelect = styled.select`
     &:hover {
       background-color: var(--bg-secondary);
     }
+    &:checked {
+      background-color: var(--bg-secondary);
+    }
   }
   @media (min-width: 768px) {
     width: 200px;
