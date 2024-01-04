@@ -10,6 +10,8 @@ import {
   QuantityInput,
   TotalPrice,
   Button,
+  QuantityControl,
+  QuantityButton,
 } from './QuantityModal.styled';
 import { updateQuantityInList } from 'redux/products/shoppingListSlice';
 
@@ -41,11 +43,12 @@ const QuantityModal = ({
   };
 
   const handleQuantityChange = e => {
-    const newQuantity = parseInt(e.target.value) || 0;
+    const newQuantity = parseInt(e.target.value);
     if (newQuantity >= 1) {
       updateQuantityInReduxState(newQuantity);
     } else {
       setQuantity(0);
+      // тут треба пофіксити
     }
   };
 
@@ -58,7 +61,19 @@ const QuantityModal = ({
     setShowModal(false);
   };
 
-  const totalPrice = calculateTotalPrice(price, parseInt(quantity) || 0);
+  const totalPrice = calculateTotalPrice(price, parseInt(quantity));
+
+  // control quantity with buttons
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
+
+  const handleIncrease = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
 
   return (
     showModal && (
@@ -66,12 +81,16 @@ const QuantityModal = ({
         <ModalQuantity>
           <ModalContent>
             <h2>Вкажіть кількість</h2>
-            <QuantityInput
-              type="number"
-              value={quantity}
-              onChange={handleQuantityChange}
-              required
-            />
+            <QuantityControl>
+              <QuantityButton onClick={handleDecrease}>-</QuantityButton>
+              <QuantityInput
+                type="number"
+                value={quantity}
+                onChange={handleQuantityChange}
+                required
+              />
+              <QuantityButton onClick={handleIncrease}>+</QuantityButton>
+            </QuantityControl>
             <ModalCloseButton onClick={handleModalClose}>
               &times;
             </ModalCloseButton>

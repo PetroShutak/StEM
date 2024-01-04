@@ -60,7 +60,6 @@ export const Button = styled.button`
 export const QuantityInput = styled.input`
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
 `;
@@ -68,4 +67,25 @@ export const QuantityInput = styled.input`
 export const TotalPrice = styled.p`
   margin-top: 10px;
   font-size: 18px;
+`;
+
+export const QuantityControl = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 24px;
+`;
+
+export const QuantityButton = styled.button`
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--bg-secondary-hover);
+  }
 `;
