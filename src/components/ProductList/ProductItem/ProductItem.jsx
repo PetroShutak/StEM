@@ -6,7 +6,6 @@ import {
   notifyRemove,
   notifyAddToFavorite,
   notifyRemoveFromFavorite,
-  notifyLoadingDetails,
 } from 'utils/toasts';
 import {
   addFavorite,
@@ -54,7 +53,6 @@ const ProductItem = ({ id, name, brand, price, image }) => {
   const location = useLocation();
 
   const handleDetailsClick = () => {
-    notifyLoadingDetails();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
