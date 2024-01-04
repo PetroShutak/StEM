@@ -32,14 +32,11 @@ const CatalogDropDown = () => {
       <RiArrowDropDownLine size={32} color="gray" />
       {showSelect && (
         <SelectCatalogWrapper ref={selectRef}>
-          <option value="">Насоси</option>
-          <option value="">Котли</option>
-          <option value="">Бойлери</option>
-          <option value="">Душові кабіни</option>
-          <option value="">Ванни</option>
-          <option value="">Кухонні мийки</option>
-          <option value="">Каналізація</option>
-          <option value="">Водопостачання</option>
+          <option value="">Ця</option>
+          <option value="">функція</option>
+          <option value="">поки</option>
+          <option value="">не</option>
+          <option value="">реалізована</option>
         </SelectCatalogWrapper>
       )}
     </CatalogDropDownWrapper>

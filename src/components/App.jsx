@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { startTextEffect } from 'utils/textEffectUtils';
 import { Toaster } from 'react-hot-toast';
 import Layout from './Layout/Layout';
 import MainPage from 'pages/MainPage';
@@ -16,6 +15,7 @@ import Details from './Details/Details';
 import CallButton from './CallButton/CallButton';
 import Loader from './Loader/Loader';
 import { selectLoading } from 'redux/products/selectors';
+import ServisPage from 'pages/ServisPage';
 
 // import { lazy } from 'react';
 // const MainPage = lazy(() => import('pages/MainPage'));
@@ -32,87 +32,22 @@ export const App = () => {
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
-  
 
-  useEffect(() => {
-    return startTextEffect();
-  }, []);
   return (
     <>
       <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <MainPage style={{ color: 'var(--text-color-primary-black)' }} />
-            }
-          />
+          <Route index element={<MainPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route
-            path="/ourteam"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Наша команда
-              </p>
-            }
-          />
-          <Route
-            path="/joboffers"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Вакансії
-              </p>
-            }
-          />
-          <Route
-            path="/reviews"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Відгуки
-              </p>
-            }
-          />
-          <Route
-            path="/delivery"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Доставка і оплата
-              </p>
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Контакти
-              </p>
-            }
-          />
-          <Route
-            path="/shoppinglist"
-            element={
-              <ShoppingListPage
-                style={{ color: 'var(--text-color-primary-black)' }}
-              />
-            }
-          />
-          <Route
-            path="/favorite"
-            element={
-              <FavoritePage
-                style={{ color: 'var(--text-color-primary-black)' }}
-              />
-            }
-          />
-          <Route
-            path="/catalog"
-            element={
-              <CatalogPage
-                style={{ color: 'var(--text-color-primary-black)' }}
-              />
-            }
-          />
+          <Route path="/ourteam" element={<ServisPage />} />
+          <Route path="/joboffers" element={<ServisPage />} />
+          <Route path="/reviews" element={<ServisPage />} />
+          <Route path="/delivery" element={<ServisPage />} />
+          <Route path="/contacts" element={<ServisPage />} />
+          <Route path="/shoppinglist" element={<ShoppingListPage />} />
+          <Route path="/favorite" element={<FavoritePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:id" element={<Details />} />
           <Route
             path="/catalog/:category"
@@ -123,37 +58,12 @@ export const App = () => {
             }
           />
           <Route path="/searchresult" element={<SearchResultPage />} />
-          <Route
-            path="/servis"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Сервісний центр
-              </p>
-            }
-          />
+          <Route path="/servis" element={<ServisPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       {isLoading && <Loader />}
       <CallButton />
-
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          fontWeight: 700,
-          color: 'var(--text-color-primary-black)',
-          fontFamily: 'var(--font-family-secondary)',
-        }}
-      >
-        Creating
-        <span className="continue">.</span>
-        <span className="continue">.</span>
-        <span className="continue">.</span>
-      </div>
     </>
   );
 };
