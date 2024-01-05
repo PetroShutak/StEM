@@ -26,6 +26,9 @@ const Loader = () => {
         borderColor="#e24617"
         barColor="#ff6b09"
       />
+       <p style={{ marginTop: '20px', color: '#ff6b09', fontSize: '14px' }}>
+        Завантажується...
+      </p>
     </div>
   );
 };
