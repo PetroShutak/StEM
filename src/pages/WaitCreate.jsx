@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { startTextEffect } from 'utils/textEffectUtils';
 
-const ServisPage = () => {
+const WaitCreate = () => {
   useEffect(() => {
     return startTextEffect();
   }, []);
@@ -29,4 +29,4 @@ const ServisPage = () => {
   );
 };
 
-export default ServisPage;
+export default WaitCreate;
