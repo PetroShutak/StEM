@@ -8,7 +8,7 @@ export const TopHeaderWrapper = styled.div`
 
 export const TopHeaderContent = styled.div`
   display: flex;
-  padding: 12px 0;
+  padding: 12px 12px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
