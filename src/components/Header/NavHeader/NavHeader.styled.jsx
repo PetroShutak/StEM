@@ -7,7 +7,7 @@ export const NavHeaderWrapper = styled.div`
 
 export const NavHeaderContent = styled.div`
   display: flex;
-  padding: 6px 0;
+  padding: 6px 12px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
