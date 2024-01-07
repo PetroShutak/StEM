@@ -50,14 +50,7 @@ export const App = () => {
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:id" element={<Details />} />
-          <Route
-            path="/catalog/:category"
-            element={
-              <p style={{ color: 'var(--text-color-primary-black)' }}>
-                Category
-              </p>
-            }
-          />
+          <Route path="/catalog/:category" element={<p>Category</p>} />
           <Route path="/searchresult" element={<SearchResultPage />} />
           <Route path="/servis" element={<WaitCreate />} />
         </Route>
