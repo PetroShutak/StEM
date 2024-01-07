@@ -25,20 +25,23 @@ const BrandCarousel = () => {
   };
 
   return (
-    <div style={galleryStyle}>
-      <ImageGallery
-        items={images}
-        showFullscreenButton={false}
-        showPlayButton={false}
-        showThumbnails={false}
-        showBullets={false}
-        showNav={false}
-        autoPlay={true}
-        slideInterval={5000}
-        lazyLoad={true}
-        slideDuration={1000}
-      />
-    </div>
+    <>
+      <h1>HomePage</h1>
+      <div style={galleryStyle}>
+        <ImageGallery
+          items={images}
+          showFullscreenButton={false}
+          showPlayButton={false}
+          showThumbnails={false}
+          showBullets={false}
+          showNav={false}
+          autoPlay={true}
+          slideInterval={5000}
+          lazyLoad={true}
+          slideDuration={1000}
+        />
+      </div>
+    </>
   );
 };
 
