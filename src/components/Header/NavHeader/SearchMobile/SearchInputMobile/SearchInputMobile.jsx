@@ -102,6 +102,8 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
 
   const disabled = searchQuery.trim() === '';
 
+  const uniqueResults = [...new Map(searchResults.map(item => [item.name, item])).values()];
+
   return (
     <Backdrop className="backdrop" onClick={handleCloseSearch}>
       <SearchMobileInputWrapper ref={searchRef}>
@@ -119,7 +121,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
         </form>
         {showResults && searchResults.length > 0 && (
           <SearchResultList>
-            {searchResults.map(result => (
+            {uniqueResults.slice(0, 8).map(result => (
               <SearchResultItem
                 key={result._id}
                 onClick={() => handleResultItemClick(result)}
@@ -128,7 +130,7 @@ const SearchInputMobile = ({ setOpen, onSearchRedirect }) => {
               </SearchResultItem>
             ))}
           </SearchResultList>
-        )}
+        )}{' '}
       </SearchMobileInputWrapper>
     </Backdrop>
   );

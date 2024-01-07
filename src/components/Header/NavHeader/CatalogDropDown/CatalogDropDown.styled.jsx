@@ -8,7 +8,7 @@ export const CatalogDropDownWrapper = styled.div`
   p {
     font-family: var(--font-family-secondary);
     color: var(--text-color-primary-black);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     text-decoration: none;
     transition: var(--transition-default);

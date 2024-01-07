@@ -91,6 +91,8 @@ const SearchHeader = ({ onSearchRedirect }) => {
     }
   };
 
+  const uniqueResults = [...new Map(searchResults.map(item => [item.name, item])).values()];
+
   return (
     <SearchHeaderWrapper ref={searchRef}>
       <SearchHeaderForm onSubmit={handleSearchSubmit}>
@@ -107,7 +109,7 @@ const SearchHeader = ({ onSearchRedirect }) => {
       </SearchHeaderForm>
       {showResults && searchResults.length > 0 && (
         <SearchResultList>
-          {searchResults.map(result => (
+          {uniqueResults.slice(0, 6).map(result => (
             <SearchResultItem
               key={result._id}
               onClick={() => handleResultItemClick(result)}

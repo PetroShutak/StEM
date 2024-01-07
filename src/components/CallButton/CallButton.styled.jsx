@@ -21,7 +21,7 @@ export const StyledCallButton = styled.button`
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  z-index: 9999;
+  z-index: 999;
   box-shadow: 0 0 0 0px var(--bg-secondary, rgba(0, 0, 0, 0.2));
   animation: ${pulse} 1s infinite;
 
