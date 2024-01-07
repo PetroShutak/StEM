@@ -26,7 +26,6 @@ const BrandCarousel = () => {
 
   return (
     <>
-      <h1>HomePage</h1>
       <div style={galleryStyle}>
         <ImageGallery
           items={images}
