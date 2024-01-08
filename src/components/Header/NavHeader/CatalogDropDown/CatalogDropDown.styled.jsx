@@ -12,10 +12,13 @@ export const CatalogDropDownWrapper = styled.div`
     font-weight: 500;
     text-decoration: none;
     transition: var(--transition-default);
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+  // @media screen and (max-width: 768px) {
+  //   display: none;
+  // }
 `;
 
 export const SelectCatalogWrapper = styled.div`

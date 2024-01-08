@@ -4,6 +4,7 @@ export const selectAllProducts = state => state.products.products;
 export const selectProductById = (state, productId) => {
   return state.products.find(product => product._id === productId);
 };
+
 export const selectShoppingList = state => state.shoppingList.shoppingList;
 export const selectTotalPrice = state => state.shoppingList.totalPrice;
 export const selectFavorites = state => state.favorites.favorites;
@@ -52,3 +53,8 @@ export const selectFiltredFavoriteProducts = createSelector(
     return filtredProducts.filter(product => favorites.includes(product._id));
   }
 );
+
+export const selectProductsByCategory = category =>
+  createSelector([selectAllProducts], allProducts => {
+    return allProducts.filter(product => product.category === category);
+  });
