@@ -28,7 +28,12 @@ export const SelectCatalogWrapper = styled.div`
   border: 1px solid var(--border-color-primary-grey);
   border-radius: 5px;
   z-index: 1;
-  option {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
     padding: 5px 10px;
     cursor: pointer;
     &:hover {

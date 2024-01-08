@@ -1,12 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import {
   CatalogDropDownWrapper,
   SelectCatalogWrapper,
 } from './CatalogDropDown.styled';
+import { selectAllProducts } from 'redux/products/selectors';
 
 const CatalogDropDown = () => {
   const [showSelect, setShowSelect] = useState(false);
+  const products = useSelector(selectAllProducts);
+
+  const uniqueCategories = [
+    ...new Set(products.map(product => product.category)),
+  ];
 
   const selectRef = useRef(null);
 
@@ -32,11 +39,14 @@ const CatalogDropDown = () => {
       <RiArrowDropDownLine size={32} color="gray" />
       {showSelect && (
         <SelectCatalogWrapper ref={selectRef}>
-          <option value="">Ця</option>
-          <option value="">функція</option>
-          <option value="">поки</option>
-          <option value="">не</option>
-          <option value="">реалізована</option>
+          <ul>
+            <li>Всі категорії</li>
+          </ul>
+          <ul>
+            {uniqueCategories.map(category => (
+              <li key={category}>{category}</li>
+            ))}
+          </ul>
         </SelectCatalogWrapper>
       )}
     </CatalogDropDownWrapper>
