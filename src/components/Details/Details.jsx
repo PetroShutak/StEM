@@ -13,11 +13,17 @@ import {
 import {
   notifyAddShopingList,
   notifyAddToFavorite,
+  notifyDeleteProduct,
   notifyRemove,
   notifyRemoveFromFavorite,
 } from 'utils/toasts';
-import { getProductById } from 'redux/products/operations';
 import {
+  getProductById,
+  deleteProductById,
+  updateProductById,
+} from 'redux/products/operations';
+import {
+  selectAllProducts,
   selectFavorites,
   selectLoading,
   selectProductById,
@@ -38,14 +44,17 @@ import {
 } from 'components/ProductList/ProductItem/ProductItem.styled';
 import DEFAULT_URL from 'images/no-image.jpg';
 import Loader from 'components/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const Details = () => {
+  const navigate = useNavigate();
+  const products = useSelector(selectAllProducts);
   const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const shoppingList = useSelector(selectShoppingList);
-  const isLoading = useSelector(selectLoading)
+  const isLoading = useSelector(selectLoading);
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
     notifyAddToFavorite();
@@ -86,6 +95,51 @@ const Details = () => {
     return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(str);
   };
 
+  const handleEditProduct = () => {
+    dispatch(updateProductById(id));
+  };
+
+  const handleDeleteProduct = () => {
+    const currentProductId = id;
+
+    const currentIndex = products.findIndex(
+      product => product._id === currentProductId
+    );
+
+    dispatch(deleteProductById(currentProductId))
+      .then(() => {
+        console.log('Product deleted successfully');
+
+        const nextIndex = (currentIndex + 1) % products.length;
+        const nextProduct = products[nextIndex];
+
+        if (nextProduct) {
+          notifyDeleteProduct();
+          navigate(`/catalog/${nextProduct._id}`);
+        } else {
+          notifyDeleteProduct();
+          navigate('/catalog');
+        }
+      })
+      .catch(err => {
+        console.error('Error deleting product:', err);
+      });
+  };
+
+  const handleNavigate = direction => {
+    const currentIndex = products.findIndex(product => product._id === id);
+    const newIndex =
+      direction === 'next'
+        ? (currentIndex + 1) % products.length
+        : (currentIndex - 1 + products.length) % products.length;
+    const newProduct = products[newIndex];
+    if (newProduct) {
+      navigate(`/catalog/${newProduct._id}`);
+    } else {
+      navigate('/catalog');
+    }
+  };
+
   return (
     <div className="container">
       {isLoading && <Loader />}
@@ -121,6 +175,10 @@ const Details = () => {
               ? 'Забрати з кошика'
               : 'Додати в кошик'}
           </BuyButton>
+          <button onClick={handleEditProduct}>Редагувати</button>
+          <button onClick={handleDeleteProduct}>Видалити</button>
+          <button onClick={() => handleNavigate('prev')}>Попередній</button>
+          <button onClick={() => handleNavigate('next')}>Наступний</button>
         </DescriptionWrapper>
       </DetailsContainer>
       {showModal && (

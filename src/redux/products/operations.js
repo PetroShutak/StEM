@@ -26,3 +26,34 @@ export const getProductById = createAsyncThunk(
     }
   }
 );
+
+// deleteProductById
+
+export const deleteProductById = createAsyncThunk(
+  'products/deleteProductById',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/api/products/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// updateProductById
+
+export const updateProductById = createAsyncThunk(
+  'products/updateProductById',
+  async (product, thunkAPI) => {
+    try {
+      const response = await axios.patch(
+        `/api/products/${product._id}`,
+        product
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);

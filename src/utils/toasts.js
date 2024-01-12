@@ -16,6 +16,11 @@ export const toastDismiss = () => {
   toast.dismiss();
 };
 
+//
+export const notifyDeleteProduct = () =>
+  toast.success('Товар видалено з бази', toastSuccess);
+//
+
 export const notifyAddShopingList = () =>
   toast.success('Товар додано в кошик', toastSuccess);
 export const notifyRemove = () =>
