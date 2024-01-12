@@ -63,3 +63,44 @@ export const DetailsFavoriteBtnWrapper = styled.div`
     scale: 1.1;
   }
 `;
+
+export const UpdateWrapper = styled.div`
+  color: var(--text-color-primary-black);
+  font-size: 16px;
+  font-family: var(--font-family-secondary);
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    resize: none;
+  }
+
+  button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+`;
+
+export const UpdateButtonContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
