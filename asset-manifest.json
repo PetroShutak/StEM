@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/StEM/static/css/main.e7414fdf.css",
-    "main.js": "/StEM/static/js/main.87304447.js",
+    "main.js": "/StEM/static/js/main.b366c016.js",
     "static/css/966.0e721ad1.chunk.css": "/StEM/static/css/966.0e721ad1.chunk.css",
     "static/js/966.cedd430a.chunk.js": "/StEM/static/js/966.cedd430a.chunk.js",
     "static/css/563.7bed1ea3.chunk.css": "/StEM/static/css/563.7bed1ea3.chunk.css",
@@ -27,7 +27,7 @@
     "static/media/No_results_found.jpg": "/StEM/static/media/No_results_found.8c760407be35134a6fef.jpg",
     "index.html": "/StEM/index.html",
     "main.e7414fdf.css.map": "/StEM/static/css/main.e7414fdf.css.map",
-    "main.87304447.js.map": "/StEM/static/js/main.87304447.js.map",
+    "main.b366c016.js.map": "/StEM/static/js/main.b366c016.js.map",
     "966.0e721ad1.chunk.css.map": "/StEM/static/css/966.0e721ad1.chunk.css.map",
     "966.cedd430a.chunk.js.map": "/StEM/static/js/966.cedd430a.chunk.js.map",
     "563.7bed1ea3.chunk.css.map": "/StEM/static/css/563.7bed1ea3.chunk.css.map",
@@ -42,6 +42,6 @@
   },
   "entrypoints": [
     "static/css/main.e7414fdf.css",
-    "static/js/main.87304447.js"
+    "static/js/main.b366c016.js"
   ]
 }
