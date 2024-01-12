@@ -103,4 +103,9 @@ export const UpdateButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
 `;
