@@ -108,4 +108,7 @@ export const UpdateButtonContainer = styled.div`
     margin-right: 8px;
     cursor: pointer;
   }
+   @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
