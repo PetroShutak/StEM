@@ -84,6 +84,20 @@ const Filter = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const brandCount = brand => {
+    const productsWithBrand = products.filter(
+      product => product.brand === brand
+    );
+    return productsWithBrand.length;
+  };
+
+  const countryCount = country => {
+    const productsWithCountry = products.filter(
+      product => product.country === country
+    );
+    return productsWithCountry.length;
+  };
+
   return (
     <FiterContainer>
       <FilterTitleHeader>Фільтри</FilterTitleHeader>
@@ -98,7 +112,9 @@ const Filter = ({
               checked={selectedBrands.includes(brand)}
               onChange={() => handleBrandChange(brand)}
             />
-            <label htmlFor={brand}>{brand}</label>
+            <label htmlFor={brand}>
+              {brand} ({brandCount(brand)})
+            </label>
           </BrandCheckboxContainer>
         ))}
       </div>
@@ -113,7 +129,9 @@ const Filter = ({
               checked={selectedCountries.includes(country)}
               onChange={() => handleCountryChange(country)}
             />
-            <label htmlFor={country}>{country}</label>
+            <label htmlFor={country}>
+              {country} ({countryCount(country)})
+            </label>
           </CountryCheckboxContainer>
         ))}
       </div>
