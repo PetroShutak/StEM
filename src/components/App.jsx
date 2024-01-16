@@ -17,7 +17,7 @@ import Details from './Details/Details';
 import CallButton from './CallButton/CallButton';
 import Loader from './Loader/Loader';
 import CategoriesPage from 'pages/CategoriesPage';
-import CategoryItemPage from 'pages/CategoryItemPage';
+import CategoryPage from 'pages/CategoryPage';
 
 import { lazy } from 'react';
 const MainPage = lazy(() => import('pages/MainPage'));
@@ -50,14 +50,10 @@ export const App = () => {
           <Route path="/contacts" element={<WaitCreate />} />
           <Route path="/shoppinglist" element={<ShoppingListPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
-          {/* <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<Details />} />
-          <Route path="/catalog/categories" element={<CategoriesPage/>} />
-          <Route path="/catalog/category/:category" element={<CategoryItemPage />} /> */}
           <Route path="/catalog">
             <Route index element={<CatalogPage />} />
             <Route path="categories" element={<CategoriesPage />} />
-            <Route path="category/:category" element={<CategoryItemPage />} />
+            <Route path="category/:category" element={<CategoryPage />} />
             <Route path=":id" element={<Details />} />
           </Route>
           <Route path="/searchresult" element={<SearchResultPage />} />
