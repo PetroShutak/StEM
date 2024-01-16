@@ -52,6 +52,22 @@ const CategoryItemPageWrapper = styled.div`
   }
 `;
 
+const StyledButton = styled.button`
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: ${props => (props.selected ? '#ff6b09' : '#fff')};
+  color: ${props => (props.selected ? '#fff' : '#000')};
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${props => (props.selected ? '#ff6b09' : '#eee')};
+  }
+`;
+
 const CategoryPage = () => {
   const { category } = useParams();
   const navigate = useNavigate();
@@ -64,11 +80,9 @@ const CategoryPage = () => {
 
   const handleSubcategoryChange = subcategory => {
     if (selectedSubcategories.includes(subcategory)) {
-      setSelectedSubcategories(
-        selectedSubcategories.filter(s => s !== subcategory)
-      );
+      setSelectedSubcategories([]);
     } else {
-      setSelectedSubcategories([...selectedSubcategories, subcategory]);
+      setSelectedSubcategories([subcategory]);
     }
   };
 
@@ -85,19 +99,17 @@ const CategoryPage = () => {
       <h2>
         Вибрана категорія: {category} {selectedSubcategories}
       </h2>
-      <form>
+      <div>
         {subcategories.map(subcategory => (
-          <div key={subcategory}>
-            <input
-              type="checkbox"
-              id={subcategory}
-              checked={selectedSubcategories.includes(subcategory)}
-              onChange={() => handleSubcategoryChange(subcategory)}
-            />
-            <label htmlFor={subcategory}>{subcategory}</label>
-          </div>
+          <StyledButton
+            key={subcategory}
+            selected={selectedSubcategories.includes(subcategory)}
+            onClick={() => handleSubcategoryChange(subcategory)}
+          >
+            {subcategory}
+          </StyledButton>
         ))}
-      </form>
+      </div>
       <StyledList>
         {products
           .filter(
