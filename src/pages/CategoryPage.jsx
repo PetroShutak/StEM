@@ -1,80 +1,41 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { selectProductsByCategory } from 'redux/products/selectors';
+import {
+  selectFavorites,
+  selectProductsByCategory,
+} from 'redux/products/selectors';
 import DEFAULT_URL from '../images/no-image.jpg';
-import styled from 'styled-components';
-
-const StyledList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-`;
-
-const StyledListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.2s ease-in-out;
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-  p {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: var(--font-family-secondary);
-    color: var(--text-color-primary-black);
-  }
-`;
-
-const CategoryItemPageWrapper = styled.div`
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: var(--font-family-secondary);
-  color: var(--text-color-primary-black);
-  h2 {
-    margin-bottom: 20px;
-  }
-`;
-
-const StyledButton = styled.button`
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: ${props => (props.selected ? '#ff6b09' : '#fff')};
-  color: ${props => (props.selected ? '#fff' : '#000')};
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: ${props => (props.selected ? '#ff6b09' : '#eee')};
-  }
-`;
+import { addFavorite, deleteFavorite } from 'redux/products/favoriteSlice';
+import { notifyAddToFavorite, notifyRemoveFromFavorite } from 'utils/toasts';
+import {
+  CategoryItemPageWrapper,
+  StyledList,
+  StyledListItem,
+  StyledButton,
+  FavoriteButton,
+  FavoriteButtonActive,
+} from 'components/PageStyled/CategoryPage.styled';
 
 const CategoryPage = () => {
   const { category } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const products = useSelector(selectProductsByCategory(category));
   const subcategories = Array.from(
     new Set(products.map(product => product.subcategory))
   );
+  const favorites = useSelector(selectFavorites);
+
+  const handleAddFavorites = favId => {
+    dispatch(addFavorite(favId));
+    notifyAddToFavorite();
+  };
+
+  const handleRemoveFavorites = favId => {
+    dispatch(deleteFavorite(favId));
+    notifyRemoveFromFavorite();
+  };
 
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
 
@@ -119,6 +80,15 @@ const CategoryPage = () => {
           )
           .map(product => (
             <StyledListItem key={product._id}>
+              {favorites.includes(product._id) ? (
+                <FavoriteButtonActive
+                  onClick={() => handleRemoveFavorites(product._id)}
+                />
+              ) : (
+                <FavoriteButton
+                  onClick={() => handleAddFavorites(product._id)}
+                />
+              )}
               <div onClick={handleNavigateToProductDetails(product._id)}>
                 <img
                   src={isImageLink(product.image) ? product.image : DEFAULT_URL}
