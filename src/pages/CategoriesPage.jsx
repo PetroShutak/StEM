@@ -45,20 +45,23 @@ const CategoriesPage = () => {
   const products = useSelector(selectAllProducts);
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipContent, setTooltipContent] = useState('');
+  const [hoveredCategory, setHoveredCategory] = useState(null);
 
   const uniqueCategories = [...new Set(products.map((product) => product.category))];
 
   const handleCategoryHover = (category) => {
-  const subcategories = products
-    .filter((product) => product.category === category)
-    .map((product) => product.subcategory);
+    const subcategories = products
+      .filter((product) => product.category === category)
+      .map((product) => product.subcategory);
 
-  setTooltipContent(subcategories.join(', '));
-  setTooltipVisible(true);
-};
+    setTooltipContent(subcategories.join(', '));
+    setTooltipVisible(true);
+    setHoveredCategory(category);
+  };
 
   const handleCategoryLeave = () => {
     setTooltipVisible(false);
+    setHoveredCategory(null);
   };
 
   return (
@@ -77,6 +80,7 @@ const CategoriesPage = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-around',
           alignItems: 'center',
+          position: 'relative',
         }}
       >
         {uniqueCategories.map((category) => (
@@ -87,7 +91,9 @@ const CategoriesPage = () => {
             onMouseLeave={handleCategoryLeave}
           >
             {category}
-            <Tooltip isVisible={tooltipVisible}>{tooltipContent}</Tooltip>
+            {hoveredCategory === category && (
+              <Tooltip isVisible={tooltipVisible}>{tooltipContent}</Tooltip>
+            )}
           </CategoryCard>
         ))}
       </ul>
