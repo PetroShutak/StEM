@@ -64,7 +64,11 @@ export const QuantityInput = styled.input`
   border: 1px solid #ccc;
 `;
 
-export const TotalPrice = styled.p`
+export const TotalPrice = styled.span`
+  font-family: var(--font-family-secondary);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bg-secondary);
   margin-top: 10px;
   font-size: 18px;
 `;
