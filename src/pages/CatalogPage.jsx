@@ -37,7 +37,7 @@ const CatalogPage = () => {
   const [isFilterReset, setIsFilterReset] = useState(true);
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 9;
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(
