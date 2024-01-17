@@ -30,10 +30,9 @@ const Filter = ({
   const [priceRange, setPriceRange] = useState([0, 1000]);
 
   useEffect(() => {
-    const uniqueBrands = Array.from(
-      new Set(products.map(product => product.brand))
-    );
-    setBrands(uniqueBrands);
+    const uniqueBrands = Array.from(new Set(products.map(product => product.brand)));
+    const sortedBrands = uniqueBrands.sort((a, b) => a.localeCompare(b));
+    setBrands(sortedBrands);
 
     const uniqueCountries = Array.from(
       new Set(products.map(product => product.country))
