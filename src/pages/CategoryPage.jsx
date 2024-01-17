@@ -16,6 +16,7 @@ import {
   FavoriteButton,
   FavoriteButtonActive,
 } from 'components/PageStyled/CategoryPage.styled';
+import AddToShoppingListButton from 'components/AddToShoppingListBtn/AddToShoppingListButton';
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -26,7 +27,6 @@ const CategoryPage = () => {
     new Set(products.map(product => product.subcategory))
   );
   const favorites = useSelector(selectFavorites);
-
   const handleAddFavorites = favId => {
     dispatch(addFavorite(favId));
     notifyAddToFavorite();
@@ -100,6 +100,10 @@ const CategoryPage = () => {
                 <p>{product.brand}</p>
                 <p>{product.price} грн.</p>
               </div>
+              <AddToShoppingListButton 
+                id={product._id}
+                price={product.price}
+              />
             </StyledListItem>
           ))}
       </StyledList>
