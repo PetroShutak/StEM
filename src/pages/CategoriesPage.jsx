@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectAllProducts } from 'redux/products/selectors';
@@ -8,7 +8,6 @@ const CategoryCard = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; 
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -28,41 +27,12 @@ const CategoryCard = styled(Link)`
   }
 `;
 
-const Tooltip = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-`;
-
 const CategoriesPage = () => {
   const products = useSelector(selectAllProducts);
-  const [tooltipVisible, setTooltipVisible] = useState(false);
-  const [tooltipContent, setTooltipContent] = useState('');
-  const [hoveredCategory, setHoveredCategory] = useState(null);
 
-  const uniqueCategories = [...new Set(products.map((product) => product.category))];
-
-  const handleCategoryHover = (category) => {
-    const subcategories = products
-      .filter((product) => product.category === category)
-      .map((product) => product.subcategory);
-
-    setTooltipContent(subcategories.join(', '));
-    setTooltipVisible(true);
-    setHoveredCategory(category);
-  };
-
-  const handleCategoryLeave = () => {
-    setTooltipVisible(false);
-    setHoveredCategory(null);
-  };
+  const uniqueCategories = [
+    ...new Set(products.map(product => product.category)),
+  ];
 
   return (
     <div>
@@ -80,20 +50,11 @@ const CategoriesPage = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-around',
           alignItems: 'center',
-          position: 'relative',
         }}
       >
-        {uniqueCategories.map((category) => (
-          <CategoryCard
-            key={category}
-            to={`/catalog/category/${category}`}
-            onMouseEnter={() => handleCategoryHover(category)}
-            onMouseLeave={handleCategoryLeave}
-          >
+        {uniqueCategories.map(category => (
+          <CategoryCard key={category} to={`/catalog/category/${category}`}>
             {category}
-            {hoveredCategory === category && (
-              <Tooltip isVisible={tooltipVisible}>{tooltipContent}</Tooltip>
-            )}
           </CategoryCard>
         ))}
       </ul>
