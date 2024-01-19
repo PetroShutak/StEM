@@ -16,6 +16,7 @@ import {
 } from 'redux/products/shoppingListSlice';
 import styled from 'styled-components';
 import { notifyRemove } from 'utils/toasts';
+import OrderForm from 'components/OrderForm/OrderForm';
 
 const CleanBtn = styled.button`
   display: block;
@@ -32,6 +33,16 @@ const CleanBtn = styled.button`
   &:hover,
   &:focus {
     background-color: var(--bg-secondary-hover);
+  }
+`;
+
+const ShoppingListPageWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -84,9 +95,12 @@ const ShoppingListPage = () => {
       {shoppingList.length === 0 ? (
         <NoFavorites />
       ) : (
-        <ProductList
-          products={isFiltred ? filtredShoppingList : shoppingList}
-        />
+        <ShoppingListPageWrapper>
+          <ProductList
+            products={isFiltred ? filtredShoppingList : shoppingList}
+          />
+          <OrderForm totalPrice={totalPrice} />
+        </ShoppingListPageWrapper>
       )}
       {shoppingList.length === 0 ? null : (
         <CleanBtn onClick={handleClearShoppingList}>Очистити кошик</CleanBtn>
