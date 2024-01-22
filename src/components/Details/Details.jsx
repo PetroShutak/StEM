@@ -68,7 +68,7 @@ const Details = () => {
       setIsAdmin(false);
     } else {
       alert('Введіть пароль');
-      if (prompt('Введіть пароль') === 'admin') {
+      if (prompt('Введіть пароль') === 'admiN') {
         setIsAdmin(true);
       } else {
         alert('Невірний пароль');
