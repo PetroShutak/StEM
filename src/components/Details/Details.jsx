@@ -11,6 +11,7 @@ import {
   BuyButton,
   UpdateWrapper,
   UpdateButtonContainer,
+  PseudoAdminButton,
 } from './Details.styled';
 import {
   notifyAddShopingList,
@@ -58,6 +59,24 @@ const Details = () => {
   const isLoading = useSelector(selectLoading);
   const [editedFields, setEditedFields] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+
+  // pseudo admin
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const toglerAdmin = () => {
+    if (isAdmin) {
+      setIsAdmin(false);
+    } else {
+      alert('Введіть пароль');
+      if (prompt('Введіть пароль') === 'admin') {
+        setIsAdmin(true);
+      } else {
+        alert('Невірний пароль');
+        setIsAdmin(false);
+      }
+    }
+  };
+  // pseudo admin
 
   const handleEditProduct = () => {
     setIsEditing(true);
@@ -210,112 +229,115 @@ const Details = () => {
           </BuyButton>
         </DescriptionWrapper>
       </DetailsContainer>
-          {isEditing ? (
-            <UpdateWrapper>
-              <label>
-                Назва:
-                <input
-                  type="text"
-                  name="name"
-                  value={editedFields.name}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Бренд:
-                <input
-                  type="text"
-                  name="brand"
-                  value={editedFields.brand}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Модель:
-                <input
-                  type="text"
-                  name="model"
-                  value={editedFields.model}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Опис:
-                <textarea
-                  type="text"
-                  name="description"
-                  value={editedFields.description}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Ціна:
-                <input
-                  type="text"
-                  name="price"
-                  value={editedFields.price}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Категорія:
-                <input
-                  type="text"
-                  name="category"
-                  value={editedFields.category}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Підкатегорія:
-                <input
-                  type="text"
-                  name="subcategory"
-                  value={editedFields.subcategory}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Зображення:
-                <input
-                  type="text"
-                  name="image"
-                  value={editedFields.image}
-                  onChange={handleInputChange}
-                  placeholder="http://example.com/image.jpg"
-                />
-              </label>
-              <label>
-                Рейтинг:
-                <input
-                  type="text"
-                  name="raiting"
-                  value={editedFields.raiting}
-                  onChange={handleInputChange}
-                  placeholder="1-5"
-                />
-              </label>
-              <label>
-                Країна-виробник:
-                <input
-                  type="text"
-                  name="country"
-                  value={editedFields.country}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <button type="button" onClick={handleSaveChanges}>
-                Зберегти зміни
-              </button>
-            </UpdateWrapper >
-          ) : (
-            <UpdateButtonContainer>
-              <button onClick={() => handleNavigate('prev')}>Попередній</button>
-              <button onClick={handleEditProduct}>Редагувати</button>
-              <button onClick={handleDeleteProduct}>Видалити</button>
-              <button onClick={() => handleNavigate('next')}>Наступний</button>
-            </UpdateButtonContainer>
-          )}
+      {isEditing ? (
+        <UpdateWrapper>
+          <label>
+            Назва:
+            <input
+              type="text"
+              name="name"
+              value={editedFields.name}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Бренд:
+            <input
+              type="text"
+              name="brand"
+              value={editedFields.brand}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Модель:
+            <input
+              type="text"
+              name="model"
+              value={editedFields.model}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Опис:
+            <textarea
+              type="text"
+              name="description"
+              value={editedFields.description}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Ціна:
+            <input
+              type="text"
+              name="price"
+              value={editedFields.price}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Категорія:
+            <input
+              type="text"
+              name="category"
+              value={editedFields.category}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Підкатегорія:
+            <input
+              type="text"
+              name="subcategory"
+              value={editedFields.subcategory}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Зображення:
+            <input
+              type="text"
+              name="image"
+              value={editedFields.image}
+              onChange={handleInputChange}
+              placeholder="http://example.com/image.jpg"
+            />
+          </label>
+          <label>
+            Рейтинг:
+            <input
+              type="text"
+              name="raiting"
+              value={editedFields.raiting}
+              onChange={handleInputChange}
+              placeholder="1-5"
+            />
+          </label>
+          <label>
+            Країна-виробник:
+            <input
+              type="text"
+              name="country"
+              value={editedFields.country}
+              onChange={handleInputChange}
+            />
+          </label>
+          <button type="button" onClick={handleSaveChanges}>
+            Зберегти зміни
+          </button>
+        </UpdateWrapper>
+      ) : (
+        isAdmin && (
+          <UpdateButtonContainer>
+            <button onClick={() => handleNavigate('prev')}>Попередній</button>
+            <button onClick={handleEditProduct}>Редагувати</button>
+            <button onClick={handleDeleteProduct}>Видалити</button>
+            <button onClick={() => handleNavigate('next')}>Наступний</button>
+          </UpdateButtonContainer>
+        )
+      )}
+      <PseudoAdminButton onClick={toglerAdmin} />
       {showModal && (
         <QuantityModal
           showModal={showModal}

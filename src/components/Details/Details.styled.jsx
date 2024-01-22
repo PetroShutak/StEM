@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RiAdminLine } from 'react-icons/ri';
 
 export const DetailsContainer = styled.div`
   padding-top: 40px;
@@ -108,7 +109,16 @@ export const UpdateButtonContainer = styled.div`
     margin-right: 8px;
     cursor: pointer;
   }
-   @media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
+  }
+`;
+
+export const PseudoAdminButton = styled(RiAdminLine)`
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-color-primary-black);
+  &:hover {
+    scale: 1.1;
   }
 `;
