@@ -78,6 +78,23 @@ const Details = () => {
   };
   // pseudo admin
 
+  // viewedProducts
+   useEffect(() => {
+    // Отримуємо збережені переглянуті товари з локального сховища
+    const viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
+
+    // Знаходимо поточний продукт
+    const currentProduct = products.find(product => product._id === id);
+
+    // Перевірка, чи цей продукт вже є в перегляду
+    if (!viewedProducts.some(p => p._id === currentProduct._id)) {
+      // Додаємо поточний продукт до переглянутих
+      const updatedViewedProducts = [currentProduct, ...viewedProducts.slice(0, 4)]; // Зберігаємо останні 5 товарів
+      localStorage.setItem('viewedProducts', JSON.stringify(updatedViewedProducts));
+    }
+  }, [id, products]);
+  // viewedProducts
+
   const handleEditProduct = () => {
     setIsEditing(true);
     const currentProduct = products.find(product => product._id === id);
