@@ -62,7 +62,7 @@ const FormWrapper = styled.div`
 const BASE_URL = 'https://stem-server-db.onrender.com';
 // const BASE_URL = 'http://localhost:8080';
 
-const OrderForm = ({ totalPrice }) => {
+const OrderForm = ({ totalPrice, shoppingList }) => {
   const [deliveryMethod, setDeliveryMethod] = useState('none');
   const [orderResult, setOrderResult] = useState(null);
 
@@ -79,6 +79,7 @@ const OrderForm = ({ totalPrice }) => {
         ? event.target.deliveryAddress.value
         : '',
       postOffice: event.target.postOffice ? event.target.postOffice.value : '',
+      cartItems: shoppingList
     };
 
     if (formData.delivery !== 'post') {
@@ -117,7 +118,7 @@ const OrderForm = ({ totalPrice }) => {
     <FormWrapper>
       <h2>Оформлення замовлення</h2>
       <span>Загальна сума замовлення: {totalPrice} грн</span>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <form onSubmit={handleSubmit}>
         <label>
           Призвіще та ім'я:
           <input type="text" name="name" required />

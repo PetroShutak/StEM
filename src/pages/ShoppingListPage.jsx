@@ -99,7 +99,7 @@ const ShoppingListPage = () => {
           <ProductList
             products={isFiltred ? filtredShoppingList : shoppingList}
           />
-          <OrderForm totalPrice={totalPrice} />
+          <OrderForm totalPrice={totalPrice} shoppingList={shoppingList}/>
         </ShoppingListPageWrapper>
       )}
       {shoppingList.length === 0 ? null : (
