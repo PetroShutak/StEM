@@ -59,10 +59,54 @@ const FormWrapper = styled.div`
   }
 `;
 
+const BASE_URL = 'https://stem-server-db.onrender.com';
+// const BASE_URL = 'http://localhost:8080';
+
 const OrderForm = ({ totalPrice }) => {
   const [deliveryMethod, setDeliveryMethod] = useState('none');
-  const handleSubmit = event => {
+  const [orderResult, setOrderResult] = useState(null);
+
+  const handleSubmit = async event => {
     event.preventDefault();
+
+    // Отримати дані з форми
+    const formData = {
+      name: event.target.name ? event.target.name.value : '',
+      phone: event.target.phone ? event.target.phone.value : '',
+      payment: event.target.payment ? event.target.payment.value : '',
+      delivery: event.target.delivery ? event.target.delivery.value : '',
+      deliveryAddress: event.target.deliveryAddress
+        ? event.target.deliveryAddress.value
+        : '',
+      postOffice: event.target.postOffice ? event.target.postOffice.value : '',
+    };
+
+    if (formData.delivery !== 'post') {
+      delete formData.postOffice;
+    }
+
+    console.log('FormData:', formData);
+    try {
+      // Виконати запит на сервер
+      const response = await fetch(`${BASE_URL}/api/products/order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Отримати результат і встановити його в стан
+        const result = await response.json();
+        setOrderResult(result);
+      } else {
+        throw new Error('Failed to place order');
+      }
+    } catch (error) {
+      console.error('Error placing order:', error);
+      setOrderResult({ error: 'Failed to place order' });
+    }
   };
 
   const handleDeliveryChange = event => {
@@ -73,7 +117,7 @@ const OrderForm = ({ totalPrice }) => {
     <FormWrapper>
       <h2>Оформлення замовлення</h2>
       <span>Загальна сума замовлення: {totalPrice} грн</span>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label>
           Призвіще та ім'я:
           <input type="text" name="name" required />
@@ -120,10 +164,16 @@ const OrderForm = ({ totalPrice }) => {
           </>
         )}
         <button type="submit">Оформити замовлення</button>
-        <p>
+
+        {orderResult && (
+          <span style={{ color: orderResult.error ? 'red' : 'green' }}>
+            {orderResult.message}
+          </span>
+        )}
+        <span>
           *Після оформлення замовлення з вами зв'яжеться наш менеджер для
           підтвердження
-        </p>
+        </span>
       </form>
     </FormWrapper>
   );
