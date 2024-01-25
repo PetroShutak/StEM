@@ -9,13 +9,13 @@ const BrandCarousel = () => {
       original:
         'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703694154/stem-screen_ybfq37_1_lhdti1.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703694154/stem-screen_ybfq37_1_lhdti1.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703694154/stem-screen_ybfq37_1_lhdti1.jpg',
     },
     {
       original:
         'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703694154/stem-screen-1_vdedgs_1_i2h9z6.jpg',
       thumbnail:
-        'https://res.cloudinary.com/dk0rzgyzj/image/upload/t_Thumbnail/v1703694154/stem-screen-1_vdedgs_1_i2h9z6.jpg',
+        'https://res.cloudinary.com/dk0rzgyzj/image/upload/v1703694154/stem-screen-1_vdedgs_1_i2h9z6.jpg',
     },
   ];
 
