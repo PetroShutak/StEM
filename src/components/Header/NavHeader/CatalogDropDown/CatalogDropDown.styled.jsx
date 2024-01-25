@@ -25,7 +25,7 @@ export const SelectCatalogWrapper = styled.div`
   position: absolute;
   top: 30px;
   left: 0;
-  width: 200px;
+  width: 280px;
   text-align: start;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-color-primary-grey);
