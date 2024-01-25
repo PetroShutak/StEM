@@ -14,8 +14,8 @@ const NavHeader = () => {
   return (
     <NavHeaderWrapper>
       <NavHeaderContent>
-        <SearchMobile />
         <CatalogDropDown />
+        <SearchMobile />
         <NavBarHeader />
         <SocialBlock />
         <ButtonToFavorite />
