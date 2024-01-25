@@ -25,6 +25,10 @@ const CatalogDropDown = () => {
     }
   };
 
+const handleCatalogClick = () => {
+   navigate(`/catalog`);
+}
+
   const uniqueCategories = [
     ...new Set(products.map(product => product.category)),
   ];
@@ -61,6 +65,9 @@ const CatalogDropDown = () => {
           <ul>
             <li onClick={() => handleCategoryClick('categories')}>
               Всі категорії
+            </li>
+<li onClick={() => handleCatalogClick()}>
+              Весь каталог... 
             </li>
           </ul>
           <ul>
