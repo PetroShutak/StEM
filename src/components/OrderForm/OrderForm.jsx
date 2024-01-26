@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  resetShoppingList,
+  resetTotalPrice,
+} from 'redux/products/shoppingListSlice';
 import styled from 'styled-components';
+import { notifyOrdered, notifyOrderedError } from 'utils/toasts';
 
 const FormWrapper = styled.div`
   //   border: 1px solid red;
@@ -62,13 +68,15 @@ const FormWrapper = styled.div`
 const BASE_URL = 'https://stem-server-db.onrender.com';
 // const BASE_URL = 'http://localhost:8080';
 
-const OrderForm = ({ totalPrice, shoppingList }) => {
+const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
   const [deliveryMethod, setDeliveryMethod] = useState('none');
   const [orderResult, setOrderResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = async event => {
     event.preventDefault();
-
+    setIsLoading(true);
     // Отримати дані з форми
     const formData = {
       name: event.target.name ? event.target.name.value : '',
@@ -79,8 +87,19 @@ const OrderForm = ({ totalPrice, shoppingList }) => {
         ? event.target.deliveryAddress.value
         : '',
       postOffice: event.target.postOffice ? event.target.postOffice.value : '',
-      cartItems: shoppingList
+      cartItems: shoppingListWithQuantity.map(item => ({
+        name: shoppingList.find(product => product._id === item.id).name,
+        price: item.price,
+        quantity: item.quantity,
+      })),
+      totalPrice: totalPrice,
     };
+
+    // Очистити дані форми після відправлення замовлення і очистити список покупок
+    event.target.reset();
+    dispatch(resetShoppingList());
+    dispatch(resetTotalPrice());
+    notifyOrdered();
 
     if (formData.delivery !== 'post') {
       delete formData.postOffice;
@@ -105,8 +124,11 @@ const OrderForm = ({ totalPrice, shoppingList }) => {
         throw new Error('Failed to place order');
       }
     } catch (error) {
+      notifyOrderedError();
       console.error('Error placing order:', error);
       setOrderResult({ error: 'Failed to place order' });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -164,7 +186,9 @@ const OrderForm = ({ totalPrice, shoppingList }) => {
             </label>
           </>
         )}
-        <button type="submit">Оформити замовлення</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Відправка...' : 'Оформити замовлення'}
+        </button>
 
         {orderResult && (
           <span style={{ color: orderResult.error ? 'red' : 'green' }}>

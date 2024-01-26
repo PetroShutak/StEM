@@ -48,3 +48,11 @@ export const notifyLoadingDetails = () =>
     },
     toastLoading
   );
+
+// ordered sucsess
+export const notifyOrdered = () =>
+  toast.success('Замовлення успішно оформлено', toastSuccess);
+
+// ordered error
+export const notifyOrderedError = () =>
+  toast.error('Помилка оформлення замовлення', toastError);

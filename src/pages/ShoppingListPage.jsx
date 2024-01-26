@@ -6,6 +6,7 @@ import {
   selectShoppingListProducts,
   selectFiltredShoppingListProducts,
   selectTotalPrice,
+  selectShoppingListWithQuantity,
 } from '../redux/products/selectors';
 import ProductList from 'components/ProductList/ProductList';
 import NoFavorites from 'components/NoFavorites/NoFavorites';
@@ -52,6 +53,7 @@ const ShoppingListPage = () => {
   const filtredShoppingList = useSelector(selectFiltredShoppingListProducts);
   const dispatch = useDispatch();
   const totalPrice = useSelector(selectTotalPrice);
+  const shoppingListWithQuantity = useSelector(selectShoppingListWithQuantity);
 
   const handleClearShoppingList = () => {
     dispatch(resetTotalPrice());
@@ -99,7 +101,7 @@ const ShoppingListPage = () => {
           <ProductList
             products={isFiltred ? filtredShoppingList : shoppingList}
           />
-          <OrderForm totalPrice={totalPrice} shoppingList={shoppingList}/>
+          <OrderForm totalPrice={totalPrice} shoppingListWithQuantity={shoppingListWithQuantity} shoppingList={shoppingList}/>
         </ShoppingListPageWrapper>
       )}
       {shoppingList.length === 0 ? null : (
