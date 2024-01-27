@@ -64,11 +64,31 @@ const FormWrapper = styled.div`
     color: red;
   }
 `;
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const OrderModal = styled.div`
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+`;
 
 const BASE_URL = 'https://stem-server-db.onrender.com';
 // const BASE_URL = 'http://localhost:8080';
 
 const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
+  const [showOrderModal, setShowOrderModal] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState('none');
   const [orderResult, setOrderResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -128,6 +148,13 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
         // Отримати результат і встановити його в стан
         const result = await response.json();
         setOrderResult(result);
+        // Показати модалку
+        setShowOrderModal(true);
+
+        // Показати деталі замовлення на 5 секунд
+        setTimeout(() => {
+          setShowOrderModal(false);
+        }, 5000);
       } else {
         throw new Error('Failed to place order');
       }
@@ -208,6 +235,17 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
           підтвердження
         </span>
       </form>
+      {showOrderModal && (
+        <ModalOverlay>
+          <OrderModal>
+            <h3>Замовлення успішно виконано</h3>
+            <p>Ім'я замовника: {formData.name}</p>
+            <p>Номер телефону: {formData.phone}</p>
+            <p>Кількість позицій: {shoppingListWithQuantity.length}</p>
+            <p>Сума замовлення: {totalPrice} грн</p>
+          </OrderModal>
+        </ModalOverlay>
+      )}
     </FormWrapper>
   );
 };
