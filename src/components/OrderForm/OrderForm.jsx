@@ -89,6 +89,7 @@ const BASE_URL = 'https://stem-server-db.onrender.com';
 
 const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
   const [showOrderModal, setShowOrderModal] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null);
   const [deliveryMethod, setDeliveryMethod] = useState('none');
   const [orderResult, setOrderResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -151,7 +152,13 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
         // Показати модалку
         setShowOrderModal(true);
 
-        // Показати деталі замовлення на 5 секунд
+        setOrderDetails({
+          name: formData.name,
+          phone: formData.phone,
+          itemCount: shoppingListWithQuantity.length,
+          totalPrice: totalPrice,
+        });
+
         setTimeout(() => {
           setShowOrderModal(false);
         }, 5000);
@@ -235,14 +242,14 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
           підтвердження
         </span>
       </form>
-      {showOrderModal && (
+       {showOrderModal && (
         <ModalOverlay>
           <OrderModal>
             <h3>Замовлення успішно виконано</h3>
-            <p>Ім'я замовника: {formData.name}</p>
-            <p>Номер телефону: {formData.phone}</p>
-            <p>Кількість позицій: {shoppingListWithQuantity.length}</p>
-            <p>Сума замовлення: {totalPrice} грн</p>
+            <p>Ім'я замовника: {orderDetails.name}</p>
+            <p>Номер телефону: {orderDetails.phone}</p>
+            <p>Кількість позицій: {orderDetails.itemCount}</p>
+            <p>Сума замовлення: {orderDetails.totalPrice} грн</p>
           </OrderModal>
         </ModalOverlay>
       )}
