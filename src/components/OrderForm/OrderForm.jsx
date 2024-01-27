@@ -95,6 +95,14 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
       totalPrice: totalPrice,
     };
 
+    // Перевірити, чи обрані коректні значення у селектах
+     if (formData.payment === 'none' || formData.delivery === 'none') {
+    // Вивести сповіщення і не відправляти форму
+    alert('Будь ласка, виберіть спосіб оплати та доставки');
+    setIsLoading(false);
+    return;
+  }
+
     // Очистити дані форми після відправлення замовлення і очистити список покупок
     event.target.reset();
     dispatch(resetShoppingList());
