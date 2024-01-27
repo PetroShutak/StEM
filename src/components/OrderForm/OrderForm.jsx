@@ -150,6 +150,7 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
         const result = await response.json();
         setOrderResult(result);
         // Показати модалку
+        console.log(showOrderModal);
         setShowOrderModal(true);
 
         setOrderDetails({
@@ -160,6 +161,7 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
         });
 
         setTimeout(() => {
+          console.log(showOrderModal);
           setShowOrderModal(false);
         }, 5000);
       } else {
