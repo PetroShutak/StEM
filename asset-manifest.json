@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/StEM/static/css/main.e7414fdf.css",
-    "main.js": "/StEM/static/js/main.24b1875d.js",
+    "main.js": "/StEM/static/js/main.82e34149.js",
     "static/css/966.0e721ad1.chunk.css": "/StEM/static/css/966.0e721ad1.chunk.css",
     "static/js/966.32d9d82c.chunk.js": "/StEM/static/js/966.32d9d82c.chunk.js",
     "static/css/563.7bed1ea3.chunk.css": "/StEM/static/css/563.7bed1ea3.chunk.css",
     "static/js/563.ad9ff086.chunk.js": "/StEM/static/js/563.ad9ff086.chunk.js",
     "static/js/319.f4dae7c7.chunk.js": "/StEM/static/js/319.f4dae7c7.chunk.js",
-    "static/js/332.4c98d9d7.chunk.js": "/StEM/static/js/332.4c98d9d7.chunk.js",
+    "static/js/332.239b54fb.chunk.js": "/StEM/static/js/332.239b54fb.chunk.js",
     "static/js/923.7b114b78.chunk.js": "/StEM/static/js/923.7b114b78.chunk.js",
     "static/js/962.dc17445e.chunk.js": "/StEM/static/js/962.dc17445e.chunk.js",
     "static/js/178.bcf1ba39.chunk.js": "/StEM/static/js/178.bcf1ba39.chunk.js",
@@ -27,13 +27,13 @@
     "static/media/No_results_found.jpg": "/StEM/static/media/No_results_found.8c760407be35134a6fef.jpg",
     "index.html": "/StEM/index.html",
     "main.e7414fdf.css.map": "/StEM/static/css/main.e7414fdf.css.map",
-    "main.24b1875d.js.map": "/StEM/static/js/main.24b1875d.js.map",
+    "main.82e34149.js.map": "/StEM/static/js/main.82e34149.js.map",
     "966.0e721ad1.chunk.css.map": "/StEM/static/css/966.0e721ad1.chunk.css.map",
     "966.32d9d82c.chunk.js.map": "/StEM/static/js/966.32d9d82c.chunk.js.map",
     "563.7bed1ea3.chunk.css.map": "/StEM/static/css/563.7bed1ea3.chunk.css.map",
     "563.ad9ff086.chunk.js.map": "/StEM/static/js/563.ad9ff086.chunk.js.map",
     "319.f4dae7c7.chunk.js.map": "/StEM/static/js/319.f4dae7c7.chunk.js.map",
-    "332.4c98d9d7.chunk.js.map": "/StEM/static/js/332.4c98d9d7.chunk.js.map",
+    "332.239b54fb.chunk.js.map": "/StEM/static/js/332.239b54fb.chunk.js.map",
     "923.7b114b78.chunk.js.map": "/StEM/static/js/923.7b114b78.chunk.js.map",
     "962.dc17445e.chunk.js.map": "/StEM/static/js/962.dc17445e.chunk.js.map",
     "178.bcf1ba39.chunk.js.map": "/StEM/static/js/178.bcf1ba39.chunk.js.map",
@@ -42,6 +42,6 @@
   },
   "entrypoints": [
     "static/css/main.e7414fdf.css",
-    "static/js/main.24b1875d.js"
+    "static/js/main.82e34149.js"
   ]
 }
