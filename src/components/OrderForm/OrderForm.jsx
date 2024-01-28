@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-//import {
-  //resetShoppingList,
-  //resetTotalPrice,
-//} from 'redux/products/shoppingListSlice';
+import {
+  resetShoppingList,
+  resetTotalPrice,
+} from 'redux/products/shoppingListSlice';
 import styled from 'styled-components';
 import { notifyOrdered, notifyOrderedError } from 'utils/toasts';
 
@@ -105,8 +105,8 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
 
     // Очистити дані форми після відправлення замовлення і очистити список покупок
     event.target.reset();
-    // dispatch(resetShoppingList());
-    // dispatch(resetTotalPrice());
+    dispatch(resetShoppingList());
+    dispatch(resetTotalPrice());
     notifyOrdered();
 
     if (formData.delivery !== 'post') {
