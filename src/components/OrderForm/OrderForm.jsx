@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  resetShoppingList,
-  resetTotalPrice,
-} from 'redux/products/shoppingListSlice';
+//import {
+  //resetShoppingList,
+  //resetTotalPrice,
+//} from 'redux/products/shoppingListSlice';
 import styled from 'styled-components';
 import { notifyOrdered, notifyOrderedError } from 'utils/toasts';
 
