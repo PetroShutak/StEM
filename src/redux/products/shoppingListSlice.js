@@ -5,6 +5,10 @@ const initialState = {
   totalPrice: 0,
 };
 
+const roundToTwoDecimalPlaces = value => {
+  return Number(value.toFixed(2));
+};
+
 const shoppingListSlice = createSlice({
   name: 'shoppingList',
   initialState,
@@ -19,9 +23,20 @@ const shoppingListSlice = createSlice({
     updateQuantityInList(state, action) {
       const { id, changeQuantity } = action.payload;
       const itemToUpdate = state.shoppingList.find(item => item.id === id);
+
       if (itemToUpdate) {
-        itemToUpdate.quantity += changeQuantity;
-        state.totalPrice += itemToUpdate.price * changeQuantity;
+        const updatedQuantity = itemToUpdate.quantity + changeQuantity;
+        const updatedTotalPrice = roundToTwoDecimalPlaces(
+          state.totalPrice + itemToUpdate.price * changeQuantity
+        );
+
+        state.shoppingList.forEach(item => {
+          if (item.id === id) {
+            item.quantity = updatedQuantity;
+          }
+        });
+
+        state.totalPrice = updatedTotalPrice;
       }
     },
     deleteFromList(state, { payload }) {
@@ -36,8 +51,8 @@ const shoppingListSlice = createSlice({
         product => product.id !== deletedProductId
       );
     },
-   setTotalPrice(state, { payload }) {
-      state.totalPrice += payload;
+    setTotalPrice(state, { payload }) {
+      state.totalPrice += roundToTwoDecimalPlaces(payload);
     },
     resetTotalPrice(state) {
       state.totalPrice = 0;
