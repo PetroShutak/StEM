@@ -1,6 +1,6 @@
 const calculateTotalPrice = (price, quantity) => {
-    return price * quantity;
-  };
-  
-  export default calculateTotalPrice;
+    const totalPrice = price * quantity;
+    return Number(totalPrice.toFixed(2));
+};
 
+export default calculateTotalPrice;
