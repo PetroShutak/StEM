@@ -5,9 +5,6 @@ const initialState = {
   totalPrice: 0,
 };
 
-
-const roundToTwoDecimalPlaces = value => Number(value.toFixed(2));
-
 const shoppingListSlice = createSlice({
   name: 'shoppingList',
   initialState,
@@ -40,7 +37,7 @@ const shoppingListSlice = createSlice({
       );
     },
    setTotalPrice(state, { payload }) {
-      state.totalPrice = roundToTwoDecimalPlaces(payload);
+      state.totalPrice += payload;
     },
     resetTotalPrice(state) {
       state.totalPrice = 0;
