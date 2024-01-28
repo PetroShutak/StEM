@@ -105,8 +105,8 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
 
     // Очистити дані форми після відправлення замовлення і очистити список покупок
     event.target.reset();
-    dispatch(resetShoppingList());
-    dispatch(resetTotalPrice());
+    // dispatch(resetShoppingList());
+    // dispatch(resetTotalPrice());
     notifyOrdered();
 
     if (formData.delivery !== 'post') {
