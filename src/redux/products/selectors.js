@@ -24,11 +24,13 @@ export const selectShoppingListProducts = createSelector(
   }
 );
 
-export const selectShoppingListWithQuantity = state =>
-  state.shoppingList.shoppingList.map(item => ({
+export const selectShoppingListWithQuantity = createSelector(
+  [selectShoppingList],
+  (shoppingList) => shoppingList.map(item => ({
     ...item,
     quantity: item.quantity,
-  }));
+  }))
+);
 
 export const selectFiltredShoppingListProducts = createSelector(
   [selectShoppingListProducts, selectIsFiltred],
