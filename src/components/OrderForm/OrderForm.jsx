@@ -59,9 +59,9 @@ const FormWrapper = styled.div`
     }
   }
   p {
-    margin-top: 120px;
+    margin-top: 60px;
     font-size: 12px;
-    color: red;
+    color: var(--text-color-secondary);
   }
 `;
 
@@ -203,10 +203,10 @@ const OrderForm = ({ totalPrice, shoppingList, shoppingListWithQuantity }) => {
             {orderResult.message}
           </span>
         )}
-        <span>
-          *Після оформлення замовлення з вами зв'яжеться наш менеджер для
+        <p>
+          *Після оформлення замовлення з Вами зв'яжеться наш менеджер для
           підтвердження
-        </span>
+        </p>
       </form>
     </FormWrapper>
   );
