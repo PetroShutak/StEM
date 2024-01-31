@@ -16,6 +16,7 @@ export const FilterWrapper = styled.div`
   font-family: var(--font-family-secondary);
   color: var(--text-color-primary-black);
   // border: 1px solid red;
+  width: 300px;
   @media screen and (max-width: 768px) {
     display: none;
   }
