@@ -10,6 +10,9 @@ export const SearchHeaderWrapper = styled.div`
   height: 40px;
   position: relative;
   flex: 1;
+  @media (max-width: 1096px) {
+    width: 80%;
+  }
   @media (max-width: 768px) {
     display: none;
   }
@@ -21,6 +24,7 @@ export const SearchHeaderForm = styled.form`
   align-items: center;
   width: 100%;
   height: 100%;
+ 
 `;
 
 export const SearchHeaderInput = styled.input`

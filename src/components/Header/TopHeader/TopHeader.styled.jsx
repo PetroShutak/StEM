@@ -24,7 +24,7 @@ export const StyledBurgerButton = styled(BsJustifyRight)`
   font-size: 40px;
   color: var(--text-color-primary-black);
   display: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     display: block;
   }
 `;

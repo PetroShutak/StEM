@@ -22,7 +22,7 @@ export const WorkSheduleWrapper = styled.div`
     font-weight: 400;
     color: var(--text-color-primary-black);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;

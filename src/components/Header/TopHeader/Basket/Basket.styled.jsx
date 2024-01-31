@@ -50,4 +50,7 @@ export const Counter = styled.p`
 export const BasketTitle = styled.p`
   font-family: var(--font-bold);
   font-size: 16px;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
