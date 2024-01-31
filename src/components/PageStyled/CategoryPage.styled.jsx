@@ -47,7 +47,12 @@ const CategoryItemPageWrapper = styled.div`
   color: var(--text-color-primary-black);
   h2 {
     margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: var(--font-family-secondary);
+    color: var(--text-color-primary-black);
   }
+  padding-bottom: 60px;
 `;
 
 const StyledButton = styled.button`
