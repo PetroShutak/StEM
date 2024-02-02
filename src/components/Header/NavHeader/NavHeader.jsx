@@ -1,6 +1,6 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom'
-// import UserBar from './UserBar/UserBar'
+import UserBar from './UserBar/UserBar'
 import { NavHeaderWrapper, NavHeaderContent } from './NavHeader.styled';
 import SocialBlock from './SocialBlock/SocialBlock';
 import ButtonToFavorite from './ButtonToFavorite/ButtonToFavorite';
@@ -20,7 +20,7 @@ const NavHeader = () => {
         <SocialBlock />
         <ButtonToFavorite />
         <ButtonToBasket />
-        {/* <UserBar /> */}
+        <UserBar />
         <ThemeToggle />
       </NavHeaderContent>
     </NavHeaderWrapper>

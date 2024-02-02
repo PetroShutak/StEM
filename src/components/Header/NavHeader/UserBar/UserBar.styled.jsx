@@ -4,13 +4,15 @@ export const UserBarWrapper = styled.div`
   font-family: var(--font-family-secondary);
   p {
     color: var(--text-color-primary-black);
+    // margin-left: 10px;
+    font-size: 16px;
   }
   font-size: 16px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 160px;
+  max-width: 200px;
   cursor: pointer;
   svg {
     color: var(--text-color-secondary-grey);
@@ -27,18 +29,41 @@ export const SelectWrapper = styled.div`
   font-size: 16px;
   top: 30px;
   right: 0;
-  width: 100%;
   text-align: end;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid var(--border-color-primary-grey);
   border-radius: 5px;
-  z-index: 1;
-  option {
-    padding: 5px 10px;
-    cursor: pointer;
-    text-align: center;
+  z-index: 100;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
     &:hover {
       background-color: var(--bg-secondary-grey);
     }
+    svg {
+      margin-right: 8px;
+    }
+
+    span {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const UserMenuWrapper = styled.div`
+  p {
+    color: var(--text-color-primary-black);
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  font-size: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

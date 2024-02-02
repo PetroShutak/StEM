@@ -1,8 +1,10 @@
 import React from 'react';
 import { CloseButton, ModalWrapper } from './FilterModal.styled';
 import Filter from '../Filter';
+import WelcomeComponent from '../WelcomeComponent/WelcomeComponent';
 
 const FilterModal = ({ isVisible, onClose, filterProps }) => {
+  const isLogin = false; // Змінити коли буде реалізована авторизація
   const {
     allProducts,
     applyBrandFilter,
@@ -21,6 +23,7 @@ const FilterModal = ({ isVisible, onClose, filterProps }) => {
 
   return (
     <ModalWrapper isVisible={isVisible}>
+      {!isLogin && <WelcomeComponent />}
       <Filter
         applyFilters={applyFilters}
         products={allProducts}

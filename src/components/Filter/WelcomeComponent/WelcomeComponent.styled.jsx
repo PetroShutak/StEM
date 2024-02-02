@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const WelcomeContainer = styled.div`
+  font-family: var(--font-family-secondary);
+  color: var(--text-color-primary-black);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,9 +10,9 @@ export const WelcomeContainer = styled.div`
   border: 1px solid var(--bg-secondary);
   border-radius: 8px;
   margin-bottom: 20px;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
+  // @media screen and (max-width: 767px) {
+  //   display: none;
+  // }
 `;
 
 export const WelcomeHeader = styled.h2`
