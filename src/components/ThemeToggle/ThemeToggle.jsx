@@ -14,7 +14,7 @@ const ThemeToggle = () => {
     <>
       <ThemeToggleContainer onClick={toggleTheme}>
       <ThemeToggleIcon>
-          {theme === 'light' ? <MdOutlineNightlight size={32} color='#000' /> : <MdOutlineLightMode size={32} color='white'/>}
+          {theme === 'light' ? <MdOutlineNightlight size={32} color='#aaa' /> : <MdOutlineLightMode size={32} color='white'/>}
         </ThemeToggleIcon>        
       </ThemeToggleContainer>
     </>

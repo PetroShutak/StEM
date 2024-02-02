@@ -10,7 +10,7 @@ export const SearchMobileWrapper = styled.div`
 `;
 
 export const SearchMobileButton = styled(BiSearchAlt2)`
-  color: var(--text-color-primary-black);
+  color: var(--text-color-secondary-grey);
   font-size: 2rem;
   transition: 0.5s;
   &:hover {
