@@ -18,7 +18,7 @@ export const BurgerMenuContainer = styled.div`
   z-index: 1000;
   padding: 20px;
   .close {
-    color: rgba(255, 255, 255, 1);;
+    color: rgba(255, 255, 255, 1);
     float: right;
     font-size: 36px;
     font-weight: bold;
@@ -41,23 +41,22 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(bg-backdrop);
+  background-color: var(--bg-backdrop);
+  backdrop-filter: blur(5px);
   z-index: 999;
 `;
 
 export const BurgerNav = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 20px;
+  flex-direction: column;
   justify-content: center;
   align-items: start;
   padding-top: 40px;
-  margin-bottom: 50px;
   a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 1);;
+    color: black;
     font-size: 20px;
-    margin: 20px;
     &:hover,
     &:focus {
       color: var(--text-color-primary-orange);
@@ -77,10 +76,13 @@ export const StyledLink = styled(NavLink)`
   &.active {
     color: var(--text-color-primary-orange);
   }
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: var(--shadow-item);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  width: 280px;
 `;
-
-
-
 
 export const LogoWrapperBurger = styled.div`
   display: flex;
