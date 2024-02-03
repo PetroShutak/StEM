@@ -13,12 +13,32 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import RegistrationForm from './RegistrationForm';
 import { FcGoogle } from 'react-icons/fc';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/operations';
 
 const modalRoot = document.getElementById('modal-root');
 
 const LoginForm = ({ onClose }) => {
   const [isRegistrationFormVisible, setIsRegistrationFormVisible] =
     useState(false);
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    const handleChange = e => {
+      const { name, value } = e.target;
+      switch (name) {
+        case 'email':
+          setEmail(value);
+          break;
+        case 'password':
+          setPassword(value);
+          break;
+        default:
+          console.warn('Тип поля не обробляється');
+      }
+    };
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -49,7 +69,20 @@ const LoginForm = ({ onClose }) => {
   const handleSubmit = e => {
     e.preventDefault();
     // Handle form submission logic here
-    clickMessage();
+    // clickMessage();
+    if (!email || !password) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    try {
+     dispatch(logIn({ email, password }));
+
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      setError('Invalid email or password');
+    }
   };
 
   const forgotPassword = () => {
@@ -63,8 +96,19 @@ const LoginForm = ({ onClose }) => {
           <AuthForm onSubmit={handleSubmit}>
             <CloseButton onClick={onClose}>&times;</CloseButton>
             <FormTitle>Вхід в особистий кабінет</FormTitle>
-            <AuthInput type="email" placeholder="Email" />
-            <AuthInput type="password" placeholder="Password" />
+            {error && <p>{error}</p>}
+            <AuthInput type="email" placeholder="Email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            required
+            />
+            <AuthInput type="password" placeholder="Password" 
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+            />
             <AuthButton type="submit">Увійти</AuthButton>
             <AuthLink onClick={forgotPassword}>Забули пароль?</AuthLink>
             <div

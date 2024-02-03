@@ -15,13 +15,13 @@ import { filterReducer } from './products/filterSlice';
 import { favoriteReducer } from './products/favoriteSlice';
 import { shoppingListReducer } from './products/shoppingListSlice';
 import { searchReducer } from './products/searchSlice';
-import  authReducer  from './users/authSlice';
+import  authReducer  from './auth/slice';
 
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites', 'shoppingList', 'totalPrice', 'auth'],
+  whitelist: ['favorites', 'shoppingList', 'totalPrice', 'token'],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);

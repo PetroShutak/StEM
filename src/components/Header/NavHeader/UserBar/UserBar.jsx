@@ -9,12 +9,24 @@ import {
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
 import LoginForm from 'components/Auth/LoginForm';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { logOut } from 'redux/auth/operations';
 
 const UserBar = () => {
   const [isShowAuthModal, setIsShowAuthModal] = useState(false);
-  const isLogin = false; // Змінити коли буде реалізована авторизація
+  const isLogin = useSelector(selectIsLoggedIn);
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    try {
+      dispatch(logOut());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -53,7 +65,7 @@ const UserBar = () => {
               <IoSettingsOutline size={20} color="gray" />
               <span>Налаштування</span>
             </div>
-            <div>
+            <div onClick={handleLogout}>
               <IoIosLogOut size={20} color="gray" />
               <span>Вийти</span>
             </div>

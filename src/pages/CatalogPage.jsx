@@ -23,8 +23,11 @@ import FilterModal from 'components/Filter/FilterModal/FilterModal';
 import ReactPaginate from 'react-paginate';
 import SortSelect from 'components/SortSelect/SortSelect';
 import WelcomeComponent from 'components/Filter/WelcomeComponent/WelcomeComponent';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const CatalogPage = () => {
+  const isLogin = useSelector(selectIsLoggedIn);
+  console.log('isLogin', isLogin);
   const allProducts = useSelector(selectAllProducts);
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
   const loading = useSelector(selectLoading);
@@ -164,7 +167,7 @@ const CatalogPage = () => {
         }}
       />
       <FilterWrapper>
-        <WelcomeComponent />
+        {!isLogin && <WelcomeComponent />}
         <Filter
           products={allProducts}
           applyBrandFilter={applyBrandFilter}

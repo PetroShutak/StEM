@@ -19,6 +19,9 @@ import Loader from './Loader/Loader';
 import CategoriesPage from 'pages/CategoriesPage';
 import CategoryPage from 'pages/CategoryPage';
 
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'redux/auth/useAuth';
+
 import { lazy } from 'react';
 const MainPage = lazy(() => import('pages/MainPage'));
 const CatalogPage = lazy(() => import('pages/CatalogPage'));
@@ -33,10 +36,22 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const { isRefreshing, error } = useAuth();
+
+  useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  return (
+  if (error) {
+    return <NotFound />;
+  }
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
       <Toaster />
       <Routes>
@@ -65,4 +80,5 @@ export const App = () => {
       <CallButton />
     </>
   );
+  
 };
