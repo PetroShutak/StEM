@@ -10,15 +10,17 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
 import LoginForm from 'components/Auth/LoginForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
 import { logOut } from 'redux/auth/operations';
 
 const UserBar = () => {
   const [isShowAuthModal, setIsShowAuthModal] = useState(false);
   const isLogin = useSelector(selectIsLoggedIn);
+  const userName = useSelector(selectUser).name;
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
   const dispatch = useDispatch();
+
 
   const handleLogout = () => {
     try {
@@ -27,6 +29,7 @@ const UserBar = () => {
       console.log(error);
     }
   };
+
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -55,7 +58,7 @@ const UserBar = () => {
         />
         {isLogin && (
           <UserMenuWrapper>
-            <p>User Name</p>
+            <p>{userName}</p>
             <RiArrowDropDownLine size={32} color="gray" />
           </UserMenuWrapper>
         )}

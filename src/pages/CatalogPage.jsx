@@ -27,7 +27,6 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const CatalogPage = () => {
   const isLogin = useSelector(selectIsLoggedIn);
-  console.log('isLogin', isLogin);
   const allProducts = useSelector(selectAllProducts);
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
   const loading = useSelector(selectLoading);
@@ -38,6 +37,7 @@ const CatalogPage = () => {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isFilterReset, setIsFilterReset] = useState(true);
+  
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;

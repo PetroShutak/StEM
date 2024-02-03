@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { CloseButton, ModalWrapper } from './FilterModal.styled';
 import Filter from '../Filter';
 import WelcomeComponent from '../WelcomeComponent/WelcomeComponent';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const FilterModal = ({ isVisible, onClose, filterProps }) => {
-  const isLogin = false; // Змінити коли буде реалізована авторизація
+  const isLogin = useSelector(selectIsLoggedIn);
   const {
     allProducts,
     applyBrandFilter,
