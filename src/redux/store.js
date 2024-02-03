@@ -15,13 +15,16 @@ import { filterReducer } from './products/filterSlice';
 import { favoriteReducer } from './products/favoriteSlice';
 import { shoppingListReducer } from './products/shoppingListSlice';
 import { searchReducer } from './products/searchSlice';
+import  authReducer  from './users/authSlice';
+
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites', 'shoppingList', 'totalPrice'],
+  whitelist: ['favorites', 'shoppingList', 'totalPrice', 'auth'],
 };
 
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 const persistedFavoriteReducer = persistReducer(persistConfig, favoriteReducer);
 const persistedShoppingListReducer = persistReducer(
   persistConfig,
@@ -30,6 +33,7 @@ const persistedShoppingListReducer = persistReducer(
 
 export const store = configureStore({
   reducer: {
+    auth: persistedAuthReducer,
     products: productsReducer,
     filter: filterReducer,
     favorites: persistedFavoriteReducer,
