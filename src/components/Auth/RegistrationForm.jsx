@@ -12,6 +12,7 @@ import {
 import { FcGoogle } from 'react-icons/fc';
 import { signUp } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
+// import VerificationModal from './VerificationModal';
 
 const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    // const [showVerificationModal, setShowVerificationModal] = useState(false);
+    // const registrationError = useSelector(state => state.auth.error);
 
     const handleChange = e => {
       const { name, value } = e.target;
@@ -51,9 +54,11 @@ const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
 
     try {
      dispatch(signUp({ name, email, password }));
-      setName('');
-      setEmail('');
-      setPassword('');
+     setName('');
+     setEmail('');
+     setPassword('');
+    //  setShowVerificationModal(true);
+     alert('Вам на пошту відправлено лист з підтвердженням реєстрації');
     } catch (error) {
       setError('Invalid email or password');
     }
@@ -121,8 +126,12 @@ const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
               Вже зареєстровані? Увійти
             </AuthLink>
           </AuthForm>
+          {/* {registrationError && <p>Error: {registrationError.message}</p>} */}
         </AuthContainer>
       </Overlay>
+      {/* {showVerificationModal && (
+        <VerificationModal onClose={() => setShowVerificationModal(false)} />
+        )} */}
     </>
   );
 };

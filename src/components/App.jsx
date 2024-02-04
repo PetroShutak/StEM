@@ -39,15 +39,12 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const { isRefreshing, error } = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  if (error) {
-    return <NotFound />;
-  }
 
   return isRefreshing ? (
     <Loader />
