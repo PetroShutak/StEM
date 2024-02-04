@@ -10,18 +10,22 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
 import LoginForm from 'components/Auth/LoginForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
+import {
+  selectIsLoggedIn,
+  selectUser,
+  selectVerification,
+} from 'redux/auth/selectors';
 import { getProfile, logOut } from 'redux/auth/operations';
 
 const UserBar = () => {
   const [isShowAuthModal, setIsShowAuthModal] = useState(false);
   const isLogin = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUser).name;
+  const verified = useSelector(selectVerification);
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     const fetchData = async () => {
       if (isLogin) {
@@ -34,19 +38,21 @@ const UserBar = () => {
         }
       }
     };
-  
+
     fetchData();
   }, [dispatch, isLogin]);
 
-
   const handleLogout = () => {
     try {
-      dispatch(logOut());
+      if (verified === null) {
+        dispatch(logOut());
+      } else {
+        alert('Ви не підтвердили свою пошту');
+      }
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);

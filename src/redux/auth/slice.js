@@ -4,6 +4,7 @@ import { signUp, logIn, logOut, refreshUser, getProfile } from './operations';
 const initialState = {
   user: { name: null, email: null, password: null },
   token: null,
+  verificationToken: null,
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
@@ -22,7 +23,7 @@ const authSlice = createSlice({
           name: action.payload.name,
           email: action.payload.email,
         };
-        state.token = action.payload.token;
+        state.verificationToken = action.payload.verificationToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
