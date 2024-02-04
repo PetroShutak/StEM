@@ -70,8 +70,8 @@ export const App = () => {
           </Route>
           <Route path="/searchresult" element={<SearchResultPage />} />
           <Route path="/servis" element={<WaitCreate />} />
-        </Route>
         <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
       {isLoading && <Loader />}
       <CallButton />

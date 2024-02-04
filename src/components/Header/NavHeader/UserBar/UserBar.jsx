@@ -11,7 +11,7 @@ import { IoIosLogOut } from 'react-icons/io';
 import LoginForm from 'components/Auth/LoginForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
-import { logOut } from 'redux/auth/operations';
+import { getProfile, logOut } from 'redux/auth/operations';
 
 const UserBar = () => {
   const [isShowAuthModal, setIsShowAuthModal] = useState(false);
@@ -20,6 +20,23 @@ const UserBar = () => {
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
   const dispatch = useDispatch();
+
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isLogin) {
+        try {
+          const result = await dispatch(getProfile());
+          // Вивести дані профілю у консоль
+          console.log('Profile data after login:', result.payload);
+        } catch (error) {
+          console.error('Error during fetching profile:', error);
+        }
+      }
+    };
+  
+    fetchData();
+  }, [dispatch, isLogin]);
 
 
   const handleLogout = () => {

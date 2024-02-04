@@ -73,3 +73,15 @@ export const refreshUser = createAsyncThunk(
       }
     }
   );
+
+  export const getProfile = createAsyncThunk(
+    'auth/getProfile',
+    async (_, thunkAPI) => {
+      try {
+        const { data } = await axios.get('/api/users/profile');
+        return data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
