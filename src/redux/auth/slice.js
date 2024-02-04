@@ -19,7 +19,10 @@ const authSlice = createSlice({
       })
       .addCase(signUp.fulfilled, (state, action) => {
         console.log('User data signUp:', action.payload.user);
-        state.user = action.payload.user;
+        state.user =  {
+          name: action.payload.name,
+          email: action.payload.email,
+        };
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
