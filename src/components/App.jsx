@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
@@ -20,7 +20,7 @@ import CategoriesPage from 'pages/CategoriesPage';
 import CategoryPage from 'pages/CategoryPage';
 
 import { refreshUser } from 'redux/auth/operations';
-import { useAuth } from 'redux/auth/useAuth';
+
 
 import { lazy } from 'react';
 import LoginForm from './Auth/LoginForm';
@@ -41,17 +41,16 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const { isRefreshing } = useAuth();
+  
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
+  return (
     <>
       <Toaster />
+      <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
@@ -78,6 +77,7 @@ export const App = () => {
       </Routes>
       {isLoading && <Loader />}
       <CallButton />
+      </Suspense> 
     </>
   );
 };

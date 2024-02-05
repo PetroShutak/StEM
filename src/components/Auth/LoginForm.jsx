@@ -1,4 +1,7 @@
-import React from 'react'; // useState, // useEffect,
+import React, {
+  useState,
+  //  useEffect
+} from 'react';
 import { createPortal } from 'react-dom';
 import {
   Overlay,
@@ -12,11 +15,15 @@ import {
 } from './Auth.styled';
 import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
+import ErrorText from './ErrorText';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn } from 'redux/auth/operations';
 
 const modalRoot = document.getElementById('modal-root');
 
 const LoginForm = () => {
   const navigate = useNavigate();
+
   const onClose = () => {
     navigate(-1);
   };
@@ -35,21 +42,87 @@ const LoginForm = () => {
     }
   };
 
+  const dispatch = useDispatch();
+  const error = useSelector(state => state.auth.error);
+  const isLoggingIn = useSelector(state => state.auth.isRefreshing);
+
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+  });
+
+  // useEffect(() => {
+  //   // Очищення форми при зміні статусу isLoggingIn
+  //   if (!isLoggingIn) {
+  //     setCredentials({
+  //       email: '',
+  //       password: '',
+  //     });
+  //   }
+  // }, [isLoggingIn]);
+
+  const handleChange = e => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    try {
+      // Заблокувати форму під час входу
+      if (isLoggingIn) {
+        return;
+      }
+
+      await dispatch(logIn(credentials));
+
+      // Якщо все пройшло успішно, очистити форму або викликати інші дії
+
+      setCredentials({
+        email: '',
+        password: '',
+      });
+      if (!error) {
+        onClose();
+      }
+    } catch (error) {
+      // Обробка помилок
+      console.error('Помилка входу:', error);
+    }
+  };
+
   return createPortal(
     <>
       <Overlay onClick={handleBackdropClick}>
         <AuthContainer>
-          <AuthForm>
+          <AuthForm onSubmit={handleSubmit}>
             <CloseButton onClick={onClose}>&times;</CloseButton>
             <FormTitle>Вхід в особистий кабінет</FormTitle>
-            <AuthInput type="email" placeholder="Email" name="email" required />
+            {error && <ErrorText message={error} />}
+            <AuthInput
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={credentials.email}
+              onChange={handleChange}
+              required
+              disabled={isLoggingIn} // Заблокувати поле під час входу
+            />
             <AuthInput
               type="password"
               placeholder="Password"
               name="password"
+              value={credentials.password}
+              onChange={handleChange}
               required
+              disabled={isLoggingIn} // Заблокувати поле під час входу
             />
-            <AuthButton type="submit">Увійти</AuthButton>
+            <AuthButton type="submit" disabled={isLoggingIn}>
+              {isLoggingIn ? 'Вхід...' : 'Увійти'}
+            </AuthButton>
             <AuthLink onClick={forgotPassword}>Забули пароль?</AuthLink>
             <div
               style={{

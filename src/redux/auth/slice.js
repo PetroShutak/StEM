@@ -43,7 +43,9 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(logIn.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = {
+          message: action.payload.response.data.message
+        };
         console.log(action.payload.response.status);
         console.log(action.payload.response.data.message);
         state.isRefreshing = false;
