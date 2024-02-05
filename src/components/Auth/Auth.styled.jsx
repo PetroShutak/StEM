@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -65,7 +66,7 @@ export const CloseButton = styled.button`
   font-weight: bold;
 `;
 
-export const AuthLink = styled.a`
+export const AuthLink = styled(Link)`
   font-size: 14px;
   cursor: pointer;
   color: var(--text-color-secondary);

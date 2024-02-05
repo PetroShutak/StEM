@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from // useState // useEffect,
+'react';
+import { createPortal } from 'react-dom';
 import {
   Overlay,
   AuthContainer,
@@ -10,113 +12,51 @@ import {
   FormTitle,
 } from './Auth.styled';
 import { FcGoogle } from 'react-icons/fc';
-import { signUp } from 'redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
-  const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      default:
-        console.warn('Тип поля не обробляється');
-    }
-  };
+const modalRoot = document.getElementById('modal-root');
 
+const RegistrationForm = () => {
+  const navigate = useNavigate();
+  const onClose = () => {
+   navigate(-1);
+ };
+  
   const clickMessage = () => {
     alert('Ця функція поки не реалізована');
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!email || !password || !name) {
-      setError('Please fill in all fields');
-      return;
-    }
-
-    try {
-      dispatch(signUp({ name, email, password }));
-      setName('');
-      setEmail('');
-      setPassword('');
-      alert('Вам на пошту відправлено лист з підтвердженням реєстрації');
-    } catch (error) {
-      setError('Invalid email or password');
+  const handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      onClose();
     }
   };
 
-  const handleKeyDown = e => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSubmit(e);
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyDownGlobal = e => {
-      if (e.code === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKeyDownGlobal);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDownGlobal);
-      document.body.style.overflow = 'visible';
-    };
-  }, [onClose]);
-
-  const handleClickBackdrop = e => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
-  return (
+  return createPortal(
     <>
-      <Overlay onClick={handleClickBackdrop}>
+      <Overlay onClick={handleBackdropClick} >
         <AuthContainer>
-          <AuthForm onSubmit={handleSubmit}>
-            <CloseButton onClick={onClose}>&times;</CloseButton>
+          <AuthForm>
+            <CloseButton onClick={onClose} >&times;</CloseButton>
             <FormTitle>Реєстрація</FormTitle>
-            {error && <p>{error}</p>}
             <AuthInput
               type="text"
               placeholder="
                 Призвіще та ім'я"
               name="name"
-              value={name}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
               required
             />
             <AuthInput
               type="email"
               placeholder="Електронна пошта"
               name="email"
-              value={email}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
               required
             />
             <AuthInput
               type="password"
               placeholder="Пароль"
               name="password"
-              value={password}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
               required
             />
             <AuthButton type="submit">Реєстрація</AuthButton>
@@ -133,13 +73,14 @@ const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
                 Зареєструватися через Google
               </AuthLink>
             </div>
-            <AuthLink onClick={onToggleLoginForm}>
+            <AuthLink to='/login'>
               Вже зареєстровані? Увійти
             </AuthLink>
           </AuthForm>
         </AuthContainer>
       </Overlay>
-    </>
+    </>,
+    modalRoot
   );
 };
 

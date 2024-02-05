@@ -29,6 +29,9 @@ const authSlice = createSlice({
       })
       .addCase(signUp.rejected, (state, action) => {
         state.error = action.payload;
+        console.log(action.payload.response.status);
+        console.log(action.payload.response.data.message);
+        state.isRefreshing = false;
       })
       .addCase(logIn.pending, state => {
         state.isRefreshing = true;

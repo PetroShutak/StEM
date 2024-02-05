@@ -23,6 +23,8 @@ import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'redux/auth/useAuth';
 
 import { lazy } from 'react';
+import LoginForm from './Auth/LoginForm';
+import RegistrationForm from './Auth/RegistrationForm';
 const MainPage = lazy(() => import('pages/MainPage'));
 const CatalogPage = lazy(() => import('pages/CatalogPage'));
 const FavoritePage = lazy(() => import('pages/FavoritePage'));
@@ -45,7 +47,6 @@ export const App = () => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -54,6 +55,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/registration" element={<RegistrationForm />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/ourteam" element={<WaitCreate />} />
           <Route path="/joboffers" element={<WaitCreate />} />
@@ -70,12 +73,11 @@ export const App = () => {
           </Route>
           <Route path="/searchresult" element={<SearchResultPage />} />
           <Route path="/servis" element={<WaitCreate />} />
-        <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
       {isLoading && <Loader />}
       <CallButton />
     </>
   );
-  
 };

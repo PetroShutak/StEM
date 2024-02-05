@@ -1,16 +1,16 @@
-import LoginForm from 'components/Auth/LoginForm';
 import {
   WelcomeButton,
   WelcomeContainer,
   WelcomeHeader,
   WelcomeText,
 } from './WelcomeComponent.styled';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const WelcomeComponent = () => {
-  const [isShowAuthModal, setIsShowAuthModal] = useState(false);
-
-  const toggleModal = () => setIsShowAuthModal(prev => !prev);
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate('/login');
+  };
 
   // const clickMessage = () => {
   //   alert('Ця функція поки не реалізована');
@@ -23,11 +23,10 @@ const WelcomeComponent = () => {
         <WelcomeText>
           Увійдіть, щоб отримувати рекомендації, персональні бонуси і знижки.
         </WelcomeText>
-        <WelcomeButton onClick={toggleModal}>
+        <WelcomeButton onClick={navigateToLogin}>
           Увійдіть в особистий кабінет
         </WelcomeButton>
       </WelcomeContainer>
-      {isShowAuthModal && <LoginForm onClose={toggleModal} />}
     </>
   );
 };

@@ -8,7 +8,6 @@ import {
 } from './UserBar.styled';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
-import LoginForm from 'components/Auth/LoginForm';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectIsLoggedIn,
@@ -16,15 +15,20 @@ import {
   selectVerification,
 } from 'redux/auth/selectors';
 import { getProfile, logOut } from 'redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 const UserBar = () => {
-  const [isShowAuthModal, setIsShowAuthModal] = useState(false);
   const isLogin = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUser).name;
   const verified = useSelector(selectVerification);
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate('/login');
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,8 +67,6 @@ const UserBar = () => {
     }
   };
 
-  const toggleModal = () => setIsShowAuthModal(prev => !prev);
-
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -77,7 +79,7 @@ const UserBar = () => {
         <PiUserCircleDuotone
           size={30}
           style={{ padding: '0' }}
-          onClick={toggleModal}
+          onClick={navigateToLogin}
         />
         {isLogin && (
           <UserMenuWrapper>
@@ -98,7 +100,6 @@ const UserBar = () => {
           </SelectWrapper>
         )}
       </UserBarWrapper>
-      {isShowAuthModal && !isLogin && <LoginForm onClose={toggleModal} />}
     </>
   );
 };
