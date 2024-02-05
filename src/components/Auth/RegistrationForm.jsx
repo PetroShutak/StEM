@@ -12,69 +12,73 @@ import {
 import { FcGoogle } from 'react-icons/fc';
 import { signUp } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
-// import VerificationModal from './VerificationModal';
 
 const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
   const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    // const [showVerificationModal, setShowVerificationModal] = useState(false);
-    // const registrationError = useSelector(state => state.auth.error);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-    const handleChange = e => {
-      const { name, value } = e.target;
-      switch (name) {
-        case 'name':
-          setName(value);
-          break;
-        case 'email':
-          setEmail(value);
-          break;
-        case 'password':
-          setPassword(value);
-          break;
-        default:
-          console.warn('Тип поля не обробляється');
-      }
-    };
-  
+  const handleChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        console.warn('Тип поля не обробляється');
+    }
+  };
+
   const clickMessage = () => {
     alert('Ця функція поки не реалізована');
   };
+
   const handleSubmit = e => {
     e.preventDefault();
-    // Handle form submission logic here
-    // clickMessage();
     if (!email || !password || !name) {
       setError('Please fill in all fields');
       return;
     }
 
     try {
-     dispatch(signUp({ name, email, password }));
-     setName('');
-     setEmail('');
-     setPassword('');
-    //  setShowVerificationModal(true);
-     alert('Вам на пошту відправлено лист з підтвердженням реєстрації');
+      dispatch(signUp({ name, email, password }));
+      setName('');
+      setEmail('');
+      setPassword('');
+      alert('Вам на пошту відправлено лист з підтвердженням реєстрації');
     } catch (error) {
       setError('Invalid email or password');
     }
   };
+
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   useEffect(() => {
-    const handleKeyDown = e => {
+    const handleKeyDownGlobal = e => {
       if (e.code === 'Escape') onClose();
     };
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDownGlobal);
     document.body.style.overflow = 'hidden';
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDownGlobal);
       document.body.style.overflow = 'visible';
     };
   }, [onClose]);
+
   const handleClickBackdrop = e => {
     if (e.target === e.currentTarget) onClose();
   };
@@ -94,19 +98,26 @@ const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
               name="name"
               value={name}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               required
             />
-            <AuthInput type="email" placeholder="Електронна пошта" 
-            name="email"
-            value={email}
-            onChange={handleChange}
-            required
+            <AuthInput
+              type="email"
+              placeholder="Електронна пошта"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              required
             />
-            <AuthInput type="password" placeholder="Пароль"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            required
+            <AuthInput
+              type="password"
+              placeholder="Пароль"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              required
             />
             <AuthButton type="submit">Реєстрація</AuthButton>
             <div
@@ -126,12 +137,8 @@ const RegistrationForm = ({ onToggleLoginForm, onClose }) => {
               Вже зареєстровані? Увійти
             </AuthLink>
           </AuthForm>
-          {/* {registrationError && <p>Error: {registrationError.message}</p>} */}
         </AuthContainer>
       </Overlay>
-      {/* {showVerificationModal && (
-        <VerificationModal onClose={() => setShowVerificationModal(false)} />
-        )} */}
     </>
   );
 };
