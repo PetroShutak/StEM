@@ -20,11 +20,12 @@ import CategoriesPage from 'pages/CategoriesPage';
 import CategoryPage from 'pages/CategoryPage';
 
 import { refreshUser } from 'redux/auth/operations';
-// import { useAuth } from 'redux/auth/useAuth';
+import { useAuth } from 'redux/auth/useAuth';
 
 import { lazy } from 'react';
 import LoginForm from './Auth/LoginForm';
 import RegistrationForm from './Auth/RegistrationForm';
+import LoaderRefresh from './Loader/LoaderRefresh';
 const MainPage = lazy(() => import('pages/MainPage'));
 const CatalogPage = lazy(() => import('pages/CatalogPage'));
 const FavoritePage = lazy(() => import('pages/FavoritePage'));
@@ -37,8 +38,7 @@ export const App = () => {
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
-  const { isRefreshing } = useSelector(selectLoading);
-  // const { isRefreshing } = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -49,7 +49,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader />
+    <LoaderRefresh />
   ) : (
     <>
       <Toaster />

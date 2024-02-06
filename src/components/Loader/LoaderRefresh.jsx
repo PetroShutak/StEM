@@ -1,6 +1,6 @@
 import { ProgressBar } from 'react-loader-spinner';
 
-const Loader = () => {
+const LoaderRefresh = () => {
   return (
     <div
       style={{
@@ -13,10 +13,10 @@ const Loader = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundImage: 'url(https://res.cloudinary.com/dk0rzgyzj/image/upload/v1700522103/brainstorming_ce2qc2.jpg)',
-        // backgroundSize: 'cover',
-        // backgroundPosition: 'center',
-        // backgroundRepeat: 'no-repeat',
+        backgroundImage: 'url(https://res.cloudinary.com/dk0rzgyzj/image/upload/v1700522103/brainstorming_ce2qc2.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         backdropFilter: 'blur(3px)',
         zIndex: 9999,
@@ -36,4 +36,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default LoaderRefresh;

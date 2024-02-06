@@ -76,9 +76,19 @@ const LoginForm = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={async (values, { setSubmitting }) => {
             try {
-              dispatch(logIn(values));
+              const response = await dispatch(logIn(values));
+              if (
+                response.payload.token !== null &&
+                response.payload.token !== undefined
+              ) {
+                console.log('Успішний вхід');
+                onClose();
+              }
+              //  else {
+              //   console.log('Помилка входу');
+              //  }
             } catch (error) {
               console.error('Помилка входу:', error);
             }
