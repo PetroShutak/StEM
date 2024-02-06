@@ -35,6 +35,7 @@ const authSlice = createSlice({
       })
       .addCase(logIn.pending, state => {
         state.isRefreshing = true;
+        state.error = null;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -43,12 +44,9 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(logIn.rejected, (state, action) => {
-        state.error = {
-          message: action.payload.response.data.message
-        };
+        state.error = action.payload.response.data.message;
         console.log(action.payload.response.status);
         console.log(action.payload.response.data.message);
-        state.isRefreshing = false;
       })
       .addCase(logOut.pending, state => {
         state.isRefreshing = true;

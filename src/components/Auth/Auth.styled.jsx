@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Form, Field } from 'formik';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -24,7 +25,7 @@ export const FormTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const AuthForm = styled.form`
+export const AuthForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -34,7 +35,7 @@ export const AuthForm = styled.form`
   width: 400px;
 `;
 
-export const AuthInput = styled.input`
+export const AuthInput = styled(Field)`
   padding: 10px;
   border: 1px solid #000;
   border-radius: 5px;
@@ -71,4 +72,14 @@ export const AuthLink = styled(Link)`
   cursor: pointer;
   color: var(--text-color-secondary);
   text-align: center;
+  & :hover {
+    text-decoration: underline;
+  }
+`;
+
+export const OtherAuth = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 `;
