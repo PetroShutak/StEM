@@ -59,10 +59,15 @@ export const notifyOrderedError = () =>
 // login success
 export const notifyLoginSuccess = () =>
   toast.success('Ви успішно увійшли', toastSuccess);
-  // logout success
+// logout success
 export const notifyLogoutSuccess = () =>
   toast.success('Ви успішно вийшли', toastSuccess);
 // register success
 export const notifyRegistrationSuccess = () =>
   toast.success('Ви успішно зареєструвалися', toastSuccess);
-  
+// підтвердження реєстрації
+export const notifyConfirmRegistration = () =>
+  toast.success(
+    'Перевірте вашу пошту для підтвердження реєстрації',
+    toastSuccess
+  );

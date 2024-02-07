@@ -18,7 +18,10 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from 'redux/auth/operations';
 import { selectError } from 'redux/auth/selectors';
-import { notifyRegistrationSuccess } from 'utils/toasts';
+import {
+  notifyConfirmRegistration,
+  notifyRegistrationSuccess,
+} from 'utils/toasts';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { clearError } from 'redux/auth/slice';
 
@@ -96,10 +99,12 @@ const RegistrationForm = () => {
           onSubmit={async (values, { setSubmitting }) => {
             try {
               const response = await dispatch(signUp(values));
-              console.log(response.payload);
               if (!response.error) {
                 onClose();
                 notifyRegistrationSuccess();
+                setTimeout(() => {
+                  notifyConfirmRegistration();
+                }, 2000);
               } else {
                 console.log(response.error.message);
               }
