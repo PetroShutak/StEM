@@ -85,3 +85,15 @@ export const getProfile = createAsyncThunk(
     }
   }
 );
+
+export const forgotPassword = createAsyncThunk(
+  'auth/forgotPassword',
+  async email => {
+    try {
+      const { data } = await axios.post('/api/users/forgot-password', email);
+      return data;
+    } catch (error) {
+      return error.response.data.message;
+    }
+  }
+);

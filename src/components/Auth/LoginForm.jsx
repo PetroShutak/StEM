@@ -43,9 +43,6 @@ const LoginForm = () => {
     alert('Ця функція поки не реалізована');
   };
 
-  const forgotPassword = () => {
-    alert('Ця функція поки не реалізована');
-  };
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
@@ -132,7 +129,7 @@ const LoginForm = () => {
               <AuthButton type="submit" disabled={isSubmitting}>
                 Увійти
               </AuthButton>
-              <AuthLink onClick={forgotPassword}>Забули пароль?</AuthLink>
+              <AuthLink to='/forgot-password'>Забули пароль?</AuthLink>
               <OtherAuth>
                 <FcGoogle />
                 <AuthLink onClick={clickMessage}>

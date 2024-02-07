@@ -26,6 +26,7 @@ import { lazy } from 'react';
 import LoginForm from './Auth/LoginForm';
 import RegistrationForm from './Auth/RegistrationForm';
 import LoaderRefresh from './Loader/LoaderRefresh';
+import ForgotPassword from './Auth/ForgotPassword';
 const MainPage = lazy(() => import('pages/MainPage'));
 const CatalogPage = lazy(() => import('pages/CatalogPage'));
 const FavoritePage = lazy(() => import('pages/FavoritePage'));
@@ -58,6 +59,7 @@ export const App = () => {
           <Route index element={<MainPage />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/registration" element={<RegistrationForm />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/ourteam" element={<WaitCreate />} />
           <Route path="/joboffers" element={<WaitCreate />} />

@@ -17,6 +17,7 @@ export const Overlay = styled.div`
 `;
 export const AuthContainer = styled.div`
   //   border: 1px solid red;
+  font-family: var(--font-family-secondary);
 `;
 
 export const FormTitle = styled.h2`

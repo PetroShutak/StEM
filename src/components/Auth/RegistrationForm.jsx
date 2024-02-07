@@ -108,7 +108,9 @@ const RegistrationForm = () => {
               } else {
                 console.log(response.error.message);
               }
-            } catch (error) {}
+            } catch (error) {
+              console.log(error.message);
+            }
             setSubmitting(false);
           }}
         >

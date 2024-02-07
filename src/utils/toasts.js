@@ -71,3 +71,14 @@ export const notifyConfirmRegistration = () =>
     'Перевірте вашу пошту для підтвердження реєстрації',
     toastSuccess
   );
+  // get new password success
+export const notifyGetNewPassword = () =>
+  toast.success(
+    'Новий пароль відправлено на вашу пошту',
+    toastSuccess
+  );
+export const notifyGetNewPasswordError = () =>
+  toast.error(
+    'Користувача з таким email не знайдено',
+    toastError
+  );
