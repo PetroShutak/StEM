@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { selectError } from 'redux/auth/selectors';
+import { notifyLoginSuccess } from 'utils/toasts';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -67,12 +68,6 @@ const LoginForm = () => {
                   Поле обов'язкове
                 </p>
               );
-            } else if (values.password.length < 8) {
-              errors.password = (
-                <p style={{ color: 'red', fontSize: '12px' }}>
-                  Пароль повинен містити не менше 8 символів
-                </p>
-              );
             }
             return errors;
           }}
@@ -85,10 +80,8 @@ const LoginForm = () => {
               ) {
                 console.log('Успішний вхід');
                 onClose();
+                notifyLoginSuccess();
               }
-              //  else {
-              //   console.log('Помилка входу');
-              //  }
             } catch (error) {
               console.error('Помилка входу:', error);
             }
@@ -102,13 +95,9 @@ const LoginForm = () => {
               </CloseButton>
               <FormTitle>Вхід в особистий кабінет</FormTitle>
               {error && <p style={{ color: 'red' }}>{error}</p>}
-              <AuthInput type="email" name="email" placeholder="Email" />
+              <AuthInput type="email" name="email" placeholder="Пошта" />
               <ErrorMessage name="email" component="div" />
-              <AuthInput
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
+              <AuthInput type="password" name="password" placeholder="Пароль" />
               <ErrorMessage name="password" component="div" />
               <AuthButton type="submit" disabled={isSubmitting}>
                 Увійти

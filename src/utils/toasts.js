@@ -56,3 +56,10 @@ export const notifyOrdered = () =>
 // ordered error
 export const notifyOrderedError = () =>
   toast.error('Помилка оформлення замовлення', toastError);
+// login success
+export const notifyLoginSuccess = () =>
+  toast.success('Ви успішно увійшли', toastSuccess);
+  // logout success
+export const notifyLogoutSuccess = () =>
+  toast.success('Ви успішно вийшли', toastSuccess);
+  

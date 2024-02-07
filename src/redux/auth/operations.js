@@ -34,7 +34,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -52,36 +52,36 @@ export const logOut = createAsyncThunk(
 );
 
 export const refreshUser = createAsyncThunk(
-    'auth/refresh',
-    async (_, thunkAPI) => {
-      // Reading the token from the state via getState()
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-  
-      if (persistedToken === null) {
-        // If there is no token, exit without performing any request
-        return thunkAPI.rejectWithValue('Unable to fetch user');
-      }
-  
-      try {
-        // If there is a token, add it to the HTTP header and perform the request
-        setAuthHeader(persistedToken);
-        const { data } = await axios.get('/api/users/current');
-        return data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    }
-  );
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    // Reading the token from the state via getState()
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
 
-  export const getProfile = createAsyncThunk(
-    'auth/getProfile',
-    async (_, thunkAPI) => {
-      try {
-        const { data } = await axios.get('/api/users/profile');
-        return data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+    if (persistedToken === null) {
+      // If there is no token, exit without performing any request
+      return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-  );
+
+    try {
+      // If there is a token, add it to the HTTP header and perform the request
+      setAuthHeader(persistedToken);
+      const { data } = await axios.get('/api/users/current');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProfile = createAsyncThunk(
+  'auth/getProfile',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/api/users/profile');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -16,6 +16,7 @@ import {
 } from 'redux/auth/selectors';
 import { getProfile, logOut } from 'redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
+import { notifyLogoutSuccess } from 'utils/toasts';
 
 const UserBar = () => {
   const isLogin = useSelector(selectIsLoggedIn);
@@ -27,7 +28,9 @@ const UserBar = () => {
 
   const navigate = useNavigate();
   const navigateToLogin = () => {
-    navigate('/login');
+    if (!isLogin) {
+      navigate('/login');
+    }
   };
 
   useEffect(() => {
@@ -46,13 +49,14 @@ const UserBar = () => {
     fetchData();
   }, [dispatch, isLogin]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     try {
       if (verified === null) {
-        dispatch(logOut());
+        await dispatch(logOut());
       } else {
         alert('Ви не підтвердили свою пошту');
       }
+      notifyLogoutSuccess();
     } catch (error) {
       console.log(error);
     }
