@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   right: 0px;
   width: 100%;
   height: auto;
-  left: ${({ isVisible }) => (isVisible ? '0' : '-100%')};
+  left: ${({ 'data-isvisible': isVisible }) => (isVisible ? '0' : '-100%')};
   background-color: var(--text-color-primary-white);
   transition: left 0.3s ease-in-out;
   z-index: 1000;

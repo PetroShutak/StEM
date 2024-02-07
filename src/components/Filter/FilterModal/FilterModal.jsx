@@ -24,7 +24,7 @@ const FilterModal = ({ isVisible, onClose, filterProps }) => {
   };
 
   return (
-    <ModalWrapper isVisible={isVisible}>
+    <ModalWrapper data-isvisible={isVisible}>
       {!isLogin && <WelcomeComponent />}
       <Filter
         applyFilters={applyFilters}
