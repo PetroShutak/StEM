@@ -20,6 +20,7 @@ import { logIn } from 'redux/auth/operations';
 import { selectError } from 'redux/auth/selectors';
 import { notifyLoginSuccess } from 'utils/toasts';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { clearError } from 'redux/auth/slice';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const LoginForm = () => {
   };
 
   const onClose = () => {
+    dispatch(clearError());
     navigate(-1);
   };
 
@@ -118,7 +120,11 @@ const LoginForm = () => {
                     onClick={toggleIsOpenPassword}
                     alt="Show or hide password"
                   >
-                    {showPassword === 'password' ? <FaEyeSlash /> : <FaEye />}
+                    {showPassword === 'password' ? (
+                      <FaEyeSlash size={18} color="var(--bg-secondary)" />
+                    ) : (
+                      <FaEye size={18} color="var(--bg-secondary)" />
+                    )}
                   </ShowOrHidePasswordContainer>
                 )}
               </InputWithIconContainer>

@@ -97,6 +97,9 @@ export const ShowOrHidePasswordContainer = styled.div`
   color: var(--text-color-primary-black);
   svg {
     cursor: pointer;
+    transition: scale 250ms ease-in-out;
+    &:hover {
+        scale: 1.08;
   }
 `;
 
