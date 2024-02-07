@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import {
   Overlay,
@@ -10,6 +10,8 @@ import {
   CloseButton,
   FormTitle,
   OtherAuth,
+  ShowOrHidePasswordContainer,
+  InputWithIconContainer,
 } from './Auth.styled';
 import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
@@ -17,11 +19,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { selectError } from 'redux/auth/selectors';
 import { notifyLoginSuccess } from 'utils/toasts';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const error = useSelector(selectError);
+  const [showPassword, setShowPassword] = useState('password');
+
+  const toggleIsOpenPassword = () => {
+    showPassword === 'password'
+      ? setShowPassword('text')
+      : setShowPassword('password');
+  };
 
   const onClose = () => {
     navigate(-1);
@@ -88,7 +98,7 @@ const LoginForm = () => {
             setSubmitting(false);
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, values }) => (
             <AuthForm>
               <CloseButton type="button" onClick={onClose}>
                 &times;
@@ -97,7 +107,21 @@ const LoginForm = () => {
               {error && <p style={{ color: 'red' }}>{error}</p>}
               <AuthInput type="email" name="email" placeholder="Пошта" />
               <ErrorMessage name="email" component="div" />
-              <AuthInput type="password" name="password" placeholder="Пароль" />
+              <InputWithIconContainer>
+                <AuthInput
+                  type={showPassword}
+                  name="password"
+                  placeholder="Пароль"
+                />
+                {values.password && (
+                  <ShowOrHidePasswordContainer
+                    onClick={toggleIsOpenPassword}
+                    alt="Show or hide password"
+                  >
+                    {showPassword === 'password' ? <FaEyeSlash /> : <FaEye />}
+                  </ShowOrHidePasswordContainer>
+                )}
+              </InputWithIconContainer>
               <ErrorMessage name="password" component="div" />
               <AuthButton type="submit" disabled={isSubmitting}>
                 Увійти

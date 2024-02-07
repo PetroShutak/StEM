@@ -39,6 +39,7 @@ export const AuthInput = styled(Field)`
   padding: 10px;
   border: 1px solid #000;
   border-radius: 5px;
+  width: 100%;
 `;
 
 export const AuthButton = styled.button`
@@ -82,4 +83,23 @@ export const OtherAuth = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+`;
+
+export const ShowOrHidePasswordContainer = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: var(--text-color-primary-black);
+  svg {
+    cursor: pointer;
+  }
+`;
+
+export const InputWithIconContainer = styled.div`
+  position: relative;
 `;
