@@ -21,7 +21,7 @@ export const signUp = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );

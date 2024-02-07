@@ -20,7 +20,8 @@ import { notifyLogoutSuccess } from 'utils/toasts';
 
 const UserBar = () => {
   const isLogin = useSelector(selectIsLoggedIn);
-  const userName = useSelector(selectUser).name;
+  // const userName = useSelector(selectUser).name;
+  const userName = useSelector(selectUser)?.name;
   const verified = useSelector(selectVerification);
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
@@ -53,8 +54,6 @@ const UserBar = () => {
     try {
       if (verified === null) {
         await dispatch(logOut());
-      } else {
-        alert('Ви не підтвердили свою пошту');
       }
       notifyLogoutSuccess();
     } catch (error) {

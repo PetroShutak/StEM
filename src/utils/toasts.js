@@ -62,4 +62,7 @@ export const notifyLoginSuccess = () =>
   // logout success
 export const notifyLogoutSuccess = () =>
   toast.success('Ви успішно вийшли', toastSuccess);
+// register success
+export const notifyRegistrationSuccess = () =>
+  toast.success('Ви успішно зареєструвалися', toastSuccess);
   

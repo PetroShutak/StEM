@@ -24,18 +24,13 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(signUp.fulfilled, (state, action) => {
-        state.user = {
-          name: action.payload.name,
-          email: action.payload.email,
-        };
+        state.user = action.payload.user;
         state.verificationToken = action.payload.verificationToken;
-        state.isLoggedIn = true;
+        // state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(signUp.rejected, (state, action) => {
         state.error = action.payload;
-        console.log(action.payload.response.status);
-        console.log(action.payload.response.data.message);
         state.isRefreshing = false;
       })
       .addCase(logIn.pending, state => {

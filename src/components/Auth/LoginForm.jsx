@@ -139,7 +139,7 @@ const LoginForm = () => {
                   Увійти за допомогою Google-акаунту
                 </AuthLink>
               </OtherAuth>
-              <AuthLink onClick={clickMessage}>
+              <AuthLink to={'/registration'}>
                 Немає акаунту? Зареєструватися
               </AuthLink>
             </AuthForm>
