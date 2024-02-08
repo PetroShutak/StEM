@@ -56,6 +56,7 @@ const UserBar = () => {
         await dispatch(logOut());
       }
       notifyLogoutSuccess();
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
