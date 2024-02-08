@@ -27,7 +27,7 @@ import LoginForm from './Auth/LoginForm';
 import RegistrationForm from './Auth/RegistrationForm';
 import LoaderRefresh from './Loader/LoaderRefresh';
 import ForgotPassword from './Auth/ForgotPassword';
-import ProfilePage from './PageStyled/ProdilePage';
+import ProfilePage from '../pages/ProdilePage';
 const MainPage = lazy(() => import('pages/MainPage'));
 const CatalogPage = lazy(() => import('pages/CatalogPage'));
 const FavoritePage = lazy(() => import('pages/FavoritePage'));

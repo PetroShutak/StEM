@@ -38,9 +38,9 @@ const UserBar = () => {
     const fetchData = async () => {
       if (isLogin) {
         try {
-          const result = await dispatch(getProfile());
+          await dispatch(getProfile());
           // Вивести дані профілю у консоль
-          console.log('Profile data after login:', result.payload);
+          // console.log('Profile data after login:', result.payload);
         } catch (error) {
           console.error('Error during fetching profile:', error);
         }
@@ -107,8 +107,9 @@ const UserBar = () => {
             <div>
               <span>
                 <Link to="/profile">
-                <IoSettingsOutline size={20} color="gray" />
-                  Налаштування</Link>
+                  <IoSettingsOutline size={20} color="gray" />
+                  Налаштування
+                </Link>
               </span>
             </div>
             <div onClick={handleLogout}>
