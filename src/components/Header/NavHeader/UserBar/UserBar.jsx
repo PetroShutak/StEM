@@ -15,13 +15,13 @@ import {
   selectVerification,
 } from 'redux/auth/selectors';
 import { getProfile, logOut } from 'redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { notifyLogoutSuccess } from 'utils/toasts';
 
 const UserBar = () => {
   const isLogin = useSelector(selectIsLoggedIn);
-  // const userName = useSelector(selectUser).name;
   const userName = useSelector(selectUser)?.name;
+  const avatarURL = useSelector(selectUser)?.avatarURL;
   const verified = useSelector(selectVerification);
   const [showSelect, setShowSelect] = useState(false);
   const selectRef = useRef(null);
@@ -79,11 +79,22 @@ const UserBar = () => {
   return (
     <>
       <UserBarWrapper onClick={toggleSelect}>
-        <PiUserCircleDuotone
-          size={30}
-          style={{ padding: '0' }}
-          onClick={navigateToLogin}
-        />
+        {isLogin && (
+          <img
+            src={avatarURL}
+            alt="user avatar"
+            width="30"
+            height="30"
+            style={{ borderRadius: '50%' }}
+          />
+        )}
+        {!isLogin && (
+          <PiUserCircleDuotone
+            size={32}
+            color="gray"
+            onClick={navigateToLogin}
+          />
+        )}
         {isLogin && (
           <UserMenuWrapper>
             <p>{userName}</p>
@@ -94,7 +105,9 @@ const UserBar = () => {
           <SelectWrapper ref={selectRef}>
             <div>
               <IoSettingsOutline size={20} color="gray" />
-              <span>Налаштування</span>
+              <span><Link to="/profile">
+              Налаштування
+              </Link></span>
             </div>
             <div onClick={handleLogout}>
               <IoIosLogOut size={20} color="gray" />

@@ -48,6 +48,10 @@ export const SelectWrapper = styled.div`
 
     span {
       cursor: pointer;
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
   }
 `;
