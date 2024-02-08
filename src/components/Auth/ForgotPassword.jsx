@@ -73,7 +73,7 @@ const ForgotPassword = () => {
               <CloseButton onClick={onClose}>&times;</CloseButton>
               <FormTitle>Оновлення паролю</FormTitle>
               <ErrorMessage name="email" component="div" />
-              <AuthInput type="email" name="email" placeholder="Email" />
+              <AuthInput type="email" name="email" placeholder="ваша пошта" />
               <AuthButton type="submit" disabled={isSubmitting}>
                 Отримати новий пароль
               </AuthButton>

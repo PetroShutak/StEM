@@ -43,7 +43,6 @@ const LoginForm = () => {
     alert('Ця функція поки не реалізована');
   };
 
-
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
       onClose();
@@ -67,7 +66,7 @@ const LoginForm = () => {
             ) {
               errors.email = (
                 <p style={{ color: 'red', fontSize: '12px' }}>
-                  Невірний формат email
+                  Невірний формат пошти
                 </p>
               );
             }
@@ -104,7 +103,12 @@ const LoginForm = () => {
               </CloseButton>
               <FormTitle>Вхід в особистий кабінет</FormTitle>
               {error && <p style={{ color: 'red' }}>{error}</p>}
-              <AuthInput type="email" name="email" placeholder="Пошта" />
+              <AuthInput
+                type="email"
+                name="email"
+                placeholder="Пошта"
+                translate="no"
+              />
               <ErrorMessage name="email" component="div" />
               <InputWithIconContainer>
                 <AuthInput
@@ -113,10 +117,7 @@ const LoginForm = () => {
                   placeholder="Пароль"
                 />
                 {values.password && (
-                  <ShowOrHidePasswordContainer
-                    onClick={toggleIsOpenPassword}
-                    alt="Show or hide password"
-                  >
+                  <ShowOrHidePasswordContainer onClick={toggleIsOpenPassword}>
                     {showPassword === 'password' ? (
                       <FaEyeSlash size={18} color="var(--bg-secondary)" />
                     ) : (
@@ -129,7 +130,7 @@ const LoginForm = () => {
               <AuthButton type="submit" disabled={isSubmitting}>
                 Увійти
               </AuthButton>
-              <AuthLink to='/forgot-password'>Забули пароль?</AuthLink>
+              <AuthLink to="/forgot-password">Забули пароль?</AuthLink>
               <OtherAuth>
                 <FcGoogle />
                 <AuthLink onClick={clickMessage}>

@@ -77,7 +77,7 @@ const RegistrationForm = () => {
             ) {
               errors.email = (
                 <p style={{ color: 'red', fontSize: '12px' }}>
-                  Невірний формат email
+                  Невірний формат пошти
                 </p>
               );
             }
@@ -121,21 +121,22 @@ const RegistrationForm = () => {
               </CloseButton>
               <FormTitle>Реєстрація</FormTitle>
               {error && <p style={{ color: 'red' }}>{error}</p>}
-              <AuthInput type="text" name="name" placeholder="Name" />
+              <AuthInput type="text" name="name" placeholder="*Ваше ім'я..." />
               <ErrorMessage name="name" component="div" />
-              <AuthInput type="email" name="email" placeholder="Email" />
+              <AuthInput
+                type="email"
+                name="email"
+                placeholder="*Ваша пошта..."
+              />
               <ErrorMessage name="email" component="div" />
               <InputWithIconContainer>
                 <AuthInput
                   type={showPassword}
                   name="password"
-                  placeholder="Password"
+                  placeholder="*пароль"
                 />
                 {values.password && (
-                  <ShowOrHidePasswordContainer
-                    onClick={toggleIsOpenPassword}
-                    alt="Show or hide password"
-                  >
+                  <ShowOrHidePasswordContainer onClick={toggleIsOpenPassword}>
                     {showPassword === 'password' ? (
                       <FaEyeSlash size={18} color="var(--bg-secondary)" />
                     ) : (
