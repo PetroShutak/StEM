@@ -104,10 +104,10 @@ const UserBar = () => {
         {isLogin && showSelect && (
           <SelectWrapper ref={selectRef}>
             <div>
-              <IoSettingsOutline size={20} color="gray" />
-              <span><Link to="/profile">
-              Налаштування
-              </Link></span>
+              <span>
+                <IoSettingsOutline size={20} color="gray" />
+                <Link to="/profile">Налаштування</Link>
+              </span>
             </div>
             <div onClick={handleLogout}>
               <IoIosLogOut size={20} color="gray" />
