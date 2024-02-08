@@ -48,12 +48,12 @@ export const SelectWrapper = styled.div`
 
     span {
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       a {
         text-decoration: none;
         color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
     }
   }

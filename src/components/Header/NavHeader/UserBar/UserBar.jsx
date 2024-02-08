@@ -105,8 +105,9 @@ const UserBar = () => {
           <SelectWrapper ref={selectRef}>
             <div>
               <span>
+                <Link to="/profile">
                 <IoSettingsOutline size={20} color="gray" />
-                <Link to="/profile">Налаштування</Link>
+                  Налаштування</Link>
               </span>
             </div>
             <div onClick={handleLogout}>
