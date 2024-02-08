@@ -91,7 +91,7 @@ const UserBar = () => {
         {!isLogin && (
           <PiUserCircleDuotone
             size={32}
-            color="gray"
+            // color="gray"
             onClick={navigateToLogin}
           />
         )}
