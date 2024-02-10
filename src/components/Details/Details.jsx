@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   DetailsFavoriteBtnWrapper,
@@ -47,6 +48,11 @@ import {
 } from 'components/ProductList/ProductItem/ProductItem.styled';
 import DEFAULT_URL from 'images/no-image.jpg';
 import Loader from 'components/Loader/Loader';
+import {
+  selectUser,
+  selectIsLoggedIn,
+  selectVerification,
+} from 'redux/auth/selectors';
 
 const Details = () => {
   const navigate = useNavigate();
@@ -59,50 +65,80 @@ const Details = () => {
   const isLoading = useSelector(selectLoading);
   const [editedFields, setEditedFields] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-
-  // pseudo admin
   const [isAdmin, setIsAdmin] = useState(false);
 
+  // // pseudo admin
+  // const [isAdmin, setIsAdmin] = useState(false);
+
+  // const toglerAdmin = () => {
+  //   if (isAdmin) {
+  //     setIsAdmin(false);
+  //   } else {
+  //     alert('Введіть пароль');
+  //     if (prompt('Введіть пароль') === 'admiN') {
+  //       setIsAdmin(true);
+  //     } else {
+  //       alert('Невірний пароль');
+  //       setIsAdmin(false);
+  //     }
+  //   }
+  // };
+  // // pseudo admin
+
+  // admin check
+  const user = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isVerified = useSelector(selectVerification);
+
   const toglerAdmin = () => {
-    if (isAdmin) {
-      setIsAdmin(false);
+    // console.log('user', user);
+    // console.log('isLoggedIn', isLoggedIn);
+    // console.log('isVerified', isVerified);
+    if (
+      isLoggedIn &&
+      user.email === 'petro.shutak.ua@gmail.com' &&
+      isVerified === null
+    ) {
+      setIsAdmin(true);
     } else {
-      alert('Введіть пароль');
-      if (prompt('Введіть пароль') === 'admiN') {
-        setIsAdmin(true);
-      } else {
-        alert('Невірний пароль');
-        setIsAdmin(false);
-      }
+      alert('Недостатні права або невірний статус верифікації.');
+      setIsAdmin(false);
     }
   };
-  // pseudo admin
 
   const handleEditProduct = () => {
-    setIsEditing(true);
-    const currentProduct = products.find(product => product._id === id);
-    setEditedFields({
-      name: currentProduct?.name || '',
-      brand: currentProduct?.brand || '',
-      model: currentProduct?.model || '',
-      description: currentProduct?.description || '',
-      price: currentProduct?.price || '',
-      category: currentProduct?.category || '',
-      subcategory: currentProduct?.subcategory || '',
-      image: currentProduct?.image || '',
-      raiting: currentProduct?.raiting || '',
-      country: currentProduct?.country || '',
-    });
+    if (isAdmin) {
+      setIsEditing(true);
+      const currentProduct = products.find(product => product._id === id);
+      setEditedFields({
+        name: currentProduct?.name || '',
+        brand: currentProduct?.brand || '',
+        model: currentProduct?.model || '',
+        description: currentProduct?.description || '',
+        price: currentProduct?.price || '',
+        category: currentProduct?.category || '',
+        subcategory: currentProduct?.subcategory || '',
+        image: currentProduct?.image || '',
+        raiting: currentProduct?.raiting || '',
+        country: currentProduct?.country || '',
+      });
+    } else {
+      alert('Недостатні права або невірний статус верифікації.');
+    }
   };
 
   const handleSaveChanges = () => {
-    dispatch(
-      updateProductById({
-        _id: id,
-        ...editedFields,
-      })
-    );
-    setIsEditing(false);
+    if (isAdmin) {
+      dispatch(
+        updateProductById({
+          _id: id,
+          ...editedFields,
+        })
+      );
+      setIsEditing(false);
+    } else {
+      alert('Недостатні права або невірний статус верифікації.');
+    }
   };
 
   const handleInputChange = e => {
