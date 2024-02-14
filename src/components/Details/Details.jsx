@@ -238,8 +238,6 @@ const Details = () => {
           ) : (
             <DetailsImage src={DEFAULT_URL} alt={product?.name} />
           )}
-        </DetailsImageWrapper>
-        <DescriptionWrapper>
           <DetailsFavoriteBtnWrapper>
             {favorites.includes(id) ? (
               <FavoriteButtonActive onClick={() => handleRemoveFavorites(id)} />
@@ -247,6 +245,8 @@ const Details = () => {
               <FavoriteButton onClick={() => handleAddFavorites(id)} />
             )}
           </DetailsFavoriteBtnWrapper>
+        </DetailsImageWrapper>
+        <DescriptionWrapper>
           <h2>
             {product?.name} - {product?.brand}
           </h2>

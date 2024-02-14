@@ -16,6 +16,7 @@ export const DetailsContainer = styled.div`
 `;
 
 export const DetailsImageWrapper = styled.div`
+  position: relative;
   width: 100%;
   max-width: 400px;
   height: auto;
@@ -30,7 +31,6 @@ export const DetailsImage = styled.img`
 `;
 
 export const DescriptionWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
