@@ -2,7 +2,7 @@
   "name": "stem",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stem-inky.vercel.app/StEM",
+  "homepage": "https://petroshutak.github.io/StEM/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^6.2.0",
