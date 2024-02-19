@@ -2,7 +2,7 @@
   "name": "stem",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stem-shop.netlify.app/StEM/",
+  "homepage": "https://stem-shop.netlify.app/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^6.2.0",
