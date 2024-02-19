@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllProducts } from 'redux/products/operations';
+// import { getAllProducts } from 'redux/products/operations';
 import {
   selectIsFiltred,
   selectShoppingListProducts,
@@ -115,7 +115,7 @@ const ShoppingListPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    // dispatch(getAllProducts());
     dispatch(resetFilter());
   }, [dispatch]);
 

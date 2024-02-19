@@ -7,7 +7,7 @@ import {
 } from '../redux/products/selectors';
 import ProductList from 'components/ProductList/ProductList';
 import NoFavorites from '../components/NoFavorites/NoFavorites';
-import { getAllProducts } from 'redux/products/operations';
+// import { getAllProducts } from 'redux/products/operations';
 import { resetFilter } from 'redux/products/filterSlice';
 
 const FavoritePage = () => {
@@ -18,7 +18,7 @@ const FavoritePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    // dispatch(getAllProducts());
     dispatch(resetFilter());
   }, [dispatch]);
 
