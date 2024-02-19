@@ -9,7 +9,7 @@ const pulse = keyframes`
   }
 `;
 
-export const StyledCallButton = styled.button`
+export const StyledCallButton = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
