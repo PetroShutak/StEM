@@ -12,6 +12,7 @@ import { IoIosMail } from 'react-icons/io';
 import { MdLocationPin } from 'react-icons/md';
 
 const FooterContact = () => {
+  // API_KEY = 'AIzaSyDqHtTTSVAoRXAz2qwGZE3KF9MGL4Nxpj4';
   return (
     <FooterContactWrapper>
       <FooterContactTitle>Контакти</FooterContactTitle>
