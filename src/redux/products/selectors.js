@@ -26,10 +26,11 @@ export const selectShoppingListProducts = createSelector(
 
 export const selectShoppingListWithQuantity = createSelector(
   [selectShoppingList],
-  (shoppingList) => shoppingList.map(item => ({
-    ...item,
-    quantity: item.quantity,
-  }))
+  shoppingList =>
+    shoppingList.map(item => ({
+      ...item,
+      quantity: item.quantity,
+    }))
 );
 
 export const selectFiltredShoppingListProducts = createSelector(
@@ -66,3 +67,10 @@ export const selectProductsByCategory = category =>
   createSelector([selectAllProducts], allProducts => {
     return allProducts.filter(product => product.category === category);
   });
+
+export const selectTopProducts = createSelector(
+  [selectAllProducts],
+  allProducts => {
+    return allProducts.filter(product => product.isTop);
+  }
+);
