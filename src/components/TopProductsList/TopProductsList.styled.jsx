@@ -31,9 +31,12 @@ export const TopItemLink = styled(Link)`
   padding: 20px;
   text-decoration: none;
   color: var(--text-color-primary-black);
-  transition: color 0.3s;
+  transition: all 0.3s;
   &:hover {
     color: var(--text-color-primary-orange);
+    img {
+      border: 0.5px solid var(--text-color-primary-orange);
+    }
   }
 `;
 
@@ -56,6 +59,11 @@ export const TopItemName = styled.p`
 
 export const TopItemBrand = styled.p`
   font-size: 14px;
+  margin-top: 10px;
+`;
+
+export const TopItemModel = styled.p`
+  font-size: 16px;
   margin-top: 10px;
 `;
 

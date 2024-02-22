@@ -1,18 +1,18 @@
-import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
+// import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
 import TopProductsList from 'components/TopProductsList/TopProductsList';
 import React from 'react';
 
 const MainPage = () => {
   return (
     <>
-      <div
+      {/* <div
         style={{
           paddingTop: '40px',
           paddingBottom: '40px',
         }}
       >
         <BrandCarousel />
-      </div>
+      </div> */}
       <div
         style={{
           paddingTop: '40px',

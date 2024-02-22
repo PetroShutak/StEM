@@ -12,6 +12,7 @@ import {
   TopItemName,
   TopItemBrand,
   TopItemPrice,
+  TopItemModel,
 } from './TopProductsList.styled';
 
 const TopProductsList = () => {
@@ -62,7 +63,16 @@ const TopProductsList = () => {
                 height="100"
                 style={{ objectFit: 'cover' }}
               />
-              <TopItemBrand>{product.brand}</TopItemBrand>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <TopItemBrand>{product.brand}</TopItemBrand>
+                <TopItemModel> : {product.model}</TopItemModel>
+              </div>
               <TopItemPrice>{product.price} грн.</TopItemPrice>
             </TopItemContainer>
           </TopItemLink>

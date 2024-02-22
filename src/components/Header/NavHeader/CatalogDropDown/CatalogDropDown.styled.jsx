@@ -4,6 +4,7 @@ export const CatalogDropDownWrapper = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 101;
   cursor: pointer;
   p {
     font-family: var(--font-family-secondary);
