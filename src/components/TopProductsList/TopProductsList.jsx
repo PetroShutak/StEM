@@ -4,7 +4,15 @@ import { selectTopProducts } from 'redux/products/selectors';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { TopProductsListWrapper } from './TopProductsList.styled';
+import {
+  TopItemLink,
+  TopProductsListWrapper,
+  TopItemContainer,
+  TopItemImg,
+  TopItemName,
+  TopItemBrand,
+  TopItemPrice,
+} from './TopProductsList.styled';
 
 const TopProductsList = () => {
   const products = useSelector(selectTopProducts);
@@ -44,17 +52,20 @@ const TopProductsList = () => {
     <TopProductsListWrapper>
       <Slider {...sliderSettings}>
         {products.map(product => (
-          <div key={product._id}>
-            <p>{product.name}</p>
-            <img
-              src={product.image}
-              alt={product.name}
-              width="100"
-              height="100"
-            />
-            <p>{product.brand}</p>
-            <p>{product.price} грн.</p>
-          </div>
+          <TopItemLink to={`/catalog/${product._id}`} key={product._id}>
+            <TopItemContainer>
+              <TopItemName>{product.name}</TopItemName>
+              <TopItemImg
+                src={product.image}
+                alt={product.name}
+                width="100"
+                height="100"
+                style={{ objectFit: 'cover' }}
+              />
+              <TopItemBrand>{product.brand}</TopItemBrand>
+              <TopItemPrice>{product.price} грн.</TopItemPrice>
+            </TopItemContainer>
+          </TopItemLink>
         ))}
       </Slider>
     </TopProductsListWrapper>
