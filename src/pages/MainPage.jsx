@@ -5,23 +5,34 @@ import hero from '../images/hero.jpg';
 import styled from 'styled-components';
 
 const HeroSection = styled.div`
-  background-image: linear-gradient(
-      rgba(46, 47, 66, 0.7),
-      rgba(46, 47, 66, 0.7)
-    ),
-    url(${hero});
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding-top: 192px;
- padding-bottom: 292px;
+  padding-bottom: 292px;
+  position: relative;
+  border-bottom: 1px solid var(--bg-secondary);
   @media (max-width: 768px) {
     padding-top: 164px;
+  }
+
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url(${hero});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 `;
 

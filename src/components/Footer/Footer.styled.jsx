@@ -5,7 +5,7 @@ export const FooterWrapper = styled.div`
   padding-bottom: 60px;
   padding-left: 12px;
   padding-right: 12px;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-primary-white);
   border-bottom: 1px solid var(--border-color-secondary);
   border-top: 1px solid var(--border-color-secondary);
 `;

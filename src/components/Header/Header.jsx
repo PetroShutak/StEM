@@ -4,7 +4,9 @@ import NavHeader from './NavHeader/NavHeader';
 
 const Header = () => {
   return (
-    <div>
+    <div style={{
+      backgroundColor: 'var(--bg-primary-white)',
+    }}>
       <TopHeader />
       <NavHeader />
     </div>
