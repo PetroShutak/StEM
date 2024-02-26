@@ -32,6 +32,7 @@ const HeroSection = styled.div`
       url(${hero});
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     // background-attachment: fixed;
   }
 `;
