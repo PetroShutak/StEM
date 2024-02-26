@@ -10,7 +10,7 @@ const HeroSection = styled.div`
   justify-content: center;
   flex-direction: column;
   padding-top: 192px;
-  padding-bottom: 492px;
+  padding-bottom: 292px;
   position: relative;
   border-bottom: 1px solid var(--bg-secondary);
   @media (max-width: 768px) {
