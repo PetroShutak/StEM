@@ -13,19 +13,20 @@ const HeroSection = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  height: 100%;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding-top: 192px;
-  padding-bottom: 192px;
+ padding-bottom: 292px;
   @media (max-width: 768px) {
     padding-top: 164px;
   }
 `;
 
 const HeroButton = styled.button`
-  width: 280px;
+  width: 240px;
   margin: 0 auto;
   text-align: center;
   height: 40px;
