@@ -30,7 +30,9 @@ export const TopItemLink = styled(Link)`
   justify-content: space-around;
   padding: 20px;
   text-decoration: none;
-  color: var(--text-color-primary-black);
+  // color: var(--text-color-primary-black);
+  color: white;
+
   transition: all 0.3s;
   &:hover {
     color: var(--text-color-primary-orange);

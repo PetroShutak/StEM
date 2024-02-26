@@ -42,7 +42,7 @@ html[data-theme='light'] {
 
 html[data-theme='dark'] {
   --bg-primary: black;
-  --bg-primary-white: rgba(0, 0, 0, 0.05);
+  --bg-primary-white: rgba(0, 0, 0, 1);
   --bg-secondary: #ff6b09;
   --bg-secondary-grey: #ddd;
   --border-color-primary-grey: darkgrey;

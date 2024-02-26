@@ -1,4 +1,4 @@
-import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
+// import BrandCarousel from 'components/BrandCarousel/BrandCarousel';
 import TopProductsList from 'components/TopProductsList/TopProductsList';
 import React from 'react';
 import hero from '../images/hero.jpg';
@@ -32,7 +32,7 @@ const HeroSection = styled.div`
       url(${hero});
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    // background-attachment: fixed;
   }
 `;
 
@@ -79,7 +79,7 @@ const MainPage = () => {
         style={{
           paddingTop: '40px',
           paddingBottom: '40px',
-          color: 'var(--text-color-primary-black)',
+          color: 'white ',
         }}
       >
         <h1
@@ -94,9 +94,9 @@ const MainPage = () => {
         </h1>
         <TopProductsList />
       </div>
-      <div>
+      {/* <div>
         <BrandCarousel />
-      </div>
+      </div> */}
     </>
   );
 };
