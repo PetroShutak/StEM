@@ -5,7 +5,7 @@ import hero from '../images/hero.jpg';
 import styled from 'styled-components';
 
 const HeroSection = styled.div`
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -37,6 +37,7 @@ const HeroSection = styled.div`
 `;
 
 const HeroButton = styled.button`
+font-family: var(--font-family-secondary);
   width: 240px;
   margin: 0 auto;
   text-align: center;
@@ -57,10 +58,10 @@ const HeroButton = styled.button`
 const HeroTitle = styled.h1`
   font-family: var(--font-family-secondary);
   color: white;
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   @media (max-width: 768px) {
     font-size: 32px;
   }

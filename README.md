@@ -11,7 +11,7 @@ system and sanitary ware.
 
 2. Install the dependencies: `npm install`
 
-3. Start the application: `npm start`
+3. Start the application: `npm run start:dev`
 
 4. View the application: `localhost:3000`
 
