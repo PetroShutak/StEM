@@ -13,12 +13,16 @@ const HeroSection = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding-top: 192px;
   padding-bottom: 192px;
+  @media (max-width: 768px) {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
 `;
 
 const HeroButton = styled.button`
@@ -46,6 +50,9 @@ const HeroTitle = styled.h1`
   font-weight: 700;
   text-align: center;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const MainPage = () => {
