@@ -20,8 +20,7 @@ const HeroSection = styled.div`
   padding-top: 192px;
   padding-bottom: 192px;
   @media (max-width: 768px) {
-    padding-top: 128px;
-    padding-bottom: 128px;
+    padding-top: 164px;
   }
 `;
 
