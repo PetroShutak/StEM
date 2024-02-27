@@ -5,7 +5,7 @@ import hero from '../images/hero.jpg';
 import styled from 'styled-components';
 
 const HeroSection = styled.div`
-  height: 100%;
+  height: 100vh;
   transition: height 999999s;
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@ const HeroSection = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     transition: height 999999s;
     z-index: -1;
     background-image: linear-gradient(
