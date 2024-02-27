@@ -24,6 +24,7 @@ const HeroSection = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    transition: height 999999s;
     z-index: -1;
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
