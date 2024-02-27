@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const HeroSection = styled.div`
   height: 100%;
+  transition: height 999999s;
   display: flex;
   justify-content: center;
   flex-direction: column;
